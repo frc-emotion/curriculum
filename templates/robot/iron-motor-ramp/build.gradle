@@ -1,0 +1,110 @@
+// ============================================================
+// Build file for a plain Java rank template.
+//
+//   ./gradlew run         runs your program   (src/main/java)
+//   ./gradlew build       compiles your program
+//   ./gradlew rankCheck   grades your program (src/rankCheck/java)
+//
+// You do not need to edit this file for any step. It is here so the
+// commands above work. Read it if you're curious; ask a lead if it
+// breaks.
+//
+// Note: `build` and `run` deliberately do NOT compile the rank checks,
+// so an unfinished template still builds and runs from minute one.
+// ============================================================
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'rankup'
+version = '1.0'
+
+java {
+    // WPILib 2026 and the team's robot code use Java 17, so we do too.
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass = 'rankup.MotorRamp'
+}
+
+repositories {
+    mavenCentral()
+}
+
+// The rank checks live in their own source set so they are never part of
+// a normal build. They can see your code in src/main/java; your code
+// cannot see them.
+sourceSets {
+    rankCheck {
+        java {
+            srcDir 'src/rankCheck/java'
+        }
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+dependencies {
+    // Matches the JUnit version used in Rebuilt-2026.
+    rankCheckImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    rankCheckRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.register('rankCheck', Test) {
+    group = 'verification'
+    description = 'Grades this rank. Every failure starts with the step number to work on.'
+
+    testClassesDirs = sourceSets.rankCheck.output.classesDirs
+    classpath = sourceSets.rankCheck.runtimeClasspath
+
+    useJUnitPlatform()
+
+    // Keep going after the first failure so you see the whole to-do list at once,
+    // then fail the task at the end if anything is still outstanding.
+    ignoreFailures = true
+    testLogging {
+        events 'failed'
+        exceptionFormat 'short'
+        showStackTraces = false
+        showExceptions = false
+        showCauses = false
+    }
+
+    def failures = []
+    afterTest { desc, result ->
+        if (result.resultType.toString() == 'FAILURE') {
+            def raw = result.exception?.message ?: "${desc.className}.${desc.name} failed"
+            def firstLine = (raw.readLines().find { it.trim() } ?: raw).trim()
+            // Drop JUnit's "==> expected: <true> but was: <false>" tail; the message says it better.
+            failures << firstLine.replaceAll(/\s*==>.*$/, '')
+        }
+    }
+
+    doLast {
+        println ''
+        println '============================================================'
+        if (failures.isEmpty()) {
+            println '  All rank checks passed. Nice work.'
+            println '  Now re-read the "Passes when" list in the README, then open your PR.'
+            println '============================================================'
+        } else {
+            def todo = failures.unique().sort()
+            println "  ${todo.size()} check(s) still to go:"
+            println ''
+            todo.each { println "    - ${it}" }
+            println ''
+            println '  Work on the LOWEST step number first. Later steps build on it.'
+            println '============================================================'
+            throw new GradleException("rankCheck: ${todo.size()} check(s) still to do. See the list above.")
+        }
+    }
+}
+
+// `gradle test` isn't used at this rank; the rank checks are the tests.
+tasks.named('test') {
+    enabled = false
+}

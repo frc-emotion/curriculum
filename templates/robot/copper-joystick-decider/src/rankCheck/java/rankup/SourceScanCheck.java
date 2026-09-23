@@ -42,7 +42,7 @@ class SourceScanCheck {
     @Test
     @DisplayName("STEP 3: decideDirection uses Math.abs")
     void usesMathAbs() {
-        String body = CheckSupport.methodBody(code, "String decideDirection");
+        String body = CheckSupport.methodBodyOf(code, "decideDirection");
         assertTrue(body.contains("Math.abs"),
                 "STEP 3: expected Math.abs in decideDirection. Use it to ask how far the stick is from "
                         + "centre, so one check covers both directions.");
@@ -51,7 +51,7 @@ class SourceScanCheck {
     @Test
     @DisplayName("STEP 6: decideDirection uses a ternary operator")
     void usesTernary() {
-        String body = CheckSupport.methodBody(code, "String decideDirection");
+        String body = CheckSupport.methodBodyOf(code, "decideDirection");
         assertTrue(Pattern.compile("\\?[^;{}]*:").matcher(body).find(),
                 "STEP 6: expected a ternary operator (? :) in decideDirection. Rewrite the stop-or-move "
                         + "decision as a single line that picks between two values.");
@@ -60,7 +60,7 @@ class SourceScanCheck {
     @Test
     @DisplayName("STEP 7: driveModeName uses a switch")
     void usesSwitch() {
-        String body = CheckSupport.methodBody(code, "String driveModeName");
+        String body = CheckSupport.methodBodyOf(code, "driveModeName");
         assertTrue(Pattern.compile("\\bswitch\\s*\\(").matcher(body).find(),
                 "STEP 7: expected a `switch` in driveModeName. A chain of if/else works, but this step is "
                         + "about learning switch.");
@@ -69,8 +69,8 @@ class SourceScanCheck {
     @Test
     @DisplayName("STEP 2 and 5: the constants are actually used")
     void constantsAreUsed() {
-        String decide = CheckSupport.methodBody(code, "String decideDirection");
-        String scale = CheckSupport.methodBody(code, "double scaleSpeed");
+        String decide = CheckSupport.methodBodyOf(code, "decideDirection");
+        String scale = CheckSupport.methodBodyOf(code, "scaleSpeed");
         assertTrue(decide.contains("DEADBAND"),
                 "STEP 2: decideDirection should use DEADBAND instead of typing 0.1 into the comparison. "
                         + "That's the whole point of naming it.");
