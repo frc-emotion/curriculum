@@ -1,0 +1,21 @@
+{
+  "name": "copper-student-filter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Web Copper rank assessment - JavaScript fundamentals and tooling",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node checks/check.mjs",
+    "test": "vitest run --reporter=./checks/step-reporter.js",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "vitest": "^5.0.1"
+  }
+}
