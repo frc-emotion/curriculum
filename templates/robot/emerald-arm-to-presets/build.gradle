@@ -1,0 +1,176 @@
+// ============================================================
+// GradleRIO build file for a WPILib rank template.
+//
+//   ./gradlew build           compile everything
+//   ./gradlew simulateJava    run the robot code in simulation, with the Sim GUI
+//   ./gradlew deploy          send the code to a real roboRIO (lead present, bench only)
+//
+// The plugin version, Java version and vendordeps match Rebuilt-2026 exactly, so what you
+// learn here transfers straight to the competition robot.
+//
+// You do not need to edit this file for any step.
+// ============================================================
+plugins {
+    id "java"
+    id "edu.wpi.first.GradleRIO" version "2026.2.1"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+def ROBOT_MAIN_CLASS = "frc.robot.Main"
+
+// Where the code gets deployed, and what goes with it.
+deploy {
+    targets {
+        roborio(getTargetTypeClass('RoboRIO')) {
+            // Team number comes from .wpilib/wpilib_preferences.json (2658).
+            team = project.frc.getTeamNumber()
+            debug = project.frc.getDebugOrDefault(false)
+
+            artifacts {
+                frcJava(getArtifactTypeClass('FRCJavaArtifact')) {
+                }
+
+                frcStaticFileDeploy(getArtifactTypeClass('FileTreeArtifact')) {
+                    files = project.fileTree('src/main/deploy')
+                    directory = '/home/lvuser/deploy'
+                    deleteOldFiles = false
+                }
+            }
+        }
+    }
+}
+
+def deployArtifact = deploy.targets.roborio.artifacts.frcJava
+
+wpi.java.debugJni = false
+
+// Desktop support is what makes simulation work on your laptop.
+def includeDesktopSupport = true
+
+dependencies {
+    annotationProcessor wpi.java.deps.wpilibAnnotations()
+    implementation wpi.java.deps.wpilib()
+    implementation wpi.java.vendor.java()
+
+    roborioDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.roborio)
+    roborioDebug wpi.java.vendor.jniDebug(wpi.platforms.roborio)
+
+    roborioRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.roborio)
+    roborioRelease wpi.java.vendor.jniRelease(wpi.platforms.roborio)
+
+    nativeDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.desktop)
+    nativeDebug wpi.java.vendor.jniDebug(wpi.platforms.desktop)
+    simulationDebug wpi.sim.enableDebug()
+
+    nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
+    nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
+    simulationRelease wpi.sim.enableRelease()
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
+}
+
+// Simulation: GUI plus a fake driver station.
+wpi.sim.addGui().defaultEnabled = true
+wpi.sim.addDriverstation()
+
+jar {
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    from sourceSets.main.allSource
+    manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+deployArtifact.jarTask = jar
+wpi.java.configureExecutableTasks(jar)
+wpi.java.configureTestTasks(test)
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs.add '-XDstringConcat=inline'
+}
+
+// ============================================================
+// rankCheck — the grader.
+//
+// It lives in its own source set (src/rankCheck/java), so `./gradlew build` and
+// `./gradlew simulateJava` never compile it. An unfinished template still builds and runs.
+//
+// These tests start the WPILib HAL in simulation, which is what lets them create a
+// DigitalInput and a TalonFX without any hardware plugged in.
+// ============================================================
+sourceSets {
+    rankCheck {
+        java {
+            srcDir 'src/rankCheck/java'
+        }
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+
+dependencies {
+    rankCheckImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    rankCheckRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+def rankCheckTask = tasks.register('rankCheck', Test) {
+    group = 'verification'
+    description = 'Grades this rank. Every failure starts with the step number to work on.'
+
+    testClassesDirs = sourceSets.rankCheck.output.classesDirs
+    classpath = sourceSets.rankCheck.runtimeClasspath
+
+    useJUnitPlatform()
+
+    ignoreFailures = true
+    testLogging {
+        events 'failed'
+        exceptionFormat 'short'
+        showStackTraces = false
+        showExceptions = false
+        showCauses = false
+    }
+
+    def failures = []
+    afterTest { desc, result ->
+        if (result.resultType.toString() == 'FAILURE') {
+            def raw = result.exception?.message ?: "${desc.className}.${desc.name} failed"
+            def firstLine = (raw.readLines().find { it.trim() } ?: raw).trim()
+            failures << firstLine.replaceAll(/\s*==>.*$/, '')
+        }
+    }
+
+    doLast {
+        println ''
+        println '============================================================'
+        if (failures.isEmpty()) {
+            println '  All rank checks passed. Nice work.'
+            println ''
+            println '  The checker cannot watch a motor spin, so you still need:'
+            println '    - the simulation demo, and'
+            println '    - the hardware retune and preset demo, with a lead present (step 9).'
+            println '============================================================'
+        } else {
+            def todo = failures.unique().sort()
+            println "  ${todo.size()} check(s) still to go:"
+            println ''
+            todo.each { println "    - ${it}" }
+            println ''
+            println '  Work on the LOWEST step number first. Later steps build on it.'
+            println '============================================================'
+            throw new GradleException("rankCheck: ${todo.size()} check(s) still to do. See the list above.")
+        }
+    }
+}
+
+// Give the rank checks the simulation native libraries, the same way WPILib does for tests.
+wpi.java.configureTestTasks(rankCheckTask.get())
