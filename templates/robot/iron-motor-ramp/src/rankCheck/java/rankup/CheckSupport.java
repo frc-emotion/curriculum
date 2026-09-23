@@ -5,9 +5,11 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -254,6 +256,112 @@ final class CheckSupport {
         } catch (IllegalAccessException e) {
             return fail("STEP " + step + ": I couldn't read `" + field.getName() + "`. Is it `static`?");
         }
+    }
+
+
+    // ------------------------------------------------------------
+    // Objects: making them and poking at them, for the ranks with classes in them
+    // ------------------------------------------------------------
+
+    /** Finds a constructor, or fails with a message naming the step. */
+    static Constructor<?> findConstructor(int step, Class<?> owner, Class<?>... parameterTypes) {
+        try {
+            Constructor<?> constructor = owner.getDeclaredConstructor(parameterTypes);
+            constructor.setAccessible(true);
+            return constructor;
+        } catch (NoSuchMethodException e) {
+            return fail("STEP " + step + ": I couldn't find a constructor `" + owner.getSimpleName() + "("
+                    + describe(parameterTypes) + ")`. Check the parameter types and their order.");
+        }
+    }
+
+    /** Builds one of your objects. */
+    static Object construct(int step, Constructor<?> constructor, Object... args) {
+        try {
+            return constructor.newInstance(args);
+        } catch (InvocationTargetException e) {
+            Throwable cause = e.getCause();
+            return fail("STEP " + step + ": building a " + constructor.getDeclaringClass().getSimpleName()
+                    + " threw " + cause.getClass().getSimpleName()
+                    + (cause.getMessage() == null ? "" : (": " + cause.getMessage())) + ".");
+        } catch (ReflectiveOperationException e) {
+            return fail("STEP " + step + ": I couldn't build a "
+                    + constructor.getDeclaringClass().getSimpleName() + ": " + e.getMessage());
+        }
+    }
+
+    /** Calls a method on one of your objects. */
+    static Object callOn(int step, Object target, String name, Class<?>[] parameterTypes, Object... args) {
+        Method method = findMethodAnywhere(step, target.getClass(), name, parameterTypes);
+        try {
+            return method.invoke(target, args);
+        } catch (InvocationTargetException e) {
+            Throwable cause = e.getCause();
+            return fail("STEP " + step + ": calling `" + name + "` on a "
+                    + target.getClass().getSimpleName() + " threw " + cause.getClass().getSimpleName()
+                    + (cause.getMessage() == null ? "" : (": " + cause.getMessage())) + ".");
+        } catch (IllegalAccessException e) {
+            return fail("STEP " + step + ": I couldn't call `" + name + "` on a "
+                    + target.getClass().getSimpleName() + ". Is it public?");
+        }
+    }
+
+    /** Like findMethod, but also looks at inherited methods. */
+    static Method findMethodAnywhere(int step, Class<?> owner, String name, Class<?>... parameterTypes) {
+        Class<?> current = owner;
+        while (current != null) {
+            try {
+                Method method = current.getDeclaredMethod(name, parameterTypes);
+                method.setAccessible(true);
+                return method;
+            } catch (NoSuchMethodException e) {
+                current = current.getSuperclass();
+            }
+        }
+        return fail("STEP " + step + ": I couldn't find a method called `" + name + "("
+                + describe(parameterTypes) + ")` on " + owner.getSimpleName()
+                + " or anything it inherits from.");
+    }
+
+    /** True when a class, or something it inherits from, has this method. */
+    static boolean hasMethodAnywhere(Class<?> owner, String name, Class<?>... parameterTypes) {
+        Class<?> current = owner;
+        while (current != null) {
+            try {
+                current.getDeclaredMethod(name, parameterTypes);
+                return true;
+            } catch (NoSuchMethodException e) {
+                current = current.getSuperclass();
+            }
+        }
+        return false;
+    }
+
+    /** The first field of a given type declared on a class, or null. */
+    static Field fieldOfType(Class<?> owner, Class<?> type) {
+        for (Field field : owner.getDeclaredFields()) {
+            if (type.isAssignableFrom(field.getType())) {
+                field.setAccessible(true);
+                return field;
+            }
+        }
+        return null;
+    }
+
+    /** Reads a field off one of your objects. */
+    static Object readFieldValue(int step, Field field, Object target) {
+        try {
+            field.setAccessible(true);
+            return field.get(target);
+        } catch (IllegalAccessException e) {
+            return fail("STEP " + step + ": I couldn't read the field `" + field.getName() + "`.");
+        }
+    }
+
+    /** A readable list of modifiers, for error messages. */
+    static String modifiersOf(int modifiers) {
+        String text = Modifier.toString(modifiers);
+        return text.isEmpty() ? "package-private" : text;
     }
 
     // ------------------------------------------------------------
