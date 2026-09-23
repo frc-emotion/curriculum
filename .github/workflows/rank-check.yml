@@ -1,0 +1,181 @@
+name: Rank check
+
+# Runs on every pull request. It works out which rank folders you touched and
+# runs that rank's own check — nothing else. A PR that only edits docs runs
+# nothing and passes.
+on:
+  pull_request:
+    branches: [main]
+
+# A new push to the same PR cancels the previous run.
+concurrency:
+  group: rank-check-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # ------------------------------------------------------------
+  # Unranked: only when unranked/ changed.
+  # ------------------------------------------------------------
+  unranked:
+    name: Unranked
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Did this PR touch unranked/?
+        id: touched
+        run: |
+          if git diff --name-only "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}" \
+            | grep -q '^unranked/'; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes under unranked/ — nothing to check."
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.touched.outputs.changed == 'true'
+        with:
+          node-version: 24
+
+      - name: Check the Unranked assessment
+        if: steps.touched.outputs.changed == 'true'
+        run: |
+          node .github/scripts/check-unranked.mjs \
+            "${{ github.event.pull_request.base.sha }}" \
+            "${{ github.event.pull_request.head.sha }}"
+
+  # ------------------------------------------------------------
+  # Work out which student rank folders changed.
+  # ------------------------------------------------------------
+  detect:
+    name: Find changed ranks
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.find.outputs.matrix }}
+      any: ${{ steps.find.outputs.any }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - id: find
+        run: |
+          MATRIX=$(node .github/scripts/find-rank-folders.mjs \
+            "${{ github.event.pull_request.base.sha }}" \
+            "${{ github.event.pull_request.head.sha }}")
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+          COUNT=$(echo "$MATRIX" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).include.length))')
+          if [ "$COUNT" = "0" ]; then
+            echo "any=false" >> "$GITHUB_OUTPUT"
+            echo "No student rank folders with code changed — nothing to check."
+          else
+            echo "any=true" >> "$GITHUB_OUTPUT"
+            echo "Checking $COUNT rank folder(s)."
+          fi
+
+  # ------------------------------------------------------------
+  # Run each changed rank's own check.
+  # ------------------------------------------------------------
+  rank:
+    name: ${{ matrix.name }}
+    needs: detect
+    if: needs.detect.outputs.any == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.detect.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---------- Java and WPILib ----------
+      - name: Set up Java 17
+        if: matrix.kind == 'java' || matrix.kind == 'wpilib'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Cache Gradle
+        if: matrix.kind == 'java' || matrix.kind == 'wpilib'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.gradle/permwrapper
+          key: gradle-${{ matrix.kind }}-${{ hashFiles(format('{0}/build.gradle', matrix.folder)) }}
+          restore-keys: |
+            gradle-${{ matrix.kind }}-
+
+      - name: Run the rank checks
+        if: matrix.kind == 'java' || matrix.kind == 'wpilib'
+        working-directory: ${{ matrix.folder }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew rankCheck --console=plain --no-daemon
+
+      # WPILib ranks also have to compile for the robot, not just pass checks.
+      - name: Build for the roboRIO
+        if: matrix.kind == 'wpilib'
+        working-directory: ${{ matrix.folder }}
+        run: ./gradlew build --console=plain --no-daemon
+
+      # ---------- Node, Vite and Expo ----------
+      - name: Set up Node 24
+        if: matrix.kind == 'node' || matrix.kind == 'vite' || matrix.kind == 'expo'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: ${{ matrix.folder }}/package-lock.json
+
+      - name: Install dependencies
+        if: matrix.kind == 'node' || matrix.kind == 'vite' || matrix.kind == 'expo'
+        working-directory: ${{ matrix.folder }}
+        # `npm ci` when the lockfile is intact, `npm install` if the student added
+        # a package and forgot to commit the lockfile — with a note either way.
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci || {
+              echo "::warning::npm ci failed — the lockfile is out of step with package.json."
+              echo "::warning::Run 'npm install' locally and commit package-lock.json."
+              npm install --no-audit --no-fund
+            }
+          else
+            echo "::warning::No package-lock.json in this folder. Commit it so everyone installs the same versions."
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Run the rank checks
+        if: matrix.kind == 'node' || matrix.kind == 'vite' || matrix.kind == 'expo'
+        working-directory: ${{ matrix.folder }}
+        run: npm run check
+
+  # ------------------------------------------------------------
+  # One status to require in branch protection, whatever ran.
+  # ------------------------------------------------------------
+  result:
+    name: Rank check result
+    needs: [unranked, detect, rank]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report
+        run: |
+          if [ "${{ needs.unranked.result }}" = "failure" ] \
+            || [ "${{ needs.detect.result }}" = "failure" ] \
+            || [ "${{ needs.rank.result }}" = "failure" ]; then
+            echo "A rank check failed. Open the job above — every failure starts with the step number to work on."
+            exit 1
+          fi
+          echo "All rank checks that applied to this PR passed."
