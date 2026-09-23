@@ -1,0 +1,6 @@
+/* NativeWind's entry point. Metro reads this (see metro.config.js) and turns
+   Tailwind class names into React Native styles.
+   You don't need to change this file. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

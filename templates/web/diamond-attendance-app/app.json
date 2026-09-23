@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "Attendance",
+    "slug": "diamond-attendance-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "attendance",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
