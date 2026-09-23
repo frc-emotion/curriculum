@@ -1,0 +1,243 @@
+// ============================================================
+// GradleRIO build file for a WPILib rank template.
+//
+//   ./gradlew build           compile everything
+//   ./gradlew simulateJava    run the robot code in simulation, with the Sim GUI
+//   ./gradlew deploy          send the code to a real roboRIO (lead present, bench only)
+//
+// The plugin version, Java version and vendordeps match Rebuilt-2026 exactly, so what you
+// learn here transfers straight to the competition robot.
+//
+// You do not need to edit this file for any step.
+// ============================================================
+plugins {
+    id "java"
+    id "edu.wpi.first.GradleRIO" version "2026.2.1"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+def ROBOT_MAIN_CLASS = "frc.robot.Main"
+
+// Where the code gets deployed, and what goes with it.
+deploy {
+    targets {
+        roborio(getTargetTypeClass('RoboRIO')) {
+            // Team number comes from .wpilib/wpilib_preferences.json (2658).
+            team = project.frc.getTeamNumber()
+            debug = project.frc.getDebugOrDefault(false)
+
+            artifacts {
+                frcJava(getArtifactTypeClass('FRCJavaArtifact')) {
+                }
+
+                frcStaticFileDeploy(getArtifactTypeClass('FileTreeArtifact')) {
+                    files = project.fileTree('src/main/deploy')
+                    directory = '/home/lvuser/deploy'
+                    deleteOldFiles = false
+                }
+            }
+        }
+    }
+}
+
+def deployArtifact = deploy.targets.roborio.artifacts.frcJava
+
+wpi.java.debugJni = false
+
+// Desktop support is what makes simulation work on your laptop.
+def includeDesktopSupport = true
+
+dependencies {
+    annotationProcessor wpi.java.deps.wpilibAnnotations()
+    implementation wpi.java.deps.wpilib()
+    implementation wpi.java.vendor.java()
+
+    roborioDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.roborio)
+    roborioDebug wpi.java.vendor.jniDebug(wpi.platforms.roborio)
+
+    roborioRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.roborio)
+    roborioRelease wpi.java.vendor.jniRelease(wpi.platforms.roborio)
+
+    nativeDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.desktop)
+    nativeDebug wpi.java.vendor.jniDebug(wpi.platforms.desktop)
+    simulationDebug wpi.sim.enableDebug()
+
+    nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
+    nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
+    simulationRelease wpi.sim.enableRelease()
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
+}
+
+// Simulation: GUI plus a fake driver station.
+wpi.sim.addGui().defaultEnabled = true
+wpi.sim.addDriverstation()
+
+jar {
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    from sourceSets.main.allSource
+    manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+deployArtifact.jarTask = jar
+wpi.java.configureExecutableTasks(jar)
+wpi.java.configureTestTasks(test)
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs.add '-XDstringConcat=inline'
+}
+
+// ============================================================
+// rankCheck — advisory only at this rank.
+//
+// Platinum is signed off by a lead who watches your sim demo and your bench demo. A source
+// scan cannot watch a motor spin, so nothing here FAILS your build. It reads your code, tells
+// you which steps look unfinished, and leaves the judgement to a human.
+//
+// `./gradlew build` still has to pass. That part is not advisory.
+// ============================================================
+tasks.register('rankCheck') {
+    group = 'verification'
+    description = 'Reads your code and lists the steps that still look unfinished. Advisory only.'
+    dependsOn 'build'
+
+    doLast {
+        def notes = []
+
+        def sourceText = { String path ->
+            def file = file(path)
+            file.exists() ? file.text : ''
+        }
+
+        // Comments and quoted text are stripped first, so the STEP comments describing what
+        // to write are never mistaken for the code itself.
+        def stripped = { String text ->
+            text.replaceAll(/(?s)\/\*.*?\*\//, ' ')
+                .replaceAll(/\/\/[^\n]*/, ' ')
+                .replaceAll(/"(\\.|[^"\\])*"/, '""')
+        }
+
+        def robotPath = 'src/main/java/frc/robot/Robot.java'
+        def containerPath = 'src/main/java/frc/robot/RobotContainer.java'
+        def constantsPath = 'src/main/java/frc/robot/Constants.java'
+
+        def allCode = stripped(sourceText(robotPath) + '\n' + sourceText(containerPath) + '\n'
+                + sourceText(constantsPath))
+
+        // ---- STEP 1: a comment above every lifecycle method ----
+        def lifecycle = ['robotPeriodic', 'disabledInit', 'disabledPeriodic', 'autonomousInit',
+                         'autonomousPeriodic', 'teleopInit', 'teleopPeriodic', 'simulationPeriodic']
+        def robotLines = sourceText(robotPath).readLines()
+        def undocumented = []
+        lifecycle.each { name ->
+            def index = robotLines.findIndexOf { it =~ /\bvoid\s+${name}\s*\(/ }
+            if (index < 0) {
+                undocumented << "${name} (method missing?)"
+                return
+            }
+            def cursor = index - 1
+            while (cursor >= 0 && (robotLines[cursor].trim().isEmpty()
+                    || robotLines[cursor].trim().startsWith('@'))) {
+                cursor--
+            }
+            // Collect the run of comment lines directly above the method.
+            def commentBlock = []
+            while (cursor >= 0) {
+                def line = robotLines[cursor].trim()
+                if (line.startsWith('//') || line.startsWith('*') || line.startsWith('/*')
+                        || line.endsWith('*/')) {
+                    commentBlock << line
+                    cursor--
+                } else {
+                    break
+                }
+            }
+            // A leftover STEP block doesn't count as your comment.
+            def yourOwnComment = commentBlock.any { line ->
+                !(line =~ /^\/\/\s*(STEP|WHAT:|WHY:|CONCEPTS:|READ:|CHECKED BY:|DONE WHEN:)/)
+            }
+            if (commentBlock.isEmpty() || !yourOwnComment) {
+                undocumented << name
+            }
+        }
+        if (!undocumented.isEmpty()) {
+            notes << "STEP 1: no comment above ${undocumented.join(', ')} in Robot.java. " +
+                     "Say when each one runs and how often."
+        }
+
+        // ---- STEP 3: the constants ----
+        def constantsCode = stripped(sourceText(constantsPath))
+        if (!(constantsCode =~ /static\s+final/)) {
+            notes << 'STEP 3: Constants.java has no `public static final` constants in it yet. ' +
+                     'The CAN ID, the controller port and MOTOR_SPEED all belong there.'
+        }
+        if (!(constantsCode =~ /MOTOR_SPEED/)) {
+            notes << 'STEP 3: I could not find MOTOR_SPEED in Constants.java.'
+        }
+
+        // ---- STEP 4: the motor and its configuration ----
+        if (!(allCode =~ /new\s+TalonFX/)) {
+            notes << 'STEP 4: I could not find `new TalonFX` anywhere. The motor has to be created ' +
+                     'before it can be commanded.'
+        }
+        if (!(allCode =~ /(?i)statorcurrentlimit/)) {
+            notes << 'STEP 4: I could not find a stator current limit in your TalonFXConfiguration. ' +
+                     'Without one, a stalled motor keeps pulling current until something gives.'
+        }
+        if (!(allCode =~ /NeutralModeValue\s*\.\s*Brake/)) {
+            notes << 'STEP 4: I could not find `NeutralModeValue.Brake`. Brake mode makes the motor ' +
+                     'resist movement when it is not being commanded.'
+        }
+
+        // ---- STEP 5: driving the motor ----
+        if (!(allCode =~ /DutyCycleOut/)) {
+            notes << 'STEP 5: I could not find `DutyCycleOut`. That is the control request that tells ' +
+                     'a TalonFX to run at a percentage of full power.'
+        }
+
+        // ---- STEP 6: stopping when disabled ----
+        def disabledInitBody = ''
+        def disabledMatch = (stripped(sourceText(robotPath)) =~ /(?s)void\s+disabledInit\s*\([^)]*\)\s*\{(.*?)\n    \}/)
+        if (disabledMatch.find()) {
+            disabledInitBody = disabledMatch.group(1)
+        }
+        if (disabledInitBody.trim().isEmpty()) {
+            notes << 'STEP 6: disabledInit() is still empty. A disabled robot must not keep a motor ' +
+                     'commanded.'
+        }
+
+        // ---- STEP 7: telemetry ----
+        if (!(allCode =~ /SmartDashboard\s*\.\s*put/)) {
+            notes << 'STEP 7: I could not find a `SmartDashboard.put...` call. Publish the motor\'s ' +
+                     'applied output so you can see what it is doing.'
+        }
+
+        println ''
+        println '============================================================'
+        println '  Platinum rankCheck — ADVISORY ONLY'
+        println '============================================================'
+        if (notes.isEmpty()) {
+            println '  Nothing looks unfinished. Your code builds and every step left a trace.'
+        } else {
+            println "  ${notes.size()} step(s) look unfinished:"
+            println ''
+            notes.sort().each { println "    - ${it}" }
+        }
+        println ''
+        println '  This rank is signed off by a LEAD, not by this checker. You still need:'
+        println '    - the simulation demo (step 2 output pasted into your PR)'
+        println '    - the bench demo, with a lead present and the motor secured'
+        println '============================================================'
+    }
+}
