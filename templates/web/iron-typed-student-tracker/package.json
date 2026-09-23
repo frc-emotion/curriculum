@@ -1,0 +1,31 @@
+{
+  "name": "iron-typed-student-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Web Iron rank assessment - TypeScript and async code",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "check": "node checks/check.mjs",
+    "test": "vitest run --reporter=./checks/step-reporter.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "axios": "^1.20.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.2",
+    "eslint": "^10.11.0",
+    "msw": "^2.15.0",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.70.1",
+    "vitest": "^5.0.1"
+  }
+}
