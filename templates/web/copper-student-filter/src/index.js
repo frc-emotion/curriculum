@@ -31,3 +31,17 @@ import { students } from './students.js';
 //             without crashing.
 
 console.log(`Loaded ${students.length} students.`);
+
+// STEP 10: Get `npm run check` fully green
+// WHAT:       Run `npm run check` and work down the list until it reports no
+//             checks left and the linter is happy. Then re-read the "Passes
+//             when" list in the README and make sure each line is true of your
+//             work — a couple of them are things no checker can see.
+// WHY:        Green checks mean your code does what was asked. They do not mean
+//             you are finished: the reviewer is still going to ask why you used
+//             `.find` in one place and `.filter` in another, and being able to
+//             answer is the actual bar.
+// CONCEPTS:   Reading tool output, the difference between passing and done
+// READ:       Guide > Web Copper
+// CHECKED BY: `npm run check`, then your reviewer
+// DONE WHEN:  the check prints "All rank checks passed" and the linter is clean.

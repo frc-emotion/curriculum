@@ -127,4 +127,18 @@ public class Robot extends TimedRobot {
     @Override
     public void simulationPeriodic() {
     }
+
+    // STEP 8: Demo it, in sim and then on the bench
+    // WHAT:       Run the whole thing in simulation first, start to finish. Then, WITH A LEAD
+    //             PRESENT and the motor secured to the bench, deploy and demo it: A drives
+    //             forward, B drives backward, letting go stops, and disabling stops it too.
+    // WHY:        Everything up to here was preparation. This is the rank: your code moving a
+    //             real motor, on purpose, in front of someone who can stop it. Simulation
+    //             first is not a formality — it is how you find the bug that would otherwise
+    //             find you at full speed.
+    // CONCEPTS:   Deploying, bench testing, the disable button, testing safely
+    // READ:       Guide > Robot Platinum > Resources #2
+    // CHECKED BY: your reviewer, in person. Nothing else can check this one.
+    // DONE WHEN:  a lead has watched both demos and signed the rank off.
+
 }

@@ -61,4 +61,29 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         return Commands.none();
     }
+
+    // STEP 9: Retune on hardware, with a lead
+    // WHAT:       Everything so far was tuned against a simulation. Now tune it again on the
+    //             real arm, WITH A LEAD PRESENT, hard stops fitted, starting from a low kP.
+    //             Then demo all three presets.
+    // WHY:        The simulation is a good guess about mass and friction, and a guess is all
+    //             it is. Real gearboxes have backlash, real arms have wiring that catches.
+    //             Numbers that were perfect in sim will be wrong here, and finding out how
+    //             wrong is the point of the exercise.
+    // CONCEPTS:   Sim-to-real gap, retuning, safe hardware testing
+    // READ:       Guide > Robot Emerald > Resources #2
+    // CHECKED BY: your reviewer, in person. Nothing else can check this one.
+    // DONE WHEN:  a lead has watched the arm hit all three presets without oscillating.
+
+    // STEP 10: Write down what you learned
+    // WHAT:       In your PR: three things you learned, and three things you want to explore
+    //             next.
+    // WHY:        This is the last rank before you work in the real repo, and the three things
+    //             you want to explore are usually a better guide to what you should pick up at
+    //             Ruby than anything a lead would assign you.
+    // CONCEPTS:   Reflection, knowing what you don't know
+    // READ:       Guide > Robot Emerald
+    // CHECKED BY: your reviewer
+    // DONE WHEN:  both lists are in your PR description.
+
 }

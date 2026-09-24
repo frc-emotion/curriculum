@@ -118,4 +118,17 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     // CHECKED BY: SubsystemApiCheck (both must exist and return a Command), your reviewer
     // DONE WHEN:  holding A runs the motor and releasing A stops it, every time.
 
+
+    // STEP 11: Explain the split
+    // WHAT:       In your pull request, write two or three sentences on why hardware lives in
+    //             subsystems and actions live in commands.
+    // WHY:        This is the idea the whole command-based framework is built on. If you can
+    //             say it plainly, the rest of WPILib stops looking arbitrary — and at Emerald
+    //             you will be making this exact decision yourself, without a STEP comment
+    //             telling you which is which.
+    // CONCEPTS:   Subsystems vs commands, ownership, the scheduler's job
+    // READ:       Guide > Robot Diamond > Resources #1 and #2
+    // CHECKED BY: your reviewer
+    // DONE WHEN:  the explanation is in your PR description, in your own words.
+
 }
