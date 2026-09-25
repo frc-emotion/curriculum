@@ -8,7 +8,6 @@
 // and that ROSTER.md gained exactly one row and lost none.
 // ============================================================
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
 
 const [baseSha, headSha] = process.argv.slice(2);
 
@@ -85,7 +84,8 @@ for (const member of addedMembers) {
     continue;
   }
 
-  const contents = readFileSync(member.path, 'utf8');
+  // Read it from the PR's commit, not the disk, so this works from any checkout.
+  const contents = git(['show', `${headSha}:${member.path}`]);
   const sections = {
     '# Name': /^#\s+Name\s*$/m,
     "## Track I'm interested in": /^##\s+Track I'm interested in\s*$/m,
