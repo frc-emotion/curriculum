@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rank-Up Leaderboard</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --panel: #12161f;
+    --panel-2: #171c28;
+    --border: #232a38;
+    --text: #e8ecf4;
+    --muted: #8b93a7;
+    --accent: #d4af37;
+    --danger: #d4534a;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  header h1 {
+    margin: 0 0 4px;
+    font-size: 1.6rem;
+    letter-spacing: 0.02em;
+    background: linear-gradient(90deg, var(--accent), #f4e2a1, var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tab {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  .tab.active {
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+
+  .add-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .add-form input[type="text"] {
+    flex: 1 1 180px;
+  }
+
+  input[type="text"], select {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  select { cursor: pointer; }
+
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #1a1400;
+  }
+
+  .btn-primary:hover { filter: brightness(1.08); }
+
+  .btn-icon {
+    background: transparent;
+    color: var(--muted);
+    padding: 6px 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+  }
+
+  .btn-icon:hover {
+    background: rgba(212, 83, 74, 0.15);
+    color: var(--danger);
+  }
+
+  .rows { display: flex; flex-direction: column; gap: 8px; }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+  }
+
+  .rank-pos {
+    width: 22px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .badge {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .name-input {
+    flex: 1 1 140px;
+    min-width: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 6px;
+  }
+
+  .name-input:hover, .name-input:focus {
+    background: var(--panel);
+    border-color: var(--border);
+    outline: none;
+  }
+
+  .row select {
+    flex-shrink: 0;
+  }
+
+  .track-select { width: 90px; }
+  .rank-select { width: 130px; }
+
+  .empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 40px 0;
+    font-size: 0.9rem;
+  }
+
+  .status {
+    text-align: center;
+    color: var(--danger);
+    font-size: 0.85rem;
+    min-height: 1.2em;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 560px) {
+    .row { flex-wrap: wrap; }
+    .name-input { flex: 1 1 100%; order: -1; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Rank-Up Leaderboard</h1>
+      <p>FRC 2658 Software Training — click any name, track, or rank to edit</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab active" data-track="all">All</button>
+      <button class="tab" data-track="robot">Robot</button>
+      <button class="tab" data-track="web">Web</button>
+    </div>
+
+    <div class="panel">
+      <form class="add-form" id="add-form">
+        <input type="text" id="add-name" placeholder="Student name" maxlength="60" required />
+        <select id="add-track"></select>
+        <select id="add-rank"></select>
+        <button type="submit" class="btn-primary">Add student</button>
+      </form>
+
+      <div class="rows" id="rows"></div>
+      <div class="empty" id="empty" hidden>No students yet — add one above.</div>
+    </div>
+
+    <div class="status" id="status"></div>
+  </div>
+
+<script>
+(function () {
+  'use strict';
+
+  var rows = document.getElementById('rows');
+  var emptyEl = document.getElementById('empty');
+  var statusEl = document.getElementById('status');
+  var addForm = document.getElementById('add-form');
+  var addName = document.getElementById('add-name');
+  var addTrack = document.getElementById('add-track');
+  var addRank = document.getElementById('add-rank');
+  var tabs = document.querySelectorAll('.tab');
+
+  var RANKS = [];
+  var TRACKS = [];
+  var students = [];
+  var activeTrack = 'all';
+
+  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function badgeUrl(rank) { return '/badges/' + rank + '.webp'; }
+
+  function showStatus(message) {
+    statusEl.textContent = message || '';
+    if (message) setTimeout(function () { statusEl.textContent = ''; }, 4000);
+  }
+
+  function fillSelect(select, values, mapLabel) {
+    select.innerHTML = '';
+    values.forEach(function (v) {
+      var opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = mapLabel ? mapLabel(v) : capitalize(v);
+      select.appendChild(opt);
+    });
+  }
+
+  function request(url, options) {
+    return fetch(url, options).then(function (res) {
+      if (!res.ok) {
+        return res.json().catch(function () { return {}; }).then(function (body) {
+          throw new Error(body.error || ('Request failed: ' + res.status));
+        });
+      }
+      return res.status === 204 ? null : res.json();
+    });
+  }
+
+  function loadMeta() {
+    return request('/api/ranks').then(function (meta) {
+      RANKS = meta.ranks;
+      TRACKS = meta.tracks;
+      fillSelect(addTrack, TRACKS);
+      fillSelect(addRank, RANKS);
+    });
+  }
+
+  function loadStudents() {
+    return request('/api/students').then(function (data) {
+      students = data;
+      render();
+    });
+  }
+
+  function sortedStudents() {
+    var list = activeTrack === 'all' ? students.slice() : students.filter(function (s) { return s.track === activeTrack; });
+    list.sort(function (a, b) {
+      var diff = RANKS.indexOf(b.rank) - RANKS.indexOf(a.rank);
+      return diff !== 0 ? diff : a.name.localeCompare(b.name);
+    });
+    return list;
+  }
+
+  function render() {
+    var list = sortedStudents();
+    rows.innerHTML = '';
+    emptyEl.hidden = list.length > 0;
+
+    list.forEach(function (student, i) {
+      var row = document.createElement('div');
+      row.className = 'row';
+
+      var pos = document.createElement('div');
+      pos.className = 'rank-pos';
+      pos.textContent = '#' + (i + 1);
+
+      var badge = document.createElement('img');
+      badge.className = 'badge';
+      badge.src = badgeUrl(student.rank);
+      badge.alt = student.rank;
+
+      var name = document.createElement('input');
+      name.type = 'text';
+      name.className = 'name-input';
+      name.value = student.name;
+      name.maxLength = 60;
+      name.addEventListener('change', function () {
+        var value = name.value.trim();
+        if (!value) { name.value = student.name; return; }
+        update(student.id, { name: value });
+      });
+
+      var trackSelect = document.createElement('select');
+      trackSelect.className = 'track-select';
+      fillSelect(trackSelect, TRACKS);
+      trackSelect.value = student.track;
+      trackSelect.addEventListener('change', function () {
+        update(student.id, { track: trackSelect.value });
+      });
+
+      var rankSelect = document.createElement('select');
+      rankSelect.className = 'rank-select';
+      fillSelect(rankSelect, RANKS);
+      rankSelect.value = student.rank;
+      rankSelect.addEventListener('change', function () {
+        badge.src = badgeUrl(rankSelect.value);
+        update(student.id, { rank: rankSelect.value });
+      });
+
+      var del = document.createElement('button');
+      del.className = 'btn-icon';
+      del.type = 'button';
+      del.title = 'Remove student';
+      del.textContent = '✕';
+      del.addEventListener('click', function () {
+        if (confirm('Remove ' + student.name + '?')) remove(student.id);
+      });
+
+      row.appendChild(pos);
+      row.appendChild(badge);
+      row.appendChild(name);
+      row.appendChild(trackSelect);
+      row.appendChild(rankSelect);
+      row.appendChild(del);
+      rows.appendChild(row);
+    });
+  }
+
+  function update(id, fields) {
+    var index = students.findIndex(function (s) { return s.id === id; });
+    if (index === -1) return;
+    students[index] = Object.assign({}, students[index], fields);
+    request('/api/students/' + id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(fields),
+    }).then(render).catch(function (err) {
+      showStatus(err.message);
+      loadStudents();
+    });
+  }
+
+  function remove(id) {
+    request('/api/students/' + id, { method: 'DELETE' }).then(function () {
+      students = students.filter(function (s) { return s.id !== id; });
+      render();
+    }).catch(function (err) { showStatus(err.message); });
+  }
+
+  addForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = addName.value.trim();
+    if (!name) return;
+    request('/api/students', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, track: addTrack.value, rank: addRank.value }),
+    }).then(function (student) {
+      students.push(student);
+      addName.value = '';
+      addName.focus();
+      render();
+    }).catch(function (err) { showStatus(err.message); });
+  });
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      activeTrack = tab.dataset.track;
+      render();
+    });
+  });
+
+  loadMeta().then(loadStudents).catch(function (err) { showStatus(err.message); });
+})();
+</script>
+</body>
+</html>

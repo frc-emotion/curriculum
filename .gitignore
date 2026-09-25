@@ -69,3 +69,7 @@ desktop.ini
 .env
 .env.local
 .env.*.local
+
+# ---------- Leaderboard ----------
+# Live student data, written by leaderboard/server.js.
+leaderboard/data.json
