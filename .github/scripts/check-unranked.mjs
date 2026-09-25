@@ -31,7 +31,7 @@ const statuses = git(['diff', '--name-status', `${baseSha}...${headSha}`])
   .filter(Boolean)
   .map((line) => {
     const [status, ...paths] = line.split('\t');
-    return { status, path: paths[paths.length - 1] ?? '' };
+    return { status, from: paths[0] ?? '', path: paths[paths.length - 1] ?? '' };
   });
 
 const memberChanges = statuses.filter((change) => change.path.startsWith('unranked/members/'));
@@ -45,6 +45,20 @@ if (removedMembers.length > 0) {
   problems.push(
     `This PR deletes ${removedMembers.map((c) => c.path).join(', ')}. Add your own file; don't `
       + 'remove anybody else\'s.',
+  );
+}
+
+// A rename shows up as R, not A or D — so renaming _TEMPLATE.md to your own name
+// would otherwise slip past both checks above.
+const renamedMembers = statuses.filter(
+  (change) => change.status.startsWith('R') && change.from.startsWith('unranked/members/'),
+);
+
+for (const change of renamedMembers) {
+  problems.push(
+    `STEP 4: this PR renames ${change.from} to ${change.path}. COPY the file instead of `
+      + 'renaming it: the original has to stay put for the next person. Put the original '
+      + 'back, then add your own file next to it.',
   );
 }
 
@@ -122,6 +136,25 @@ function rosterRows(ref) {
 
 const before = rosterRows(baseSha);
 const after = rosterRows(headSha);
+
+// rosterRows() skips the header and separator, so check them separately: without the
+// |---|---|---| line, GitHub stops rendering the table at all.
+function hasTableHeader(ref) {
+  try {
+    const lines = git(['show', `${ref}:unranked/ROSTER.md`]).split('\n').map((l) => l.trim());
+    const header = lines.findIndex((line) => /^\|\s*Name\s*\|/i.test(line));
+    return header !== -1 && /^\|[\s:|-]+\|$/.test(lines[header + 1] ?? '');
+  } catch {
+    return true; // A missing file is reported below.
+  }
+}
+
+if (after !== null && !hasTableHeader(headSha)) {
+  problems.push(
+    'STEP 5: ROSTER.md lost its "| --- | --- | --- |" line under the header, so the table no '
+      + 'longer renders. Put that line back and add your row BELOW it, as a new line.',
+  );
+}
 
 if (after === null) {
   problems.push('unranked/ROSTER.md is missing. Please put it back.');
