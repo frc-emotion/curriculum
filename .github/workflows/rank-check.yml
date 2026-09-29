@@ -162,7 +162,11 @@ jobs:
         run: npm run check
 
   # ------------------------------------------------------------
-  # One status to require in branch protection, whatever ran.
+  # One status for the whole PR, whatever ran.
+  #
+  # Only the Unranked blockers (damage to shared files) and a broken detect step
+  # fail this. A rank whose own checks are still red shows up red on its job and
+  # as a warning here, but does not block the merge — the reviewer decides.
   # ------------------------------------------------------------
   result:
     name: Rank check result
@@ -173,9 +177,18 @@ jobs:
       - name: Report
         run: |
           if [ "${{ needs.unranked.result }}" = "failure" ] \
-            || [ "${{ needs.detect.result }}" = "failure" ] \
-            || [ "${{ needs.rank.result }}" = "failure" ]; then
-            echo "A rank check failed. Open the job above — every failure starts with the step number to work on."
+            || [ "${{ needs.detect.result }}" = "failure" ]; then
+            echo "::error::This PR changes files other people depend on. Open the Unranked job above to see what to put back."
             exit 1
+          fi
+          if [ "${{ needs.rank.result }}" = "failure" ]; then
+            echo "::warning::Some rank checks are not passing yet. That doesn't block merging — the reviewer decides whether the rank is done."
+            {
+              echo "## Rank checks"
+              echo ""
+              echo "Some rank checks are not passing yet. Open the red job above for the step numbers."
+              echo "This is a note for the reviewer, not a merge blocker."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
           fi
           echo "All rank checks that applied to this PR passed."
