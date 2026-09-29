@@ -26,3 +26,4 @@ Everyone on the software subteam adds one row to this table during the Unranked 
 | --- | --- | --- |
 | Suhird | WEB | akshaj |hird0
 | andre fishMAN | robot | catswert |
+| Rubin | Robot | 67ator |
