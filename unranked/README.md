@@ -74,9 +74,6 @@ After these steps, you should still be in VS Code, with the terminal open.
 git clone
 ```
 
-cd curriculum
-code .
-
 You should get an error. *Why?* 
 This is because when you run `git clone`, you must also pass in the URL of the GitHub repository you actually want to clone. Pasting the link tells Git *where* to download the files from.
 
@@ -84,8 +81,31 @@ For the curriculum, you have to clone this GitHub repository itself. Hit `<> Cod
 
 <img width="996" height="419" alt="image" src="https://github.com/user-attachments/assets/b9220ecd-056a-42c6-8357-8911908c26fb" />
 
+So, rerun `git clone URL`, but replace `URL` with the actual link you got. This should run successfully.
 
-If your folder path has spaces in it, wrap paths in quotes: `cd "My Folder/rank-up"`.
+**2. Open up the repo.**
+You have the project downloaded on your computer now. Now, you need to tell VS Code to open up this folder that you just cloned.
+
+The name of the cloned folder is **always** the name of the **GitHub repository that you cloned** itself.
+
+First, you must change the terminal's **directory** to where the cloned folder is. 
+- Do you notice that when you have the terminal open, on each line, it has a line of text like `C:\Users\1912409`? (it might look a little different, but that's fine)
+- That is called the **directory** path. A directory is just a folder.
+
+All commands you run are run inside the directory that you are in. You want to work on `curriculum` folder, so run:
+```bash
+cd curriculum
+```
+*Note: `cd` just stands for "change directory." After the space, put in the folder path you want to navigate to, in this case, the path is just the folder name (which is the name of the GitHub repo)*
+
+Now, you have navigated to that directory path. The first lines of the terminal should now look something like `C:\Users\1912409\curriculum`. 
+
+Then, run:
+```bash
+code .
+```
+
+`code` is a command provided by the VS Code app itself. All you need to know is that this command opens up the current directory you have open in your terminal visually onto VS Code.
 
 <!-- STEP 3: Create a branch named unranked/<your-name>
      WHAT:       Make a new branch called `unranked/<your-github-username>` and switch to it.
@@ -96,13 +116,17 @@ If your folder path has spaces in it, wrap paths in quotes: `cd "My Folder/rank-
      CHECKED BY: your reviewer (your PR shows the branch name)
      DONE WHEN:  `git status` says "On branch unranked/<your-username>". -->
 
-**3. Create a branch named `unranked/<your-github-username>`.**
+**3. Create a branch.**
+A branch is just like a parallel timeline used to store your independent changes, while leaving the main repository intact.
+- The purpose of this is **isolation**. You can test features to test for bugs before fully pushing it to main.
+
+Create a branch like this (replace **GITHUBUSERNAME** with your actual GitHub username. If we see a branch actually called "GITHUBUSERNAME" we will personally pulverize it cause it means you're not reading instructions):
 
 ```bash
-git switch -c unranked/octocat
+git switch -c unranked/GITHUBUSERNAME
 ```
 
-(Use your username, not `octocat`.)
+`git switch` changes the branch. Adding `-c` just means to create the branch if it doesn't already exist.
 
 <!-- STEP 4: Add unranked/members/<your-name>.md
      WHAT:       Copy `unranked/members/_TEMPLATE.md` to `unranked/members/<your-github-username>.md`
@@ -115,9 +139,11 @@ git switch -c unranked/octocat
      CHECKED BY: CI (file name, and all three headings filled in)
      DONE WHEN:  your file exists, is named in lowercase, and no heading is left empty. -->
 
-**4. Add `unranked/members/<your-github-username>.md`** with your name, the track you're
-interested in, and one fun fact. Start from `unranked/members/_TEMPLATE.md` and read
-`unranked/members/README.md` for the naming rules.
+**4. Create a new file, titled with your GitHub username** 
+Add a new file titled `GITHUBUSERNAME.md` with your name in the **members** folder inside of the **unranked** folder. 
+Much like how `.txt` file is a text file, `.md` just means that it's a markdown file (basically regular text but fancier)
+
+Inside of this file, just type the track that you're interested in, and one fun fact.
 
 <!-- STEP 5: Add your name to the shared ROSTER.md file
      WHAT:       Add exactly one row to the table in `unranked/ROSTER.md` with your name, the
@@ -143,15 +169,27 @@ interested in, and one fun fact. Start from `unranked/members/_TEMPLATE.md` and 
      DONE WHEN:  your branch is on GitHub and `git log --oneline` reads like a description. -->
 
 **6. Commit with a clear message and push your branch.**
+First, you have to tell Git to **add** your changes to the staging area. This is basically the docking area where changes go before being formally committed. 
 
+This is achieved by running `git add`, and the file paths where changes were made.
 ```bash
-git add unranked/members/octocat.md unranked/ROSTER.md
-git commit -m "Add octocat to the roster and members folder"
-git push -u origin unranked/octocat
+git add unranked/members/GITHUBUSERNAME.md
+git add unranked/members/GITHUBUSERNAME.md
 ```
 
-Good: `Add octocat to the roster and members folder`
-Bad: `update`, `stuff`, `asdf`, `fixed it`
+Now, your changes are ready to be formally committed as points on a timeline. You achieve this with `git commit -m ""`. The empty quotations is used to hold the **commit message**. This is basically a message talking about what the change is, so you can easily understand what each change did in the future.
+- Because you'll reference it in the future, there's no guarantee that you will remember what each change does. As a result, try to make your commit messages as **detailed** as possible.
+- In this case you're just adding your name, but keep this practice in mind. It will haunt you if you don't.
+
+```bash
+git commit -m "added my name!!!"
+```
+
+Okay, now your changes are committed, but **on your computer**. In order to push the change onto the server (Github) from your computer, you tell Git to **"push"** the changes you made.
+
+```bash
+git push -u origin unranked/GITHUBUSERNAME
+```
 
 <!-- STEP 7: Open a PR into main and fill in the PR template
      WHAT:       Open a pull request from your branch into `main`, and fill in every section of
@@ -163,7 +201,13 @@ Bad: `update`, `stuff`, `asdf`, `fixed it`
      CHECKED BY: CI (runs automatically on your PR) and your reviewer
      DONE WHEN:  your PR is open against main with every template section filled in. -->
 
-**7. Open a PR into `main` and fill in the PR template.** Do not leave the template empty.
+**7. Open a PR into `main`** 
+Now that you created and pushed the change, you have to ask for permission to formally merge your separate timeline back onto the main branch. You achieve this with a **pull request**.
+
+Go back to the repository home page, which is the place you see when you hit `<> Code`. 
+
+There should be a button on the top that asks you to create a pull request. All the instructions for the pull request are self-explanatory and shown by GitHub itself. Reference Week 1 slides if you don't understand. 
+
 
 <!-- STEP 8: Leave one useful comment on a classmate's PR
      WHAT:       Find another student's open PR and leave one specific, useful comment.
@@ -174,67 +218,9 @@ Bad: `update`, `stuff`, `asdf`, `fixed it`
      CHECKED BY: your reviewer
      DONE WHEN:  your comment is on someone else's PR and says something specific. -->
 
-**8. Leave one useful comment on a classmate's PR.**
-
-Useful: "Your file is named `Octocat.md` but the README says lowercase — GitHub on Linux
-treats those as different files."
-Not useful: "looks good", "nice", a thumbs up.
-
-<!-- STEP 9: Address review feedback with a follow-up commit
-     WHAT:       When your reviewer asks for a change, make it as a new commit on the same
-                 branch and push again.
-     WHY:        The conversation and the fix stay connected, so anyone reading later can see
-                 what was asked and what you did about it.
-     CONCEPTS:   Review cycles, follow-up commits, pushing to an open PR
-     READ:       Guide > Unranked > Resources #4
-     CHECKED BY: your reviewer
-     DONE WHEN:  the feedback is addressed in a new commit and your PR updates automatically. -->
-
-**9. Address any review feedback with a follow-up commit.** Push to the same branch — the PR
-updates itself. Do not open a second PR.
-
 ---
 
-## Passes when
-
-- Your PR is **merged**.
-- Nobody else's roster lines were deleted.
-- Every commit message says what changed.
-
----
 
 ## If something goes wrong
 
-**"Your branch is behind main" / merge conflict in ROSTER.md.** Somebody else's row landed
-first. This is normal:
-
-```bash
-git fetch origin
-git merge origin/main
-```
-
-Git will mark the conflict in `ROSTER.md` with `<<<<<<<`, `=======` and `>>>>>>>`. Open the
-file, keep **both** rows, delete the marker lines, then:
-
-```bash
-git add unranked/ROSTER.md
-git commit -m "Merge main and keep both roster rows"
-git push
-```
-
-**I committed to `main` by accident.** Tell a lead. It is fixable and you are not in trouble.
-
-**I pushed the wrong file.** Delete it, commit the deletion, push again. Git history is a log,
-not a permanent record of your mistakes.
-
----
-
-## Resources
-
-1. [Learn Git Branching](https://learngitbranching.js.org/) — an interactive game. Do the first
-   few levels; it is the fastest way to make branches click.
-2. [GitHub Hello World](https://docs.github.com/en/get-started/start-your-journey/hello-world)
-3. [Pro Git: Recording Changes to the Repository](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
-4. [GitHub: Creating a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
-
-Full guide: **GUIDE_URL**
+Get a lead to come help you. If you think you're done, ask a lead to check your work.
