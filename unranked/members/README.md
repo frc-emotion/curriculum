@@ -15,7 +15,7 @@ Your file must be named:
 Why lowercase matters: macOS and Windows treat `Octocat.md` and `octocat.md` as the same file,
 but Linux — which is what GitHub's servers and our CI run on — treats them as two different
 files. Sticking to lowercase avoids a confusing class of bug that is genuinely hard to debug
-later. Our CI checks this, so a capital letter will fail your PR.
+later. CI flags a capital letter in the file name, so your reviewer will ask you to fix it.
 
 Do not use spaces, your real name, or `.txt`. Just `<github-username>.md`.
 
@@ -37,8 +37,10 @@ The three required headings:
 - **Name** — your actual name, so leads can match your GitHub account to a human.
 - **Track I'm interested in** — `robot` or `web`. Not sure yet? Pick the one that sounds more
   fun. You can switch later; nobody is holding you to it.
-- **Fun fact** — one sentence. Anything. This is the easiest part, and CI still checks that
-  you filled it in.
+- **Fun fact** — one sentence. Anything.
+
+A common mistake is to type your answer over the heading, like `# Octo Cat` instead of
+`# Name`. Keep the heading and write your answer on the line below it.
 
 ## Copying the template
 

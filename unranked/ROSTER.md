@@ -16,9 +16,15 @@ Everyone on the software subteam adds one row to this table during the Unranked 
 
      A Markdown table row looks like this — three cells, pipes between them:
        | <name> | <robot or web> | <github-username> |
+
+     Put your row on a NEW line at the very bottom. Never type over the
+     "| --- | --- | --- |" line under the header — without it the table stops rendering,
+     and every other open PR gets a merge conflict.
 -->
 
 | Name | Track I'm interested in | GitHub |
 | --- | --- | --- |
 | Suhird | WEB | akshaj |hird0
+| andre fishMAN | robot | catswert |
+| Rubin | Robot | 67ator |
 | Kylie Pineda | Software | kyliepiineda |
