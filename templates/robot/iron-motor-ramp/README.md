@@ -30,8 +30,7 @@ Everything from Copper, plus:
 
 ## Setup
 
-Same as Copper: a Java 17 JDK, easiest via the
-[WPILib installer](https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html).
+Same as Copper: a Java JDK, version 17 or newer, and VS Code. No WPILib yet.
 
 ```bash
 ./gradlew run         # run your program

@@ -1,13 +1,14 @@
 # Robot Copper — Joystick Direction Decider
 
-**Track:** Robot (Java / WPILib)
+**Track:** Robot (Java)
 **Builds on:** Unranked (Git and Workflows)
 
 A driver pushes a joystick. Your code decides what that means: forward, backward, stop, or
 "the robot is disabled, ignore everything." That decision is the first thing every teleop
 program does, and it is where a surprising number of real bugs live.
 
-No robot and no WPILib yet — this is plain Java you can run on any laptop.
+No robot and no WPILib — this is plain Java you can run on any laptop. WPILib comes in at
+Platinum.
 
 Guide: **GUIDE_URL** (section "Robot Copper")
 
@@ -27,18 +28,21 @@ Guide: **GUIDE_URL** (section "Robot Copper")
 
 ## Setup
 
-You need a **Java 17 JDK**. The easiest way to get one, and the one you'll want anyway for
-later ranks, is the WPILib installer — it bundles the right JDK and VS Code extensions.
+You need a **Java JDK, version 17 or newer**, and VS Code. Nothing else.
 
-1. Install WPILib 2026: [WPILib Installation Guide](https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html)
-2. Open this folder in VS Code.
-3. Check it works:
+1. Install the JDK: [Adoptium Temurin 17](https://adoptium.net/temurin/releases/?version=17)
+   — pick your operating system and run the installer. Already have Java 17 or newer? Skip
+   this; `java -version` in a terminal tells you.
+2. In VS Code, install the **Extension Pack for Java** (Extensions panel, search for it).
+3. Open this folder in VS Code.
+4. Check it works:
 
 ```bash
 ./gradlew run
 ```
 
-Windows: use `.\gradlew.bat run` instead. The first run downloads Gradle and takes a minute.
+Windows: use `.\gradlew.bat run` instead. The first run downloads Gradle (and Java 17, if you
+installed a newer JDK) and takes a minute.
 
 An untouched template runs and prints nothing. That is correct — `main` is empty until you
 write step 1.
@@ -130,7 +134,7 @@ your PR. (Loops are Iron. Write them out.)
 
 ## Resources
 
-1. [WPILib Installation Guide](https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html)
+1. [Adoptium: Install Temurin 17](https://adoptium.net/temurin/releases/?version=17)
 2. [Oracle: Variables](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/variables.html)
 4. [Oracle: if-then and if-then-else](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/if.html)
 7. [Oracle: switch](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html)

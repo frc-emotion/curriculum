@@ -21,7 +21,7 @@ group = 'rankup'
 version = '1.0'
 
 java {
-    // WPILib 2026 and the team's robot code use Java 17, so we do too.
+    // The team's robot code uses Java 17, so we do too. Gradle fetches it if you have a newer JDK.
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
