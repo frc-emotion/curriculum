@@ -19,4 +19,6 @@ Everyone on the software subteam adds one row to this table during the Unranked 
 -->
 
 | Name | Track I'm interested in | GitHub |
-| Kylie Pineda| Software | kyliepiineda |
+| --- | --- | --- |
+| Suhird | WEB | akshaj |hird0
+| Kylie Pineda | Software | kyliepiineda |

@@ -38,27 +38,15 @@ You do not need to know any programming for this rank.
 ---
 
 ## Before you start
+1. Open VS Code (it comes preinstalled; hit Windows, type VS Code, hit enter. If you have a personal PC, search up VS Code and install it).
+2. Open the terminal. The shortcut for opening the terminal once you're on VS Code is `ctrl + ~`.
 
-You need two programs. Both are free.
-
-**Git** — the tool that tracks changes.
-
-- Windows: download from [git-scm.com](https://git-scm.com/download/win). Accept the defaults.
-  It installs "Git Bash", which is where you will type Git commands.
-- macOS: open Terminal and type `git --version`. If Git is missing, macOS offers to install it.
-  Or use [git-scm.com](https://git-scm.com/download/mac).
-- Linux: `sudo apt install git` (or your distro's package manager).
-
-**Visual Studio Code** — where you will write code: [code.visualstudio.com](https://code.visualstudio.com/).
-
-Then tell Git who you are. Do this once, ever:
+Then tell Git who you are. This is saved globally, so this is like one-time thing you have to run and never again in the future. Run this (replace your name with your actual name, and the email with your GitHub email):
 
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your-email@example.com"
 ```
-
-Use the same email as your GitHub account, or your commits will not be linked to you.
 
 Check it worked:
 
@@ -69,20 +57,6 @@ git config --global --list
 ---
 
 ## Steps
-
-<!-- STEP 1: Install Git and VS Code, and set your Git name and email
-     WHAT:       Install Git and Visual Studio Code, then run the two `git config --global`
-                 commands above so Git knows your name and email.
-     WHY:        Every commit is stamped with a name and email. Without them Git refuses to
-                 commit, and on a team we need to know who changed what and why.
-     CONCEPTS:   Git installation, global config, identity
-     READ:       Guide > Unranked > Resources #1 and #3
-     CHECKED BY: your reviewer (your commits will carry your name)
-     DONE WHEN:  `git config --global --list` shows your name and email. -->
-
-**1. Install Git and VS Code, and set your Git name and email.**
-See "Before you start" above.
-
 <!-- STEP 2: Clone the repo
      WHAT:       Copy this repository onto your own computer with `git clone`.
      WHY:        You never edit code on GitHub's website. You work on your own machine, then
