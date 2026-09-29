@@ -44,9 +44,10 @@ single line of it, that is your signal — and it is a teaching moment, not a pu
 **Passes when:** the PR is merged, nobody else's roster lines were deleted, and every commit
 message says what changed.
 
-**Automated:** CI checks that the PR adds exactly one new file in `unranked/members/`, named
-`<github-username>.md` in lowercase, with all three headings filled in, and that `ROSTER.md`
-gained exactly one row and lost none.
+**Automated:** CI only *fails* a PR that damages shared files: deleting or renaming someone
+else's member file or `_TEMPLATE.md`, removing roster rows, or deleting the `| --- |` line under
+the roster header. Everything else — file name casing, headings, a missing member file or
+roster row — shows as a warning in the job summary for you to judge.
 
 **You check:**
 - Commit messages actually describe the change ("add my member file", not "update" or "asdf").
