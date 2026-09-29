@@ -1,4 +1,4 @@
-<img width="996" height="419" alt="image" src="https://github.com/user-attachments/assets/b9220ecd-056a-42c6-8357-8911908c26fb" /><!-- ============================================================
+<!-- ============================================================
      RANK:        Unranked: Git and Workflows (everyone)
      FILE:        unranked/README.md
      STEPS HERE:  1 to 9
@@ -82,7 +82,7 @@ This is because when you run `git clone`, you must also pass in the URL of the G
 
 For the curriculum, you have to clone this GitHub repository itself. Hit `<> Code` on the top left, hit code, and copy the link. This is **very important**. This process is the same for every repository to copy their cloning link.
 
-<img src="blob:chrome-untrusted://media-app/4c25b2a7-223d-4260-a6c6-fcc7a5618471" alt="Screenshot 2026-09-29 4.06.32 PM.png"/>
+<img width="996" height="419" alt="image" src="https://github.com/user-attachments/assets/b9220ecd-056a-42c6-8357-8911908c26fb" />
 
 
 If your folder path has spaces in it, wrap paths in quotes: `cd "My Folder/rank-up"`.
