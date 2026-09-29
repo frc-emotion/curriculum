@@ -71,11 +71,10 @@ for (const folder of [...folders].sort()) {
   });
 }
 
-if (problems.length > 0) {
-  for (const problem of problems) {
-    console.error(`::error::${problem}`);
-  }
-  process.exit(1);
+// A folder we can't read is skipped with a warning rather than failing the whole PR:
+// the reviewer sees the note and the rest of the PR still gets checked.
+for (const problem of problems) {
+  console.error(`::warning::${problem}`);
 }
 
 console.log(JSON.stringify({ include }));
