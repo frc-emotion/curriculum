@@ -2,8 +2,8 @@
 // RANK:        Web Diamond: Attendance App
 // FILE:        src/data/roster.ts
 // STEPS HERE:  none — the roster and its types
-// GUIDE:       GUIDE_URL  (section "Web Diamond")
-// RUN:         npx expo start        CHECK: npm run check
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
+// RUN:         npx expo start
 // PASSES WHEN: navigation works both ways with params, attendance persists
 //              after a restart, and there are no TypeScript errors in the
 //              navigation types.

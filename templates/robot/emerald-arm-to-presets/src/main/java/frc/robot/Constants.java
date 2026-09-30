@@ -4,8 +4,8 @@ package frc.robot;
 // RANK:        Robot Emerald: Arm to Presets
 // FILE:        Constants.java
 // STEPS HERE:  4, 6, 7
-// GUIDE:       GUIDE_URL  (section "Robot Emerald")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Emerald")
+// RUN:         ./gradlew simulateJava
 // PASSES WHEN: the arm reaches each preset without sustained oscillation, commands end at
 //              their setpoints, and the angle limits hold.
 // ============================================================
@@ -22,8 +22,7 @@ public final class Constants {
     //             problem, and forgetting it is why an arm asked to go to 45 degrees ends up
     //             somewhere near 0.9.
     // CONCEPTS:   Gear ratios, unit conversion, encoder counts vs real-world angles
-    // READ:       Guide > Robot Emerald > Resources #2
-    // CHECKED BY: SourceScanCheck (GEAR_RATIO must exist here)
+    // READ:       "Robot Emerald" tab > Skills required
     // DONE WHEN:  getAngleDegrees() uses this and reports an angle you believe.
 
     // STEP 6 (continued from ArmSubsystem.java): the angle limits
@@ -34,8 +33,7 @@ public final class Constants {
     //             a snapped chain — and it always happens the one time nobody expected the
     //             setpoint to be wrong.
     // CONCEPTS:   Software limits, defensive programming, clamping
-    // READ:       Guide > Robot Emerald > Resources #2
-    // CHECKED BY: SetpointClampCheck, SourceScanCheck
+    // READ:       "Robot Emerald" tab > Skills required
     // DONE WHEN:  asking the arm for 200 degrees leaves the setpoint at MAX_ANGLE.
 
     // STEP 7 (continued from RobotContainer.java): the three preset angles
@@ -46,8 +44,7 @@ public final class Constants {
     //             goes exactly where it went last time. Named angles in one file are what
     //             make that tunable between matches.
     // CONCEPTS:   Presets, named configuration, driver ergonomics
-    // READ:       Guide > Robot Emerald > Resources #4
-    // CHECKED BY: SourceScanCheck
+    // READ:       "Robot Emerald" tab > Skills required
     // DONE WHEN:  X, Y and B each send the arm to its own angle.
 
     // You will also want constants for your PID and feedforward gains. Put them here too,

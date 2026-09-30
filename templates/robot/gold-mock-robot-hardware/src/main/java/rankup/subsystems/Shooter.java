@@ -4,8 +4,8 @@ package rankup.subsystems;
 // RANK:        Robot Gold: Mock Robot Hardware
 // FILE:        subsystems/Shooter.java
 // STEPS HERE:  6
-// GUIDE:       GUIDE_URL  (section "Robot Gold")
-// RUN:         ./gradlew run        CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Gold")
+// RUN:         ./gradlew run
 // PASSES WHEN: all fields are private, no port numbers appear outside Constants, and you can
 //              explain in review what the lambda and method reference are doing.
 // ============================================================
@@ -35,8 +35,7 @@ public class Shooter {
     //             name, the getter and the shared behaviour without retyping any of it. Only
     //             the parts that are genuinely different — the port, the speed — are here.
     // CONCEPTS:   extends, implements, super(...), @Override, code reuse
-    // READ:       Guide > Robot Gold > Resources #2
-    // CHECKED BY: SubsystemCheck, SourceScanCheck (no number literals passed to `new Motor(`)
+    // READ:       "Robot Gold" tab > Skills required
     // DONE WHEN:  a Shooter is both a MockSubsystem and a Mechanism, run() leaves its motor
     //             at a non-zero speed, and stop() brings it back to 0.
 

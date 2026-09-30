@@ -4,8 +4,8 @@ package rankup.util;
 // RANK:        Robot Gold: Mock Robot Hardware
 // FILE:        util/Button.java
 // STEPS HERE:  7
-// GUIDE:       GUIDE_URL  (section "Robot Gold")
-// RUN:         ./gradlew run        CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Gold")
+// RUN:         ./gradlew run
 // PASSES WHEN: all fields are private, no port numbers appear outside Constants, and you can
 //              explain in review what the lambda and method reference are doing.
 // ============================================================
@@ -28,8 +28,7 @@ public class Button {
     //             `whileTrue(...)` at Diamond immediately.
     // CONCEPTS:   Functional interfaces, Runnable, storing behaviour in a field, lambdas,
     //             method references
-    // READ:       Guide > Robot Gold > Resources #3 and #4
-    // CHECKED BY: ButtonCheck (press() must run whatever it was given)
+    // READ:       "Robot Gold" tab > Skills required
     // DONE WHEN:  a Button built with a lambda runs that lambda when pressed, and so does
     //             one built with a method reference.
 

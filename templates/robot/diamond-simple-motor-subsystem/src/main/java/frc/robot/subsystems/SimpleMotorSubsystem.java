@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 // RANK:        Robot Diamond: Simple Motor Subsystem
 // FILE:        subsystems/SimpleMotorSubsystem.java
 // STEPS HERE:  1, 2, 3, 4, 5, 6
-// GUIDE:       GUIDE_URL  (section "Robot Diamond")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Diamond")
+// RUN:         ./gradlew simulateJava
 // PASSES WHEN: nothing outside the subsystem touches the TalonFX directly, the limit switch
 //              reliably blocks forward motion, and all bindings live in RobotContainer.
 // ============================================================
@@ -41,8 +41,7 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     //             door to the hardware. When two commands both want the motor, the scheduler
     //             can referee — but only because the subsystem owns it.
     // CONCEPTS:   Subsystems, encapsulation, private fields, SubsystemBase
-    // READ:       Guide > Robot Diamond > Resources #1
-    // CHECKED BY: MotorPrivacyCheck (the TalonFX field must be private)
+    // READ:       "Robot Diamond" tab > Skills required
     // DONE WHEN:  the motor lives here, is private, and RobotContainer never mentions
     //             TalonFX at all.
 
@@ -59,8 +58,7 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     //             NOT here: no getMotor(). If a subsystem hands out its hardware, it has
     //             stopped being a subsystem.
     // CONCEPTS:   Public interface vs private state, encoders, sensor getters
-    // READ:       Guide > Robot Diamond > Resources #1 and #4
-    // CHECKED BY: SubsystemApiCheck
+    // READ:       "Robot Diamond" tab > Skills required
     // DONE WHEN:  all five exist, and stop() really leaves the motor at zero output.
 
     // STEP 3: Add the limit switch
@@ -74,8 +72,7 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     //             itself into a hard stop at full power.
     // CONCEPTS:   DigitalInput, DIO channels, normally-open vs normally-closed, sensor
     //             polarity
-    // READ:       Guide > Robot Diamond > Resources #4
-    // CHECKED BY: SubsystemApiCheck, your reviewer (they will press the real switch)
+    // READ:       "Robot Diamond" tab > Skills required
     // DONE WHEN:  isAtLimit() is true exactly when the switch is physically pressed.
 
     // STEP 4: Publish telemetry every loop
@@ -85,8 +82,7 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     //             the natural home for "tell the world what I'm doing". When something
     //             misbehaves at competition, these three numbers are what you look at.
     // CONCEPTS:   periodic(), SmartDashboard, NetworkTables, telemetry
-    // READ:       Guide > Robot Diamond > Resources #1
-    // CHECKED BY: your reviewer
+    // READ:       "Robot Diamond" tab > Skills required
     // DONE WHEN:  all three values appear in the Sim GUI and change as the motor runs.
 
     // STEP 5: Make the limit switch actually stop the motor
@@ -98,8 +94,7 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     //             someone writes next season. A safety rule that lives in one command is a
     //             safety rule waiting to be bypassed.
     // CONCEPTS:   Guard clauses, safety interlocks, why rules belong at the lowest level
-    // READ:       Guide > Robot Diamond > Resources #1
-    // CHECKED BY: your reviewer (they will hold the switch and push the stick)
+    // READ:       "Robot Diamond" tab > Skills required
     // DONE WHEN:  with the switch pressed, forward does nothing and backward still works.
 
     // STEP 6: Write two command factories
@@ -114,8 +109,7 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     //             going. That exact bug has driven more than one robot into a wall.
     // CONCEPTS:   Commands, command factories, SubsystemBase helpers, end behaviour,
     //             requirements
-    // READ:       Guide > Robot Diamond > Resources #2
-    // CHECKED BY: SubsystemApiCheck (both must exist and return a Command), your reviewer
+    // READ:       "Robot Diamond" tab > Skills required
     // DONE WHEN:  holding A runs the motor and releasing A stops it, every time.
 
 
@@ -127,8 +121,7 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     //             you will be making this exact decision yourself, without a STEP comment
     //             telling you which is which.
     // CONCEPTS:   Subsystems vs commands, ownership, the scheduler's job
-    // READ:       Guide > Robot Diamond > Resources #1 and #2
-    // CHECKED BY: your reviewer
+    // READ:       "Robot Diamond" tab > Skills required
     // DONE WHEN:  the explanation is in your PR description, in your own words.
 
 }

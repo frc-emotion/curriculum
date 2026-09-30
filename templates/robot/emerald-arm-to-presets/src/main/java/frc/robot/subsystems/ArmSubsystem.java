@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 // RANK:        Robot Emerald: Arm to Presets
 // FILE:        subsystems/ArmSubsystem.java
 // STEPS HERE:  1, 4, 5, 6
-// GUIDE:       GUIDE_URL  (section "Robot Emerald")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Emerald")
+// RUN:         ./gradlew simulateJava
 // PASSES WHEN: the arm reaches each preset without sustained oscillation, commands end at
 //              their setpoints, and the angle limits hold.
 // ============================================================
@@ -43,8 +43,7 @@ public class ArmSubsystem extends SubsystemBase {
     //             push a real mechanism around, so the arm needs to move before it needs to
     //             be clever.
     // CONCEPTS:   Subsystems, encapsulation, simulation wiring
-    // READ:       Guide > Robot Emerald > Resources #3
-    // CHECKED BY: your reviewer
+    // READ:       "Robot Emerald" tab > Skills required
     // DONE WHEN:  running the simulation shows the arm drawn on SmartDashboard, and
     //             PTuneCommand can move it.
 
@@ -61,8 +60,7 @@ public class ArmSubsystem extends SubsystemBase {
     //             are what humans can reason about. "Go to 90" is reviewable. "Go to 12.5
     //             rotations" is a bug waiting to be misread.
     // CONCEPTS:   Unit conversion, gear ratios, tolerance, the subsystem's public vocabulary
-    // READ:       Guide > Robot Emerald > Resources #2 and #3
-    // CHECKED BY: ArmApiCheck, SetpointClampCheck, SourceScanCheck
+    // READ:       "Robot Emerald" tab > Skills required
     // DONE WHEN:  getAngleDegrees() matches the arm you can see drawn on SmartDashboard.
 
     // STEP 5: Hold the angle with PID plus a gravity term
@@ -80,8 +78,7 @@ public class ArmSubsystem extends SubsystemBase {
     //             holds.
     // CONCEPTS:   Feedforward vs feedback, gravity compensation, why the term changes with
     //             angle, combining outputs, volts vs duty cycle
-    // READ:       Guide > Robot Emerald > Resources #2 and #7
-    // CHECKED BY: your reviewer (they will watch it hold position), SourceScanCheck
+    // READ:       "Robot Emerald" tab > Skills required
     // DONE WHEN:  the arm holds a horizontal setpoint without drooping, and holds a steep one
     //             without fighting itself.
 
@@ -94,8 +91,7 @@ public class ArmSubsystem extends SubsystemBase {
     //             next season by someone who never read this file: all of them hit the same
     //             guard.
     // CONCEPTS:   Clamping, guard clauses, defensive programming, single source of truth
-    // READ:       Guide > Robot Emerald > Resources #2
-    // CHECKED BY: SetpointClampCheck
+    // READ:       "Robot Emerald" tab > Skills required
     // DONE WHEN:  setSetpoint(200) leaves getSetpointDegrees() at MAX_ANGLE, and
     //             setSetpoint(-200) leaves it at MIN_ANGLE.
 

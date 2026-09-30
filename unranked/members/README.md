@@ -13,9 +13,9 @@ Your file must be named:
 **All lowercase.** If your GitHub username is `OctoCat`, your file is `octocat.md`.
 
 Why lowercase matters: macOS and Windows treat `Octocat.md` and `octocat.md` as the same file,
-but Linux — which is what GitHub's servers and our CI run on — treats them as two different
+but Linux — which is what GitHub's servers run on — treats them as two different
 files. Sticking to lowercase avoids a confusing class of bug that is genuinely hard to debug
-later. CI flags a capital letter in the file name, so your reviewer will ask you to fix it.
+later. Your reviewer will ask you to fix a capital letter in the file name.
 
 Do not use spaces, your real name, or `.txt`. Just `<github-username>.md`.
 

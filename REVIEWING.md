@@ -2,7 +2,7 @@
 
 For leads. This is the checklist you review against, rank by rank.
 
-Guide: **GUIDE_URL**
+Guide: **https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee**
 
 ---
 
@@ -11,16 +11,16 @@ Guide: **GUIDE_URL**
 1. **Read the PR description first.** Several steps are only ever checked by a human — the
    explanations, the pasted output, the screenshots. If those are missing, ask for them before
    you read any code.
-2. **Let CI run the checks.** You do not need to run the code yourself unless CI is red and you
-   want to see why, or the rank needs a hardware demo.
+2. **Run the code.** There is no auto-grader, so check out the branch, run it, and try the
+   edge cases yourself (see below). Hardware ranks need you to watch the demo.
 3. **Read the "Passes when" line below.** That is the bar. Not "is this how I would write it."
 4. **Ask the cumulative questions.** Ranks are cumulative, so a student at Diamond is still
    responsible for Gold. Pick one or two from the list — in a PR comment or out loud at a
-   meeting. A student who cannot explain their own code has not earned the rank, even if the
-   checks are green.
+   meeting. A student who cannot explain their own code has not earned the rank, even if it
+   works.
 5. **Leave at least one specific, kind suggestion.** "Nice work" is not a review.
 
-### Running a check yourself
+### Running a student's code
 
 ```bash
 git fetch origin pull/<PR-NUMBER>/head:review-pr
@@ -28,12 +28,13 @@ git switch review-pr
 cd students/<username>/<track>/<rank>
 ```
 
-Then the rank's check command: `./gradlew rankCheck` for Java and WPILib ranks,
-`npm install && npm run check` for web ranks.
+Then the rank's run command, from its tab in the guide: `./gradlew run` (Java),
+`./gradlew simulateJava` (WPILib), or `npm install` then `npm start` / `npm run dev` (web).
+For TypeScript ranks, `npx tsc --noEmit` lists any type errors.
 
 ### A note on AI-written code
 
-Checks catch wrong code. They do not catch code a student did not write. The cumulative
+Running the code catches wrong code. It does not catch code a student did not write. The cumulative
 questions are the real defense. If the code is flawless and the student cannot explain a
 single line of it, that is your signal — and it is a teaching moment, not a punishment.
 
@@ -44,12 +45,9 @@ single line of it, that is your signal — and it is a teaching moment, not a pu
 **Passes when:** the PR is merged, nobody else's roster lines were deleted, and every commit
 message says what changed.
 
-**Automated:** CI only *fails* a PR that damages shared files: deleting or renaming someone
-else's member file or `_TEMPLATE.md`, removing roster rows, or deleting the `| --- |` line under
-the roster header. Everything else — file name casing, headings, a missing member file or
-roster row — shows as a warning in the job summary for you to judge.
-
 **You check:**
+- The PR adds one member file, named in lowercase, with all three headings filled in.
+- `ROSTER.md` gains exactly one row and loses none, and the `| --- |` line is intact.
 - Commit messages actually describe the change ("add my member file", not "update" or "asdf").
 - Step 8: they left a useful comment on a classmate's PR. Useful means specific.
 - Step 9: if you left feedback, they addressed it with a **follow-up commit** rather than a
@@ -120,7 +118,6 @@ student can explain in review what the lambda and method reference are doing.
   comments are correct.
 - Step 2: console output from switching Disabled / Autonomous / Teleop is pasted in the PR.
 - Step 8: you watched the bench demo yourself.
-- The CI source scans are **warnings**, not failures — read them and judge.
 - Disabled really does stop the motor. Test it.
 
 **Cumulative questions (from Gold):**
@@ -191,14 +188,15 @@ hardware, and they have reviewed two lower-rank PRs usefully.
 
 ## Web Copper — Student Filter
 
-**Passes when:** all checks pass, there is no `var` or `==`, and the original `students`
-array is never modified.
+**Passes when:** every function gives the right answer, there is no `var` or `==`, and the
+original `students` array is never modified.
 
 **You check:**
-- Step 10: `npm run check` really passes — CI will tell you.
+- Step 10: try the edge cases yourself: a subteam nobody is on, an id that doesn't exist, the
+  student with no `contact`, and the tie on attendance.
 - They used the array method that fits (`.filter`, `.map`, `.find`), not a loop wearing a
   costume.
-- Nothing mutates the input. The checks freeze the input arrays, but read the code too.
+- Nothing mutates the input. Print the roster after calling their functions, and read the code.
 
 **Cumulative questions (from Unranked):**
 1. Why do we work on a branch instead of committing straight to `main`?

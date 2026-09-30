@@ -73,6 +73,6 @@ Take a concept you found hard and write the explanation you wish you'd had. Two 
 If it's good, it goes in the guide with your name on it.
 
 **Fix the templates.**
-Found a typo, a confusing STEP comment, a check with a bad error message? Open a PR against
+Found a typo, a confusing STEP comment, a confusing step in the guide? Open a PR against
 this repo. Making the training better for the next person is genuinely the most useful thing
 on this page.
