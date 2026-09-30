@@ -2,8 +2,8 @@
 // RANK:        Web Iron: Typed Student Tracker
 // FILE:        src/types.ts
 // STEPS HERE:  1
-// GUIDE:       GUIDE_URL  (section "Web Iron")
-// RUN:         npm start        CHECK: npm run check
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Iron")
+// RUN:         npm start
 // PASSES WHEN: the project compiles in strict mode, the API data is validated
 //              before use, and a failed request is handled cleanly.
 // ============================================================
@@ -33,8 +33,7 @@
 //             The optional `contact` is what makes the compiler force you to
 //             handle the missing case — the bug you fixed by hand at Copper.
 // CONCEPTS:   Type aliases, union types, optional properties (?), object types
-// READ:       Guide > Web Iron > Resources #1 and #2
-// CHECKED BY: typesCompile.check.ts, and `npm run typecheck`
+// READ:       "Web Iron" tab > Skills required
 // DONE WHEN:  annotating the data array as Student[] compiles cleanly, and
 //             changing one subteam to 'Softwear' makes it fail.
 

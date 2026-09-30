@@ -2,8 +2,8 @@
 // RANK:        Web Diamond: Attendance App
 // FILE:        src/screens/SettingsScreen.tsx
 // STEPS HERE:  10
-// GUIDE:       GUIDE_URL  (section "Web Diamond")
-// RUN:         npx expo start        CHECK: npm run check
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
+// RUN:         npx expo start
 // PASSES WHEN: navigation works both ways with params, attendance persists
 //              after a restart, and there are no TypeScript errors in the
 //              navigation types.
@@ -22,8 +22,7 @@
 //             toggle to live that is nowhere near where the theme is defined —
 //             which is the point of context, one more time.
 // CONCEPTS:   Tabs, context consumers, simple screens
-// READ:       Guide > Web Diamond > Resources #3
-// CHECKED BY: your reviewer
+// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  the toggle changes the app's appearance from the Settings tab.
 
 export {};

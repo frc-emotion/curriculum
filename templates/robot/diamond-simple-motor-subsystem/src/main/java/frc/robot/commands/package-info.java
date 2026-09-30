@@ -2,8 +2,8 @@
 // RANK:        Robot Diamond: Simple Motor Subsystem
 // FILE:        commands/package-info.java
 // STEPS HERE:  none — this file explains why this folder is empty
-// GUIDE:       GUIDE_URL  (section "Robot Diamond")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Diamond")
+// RUN:         ./gradlew simulateJava
 // PASSES WHEN: nothing outside the subsystem touches the TalonFX directly, the limit switch
 //              reliably blocks forward motion, and all bindings live in RobotContainer.
 // ============================================================

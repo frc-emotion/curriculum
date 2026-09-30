@@ -2,8 +2,8 @@
      RANK:        Unranked: Git and Workflows (everyone)
      FILE:        unranked/members/_TEMPLATE.md
      STEPS HERE:  4
-     GUIDE:       GUIDE_URL  (section "Unranked")
-     RUN:         (no code to run)   CHECK: opened as a pull request, checked by CI
+     GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Unranked")
+     RUN:         (no code to run)
      PASSES WHEN: the PR is merged, nobody else's roster lines were deleted, and every
                   commit message says what changed.
      ============================================================
@@ -16,8 +16,7 @@
      WHAT:       Write your real name on the line under this heading.
      WHY:        Leads need to connect a GitHub username to an actual person.
      CONCEPTS:   Markdown headings, following a file format exactly
-     READ:       Guide > Unranked > Resources #2
-     CHECKED BY: CI (this heading must not be empty)
+     READ:       "Unranked" tab > Skills required
      DONE WHEN:  there is a line of text under this heading. -->
 
 # Name
@@ -26,8 +25,7 @@
      WHAT:       Write `robot` or `web` on the line under this heading.
      WHY:        This tells your lead which track's Copper assessment to point you at.
      CONCEPTS:   Markdown headings, following a file format exactly
-     READ:       Guide > Unranked > Resources #2
-     CHECKED BY: CI (this heading must not be empty)
+     READ:       "Unranked" tab > Skills required
      DONE WHEN:  there is a line of text under this heading. Not sure? Pick one; you can
                  change your mind later. -->
 
@@ -37,8 +35,7 @@
      WHAT:       Write one sentence about yourself under this heading.
      WHY:        Because a roster of usernames is a spreadsheet, and a team is people.
      CONCEPTS:   Markdown headings, following a file format exactly
-     READ:       Guide > Unranked > Resources #2
-     CHECKED BY: CI (this heading must not be empty)
+     READ:       "Unranked" tab > Skills required
      DONE WHEN:  there is a line of text under this heading. -->
 
 ## Fun fact

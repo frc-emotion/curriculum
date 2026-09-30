@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 // RANK:        Robot Diamond: Simple Motor Subsystem
 // FILE:        sim/MotorSimHelper.java
 // STEPS HERE:  none — THIS FILE IS NOT PART OF THE ASSESSMENT
-// GUIDE:       GUIDE_URL  (section "Robot Diamond")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Diamond")
+// RUN:         ./gradlew simulateJava
 // PASSES WHEN: (not assessed)
 // ============================================================
 //

@@ -4,8 +4,8 @@ package rankup;
 // RANK:        Robot Gold: Mock Robot Hardware
 // FILE:        Constants.java
 // STEPS HERE:  2
-// GUIDE:       GUIDE_URL  (section "Robot Gold")
-// RUN:         ./gradlew run        CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Gold")
+// RUN:         ./gradlew run
 // PASSES WHEN: all fields are private, no port numbers appear outside Constants, and you can
 //              explain in review what the lambda and method reference are doing.
 // ============================================================
@@ -29,8 +29,7 @@ public final class Constants {
     //             Constants.INTAKE_MOTOR_PORT)` tells them everything. And when the port
     //             changes, there is exactly one place to change it.
     // CONCEPTS:   `public static final`, constants as shared configuration, naming
-    // READ:       Guide > Robot Gold > Resources #1
-    // CHECKED BY: ConstantsCheck (all three must be public, static and final)
+    // READ:       "Robot Gold" tab > Skills required
     // DONE WHEN:  the subsystems build their motors from these constants and no port number
     //             is typed anywhere else.
 

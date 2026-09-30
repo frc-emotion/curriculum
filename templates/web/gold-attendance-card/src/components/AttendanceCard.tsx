@@ -2,8 +2,8 @@
 // RANK:        Web Gold: Attendance Card
 // FILE:        src/components/AttendanceCard.tsx
 // STEPS HERE:  1, 2
-// GUIDE:       GUIDE_URL  (section "Web Gold")
-// RUN:         npm run dev        CHECK: npm run check
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Gold")
+// RUN:         npm run dev
 // PASSES WHEN: the cards toggle correctly, the filter works, there are no key
 //              warnings in the console, and state is never mutated directly.
 // ============================================================
@@ -20,7 +20,7 @@
 //   import type { AttendanceStatus, Student } from '../data/roster.ts';
 //
 // Export it either as the default export or as a named export called
-// `AttendanceCard` — the checks accept either.
+// `AttendanceCard`. Either works.
 
 // STEP 1: Build the card
 // WHAT:       Write a component that takes exactly these props, with a TYPE for
@@ -41,8 +41,7 @@
 //             signatures you wrote at Iron, applied to the screen.
 // CONCEPTS:   Components as functions, props, typed props, JSX, template
 //             literals in JSX
-// READ:       Guide > Web Gold > Resources #1 and #2
-// CHECKED BY: attendanceCard.check.tsx
+// READ:       "Web Gold" tab > Skills required
 // DONE WHEN:  rendering a card shows the name, `Grade 11 · Software`, and a
 //             button with the status on it.
 
@@ -57,8 +56,7 @@
 //             see the same pattern in every form you ever write.
 // CONCEPTS:   Event handlers, onClick, passing functions as props, lifting
 //             events up
-// READ:       Guide > Web Gold > Resources #2
-// CHECKED BY: attendanceCard.check.tsx
+// READ:       "Web Gold" tab > Skills required
 // DONE WHEN:  clicking the button calls onToggle exactly once, with the
 //             student's id.
 

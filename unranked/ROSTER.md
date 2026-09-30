@@ -10,7 +10,7 @@ Everyone on the software subteam adds one row to this table during the Unranked 
                  meet a merge conflict. Learning to keep someone else's work while adding
                  your own is the single most important Git skill on a team.
      CONCEPTS:   Shared files, Markdown tables, merge conflicts
-     READ:       Guide > Unranked > Resources #3
+     READ:       "Unranked" tab > Skills required
      CHECKED BY: CI (exactly one row added, none removed)
      DONE WHEN:  the table has your row and still has every row that was there before.
 

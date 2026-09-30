@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj2.command.Commands;
 // RANK:        Robot Diamond: Simple Motor Subsystem
 // FILE:        RobotContainer.java
 // STEPS HERE:  7, 8, 9
-// GUIDE:       GUIDE_URL  (section "Robot Diamond")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Diamond")
+// RUN:         ./gradlew simulateJava
 // PASSES WHEN: nothing outside the subsystem touches the TalonFX directly, the limit switch
 //              reliably blocks forward motion, and all bindings live in RobotContainer.
 // ============================================================
@@ -39,8 +39,7 @@ public class RobotContainer {
         //             starts when you press, and — importantly — ends when you let go, which
         //             is what makes your stop-on-end behaviour actually fire.
         // CONCEPTS:   CommandXboxController, Trigger, whileTrue, command lifecycle
-        // READ:       Guide > Robot Diamond > Resources #3
-        // CHECKED BY: SourceScanCheck (whileTrue must appear here), your reviewer
+        // READ:       "Robot Diamond" tab > Skills required
         // DONE WHEN:  holding A drives the motor one way, holding B the other, and letting go
         //             of either stops it.
 
@@ -55,8 +54,7 @@ public class RobotContainer {
         //             without one, a worn joystick makes the mechanism creep all match.
         // CONCEPTS:   Default commands, DoubleSupplier, lambdas, deadband, subsystem
         //             requirements
-        // READ:       Guide > Robot Diamond > Resources #2
-        // CHECKED BY: SourceScanCheck (setDefaultCommand must appear here), your reviewer
+        // READ:       "Robot Diamond" tab > Skills required
         // DONE WHEN:  moving the left stick moves the motor, and letting it centre stops it
         //             dead.
 
@@ -68,8 +66,7 @@ public class RobotContainer {
         //             what the encoder *should* read. Real arms and elevators do this every
         //             time they home.
         // CONCEPTS:   Trigger, onTrue, encoder zeroing, using a sensor as a reference point
-        // READ:       Guide > Robot Diamond > Resources #3 and #4
-        // CHECKED BY: SourceScanCheck (`new Trigger` must appear here), your reviewer
+        // READ:       "Robot Diamond" tab > Skills required
         // DONE WHEN:  pressing the limit switch — in sim or on the bench — sends the reported
         //             position back to 0.
     }

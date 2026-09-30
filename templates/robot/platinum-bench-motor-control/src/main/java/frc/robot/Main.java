@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.RobotBase;
 // RANK:        Robot Platinum: Bench Motor Control
 // FILE:        Main.java
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       GUIDE_URL  (section "Robot Platinum")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew build
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Platinum")
+// RUN:         ./gradlew simulateJava
 // PASSES WHEN: the sim demo and bench demo both work, no numbers are hard-coded outside
 //              Constants, and the motor stops when disabled.
 // ============================================================

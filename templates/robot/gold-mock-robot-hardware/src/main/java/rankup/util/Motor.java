@@ -4,8 +4,8 @@ package rankup.util;
 // RANK:        Robot Gold: Mock Robot Hardware
 // FILE:        util/Motor.java
 // STEPS HERE:  1
-// GUIDE:       GUIDE_URL  (section "Robot Gold")
-// RUN:         ./gradlew run        CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Gold")
+// RUN:         ./gradlew run
 // PASSES WHEN: all fields are private, no port numbers appear outside Constants, and you can
 //              explain in review what the lambda and method reference are doing.
 // ============================================================
@@ -32,8 +32,7 @@ public class Motor {
     //             public, any line of code anywhere could write 5.0 into it and nothing
     //             would stop it.
     // CONCEPTS:   Classes, private fields, constructors, `this`, getters, encapsulation
-    // READ:       Guide > Robot Gold > Resources #1
-    // CHECKED BY: MotorCheck (fields private, clamping, two motors independent)
+    // READ:       "Robot Gold" tab > Skills required
     // DONE WHEN:  a new Motor starts at speed 0, setSpeed(1.5) leaves it at 1.0, and two
     //             Motor objects never affect each other.
 

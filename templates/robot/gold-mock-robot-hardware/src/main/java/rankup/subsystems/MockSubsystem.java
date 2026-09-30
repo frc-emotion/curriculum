@@ -4,8 +4,8 @@ package rankup.subsystems;
 // RANK:        Robot Gold: Mock Robot Hardware
 // FILE:        subsystems/MockSubsystem.java
 // STEPS HERE:  5
-// GUIDE:       GUIDE_URL  (section "Robot Gold")
-// RUN:         ./gradlew run        CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Gold")
+// RUN:         ./gradlew run
 // PASSES WHEN: all fields are private, no port numbers appear outside Constants, and you can
 //              explain in review what the lambda and method reference are doing.
 // ============================================================
@@ -26,8 +26,7 @@ public class MockSubsystem {
     //             Intake and Shooter get them for free — that is what inheritance buys you.
     //             Write it twice instead and you get to fix every bug twice.
     // CONCEPTS:   Superclasses, constructors, inheritance, the periodic pattern
-    // READ:       Guide > Robot Gold > Resources #2
-    // CHECKED BY: SubsystemCheck
+    // READ:       "Robot Gold" tab > Skills required
     // DONE WHEN:  Intake and Shooter both extend this class and both get getName() without
     //             writing it themselves.
 

@@ -2,8 +2,8 @@
 // RANK:        Web Diamond: Attendance App
 // FILE:        src/components/StudentCard.tsx
 // STEPS HERE:  3
-// GUIDE:       GUIDE_URL  (section "Web Diamond")
-// RUN:         npx expo start        CHECK: npm run check
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
+// RUN:         npx expo start
 // PASSES WHEN: navigation works both ways with params, attendance persists
 //              after a restart, and there are no TypeScript errors in the
 //              navigation types.
@@ -28,8 +28,8 @@
 //             Style it with `StyleSheet.create` — NOT NativeWind. The detail
 //             screen at step 6 uses NativeWind instead, on purpose, so you meet
 //             both.
-//             Add `testID="student-card"` to the pressable. The checks use it
-//             to find your cards.
+//             Add `testID="student-card"` to the pressable, so the card can be
+//             found by tools that inspect the app.
 // WHY:        StyleSheet is React Native's own styling, and it is what you will
 //             read in any older file in nautilus-frontend. It looks like CSS
 //             and mostly is not: no cascade, no inheritance, numbers instead of
@@ -38,8 +38,7 @@
 //             rather than magic.
 // CONCEPTS:   View / Text / Pressable, StyleSheet.create, flexbox on React
 //             Native, testID, why there is no <div>
-// READ:       Guide > Web Diamond > Resources #1
-// CHECKED BY: roster.check.tsx
+// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  twelve cards render on the roster screen and each one is
 //             tappable.
 

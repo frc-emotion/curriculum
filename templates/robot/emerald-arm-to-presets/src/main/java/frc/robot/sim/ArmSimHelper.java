@@ -20,8 +20,8 @@ import edu.wpi.first.wpilibj.util.Color8Bit;
 // RANK:        Robot Emerald: Arm to Presets
 // FILE:        sim/ArmSimHelper.java
 // STEPS HERE:  none — THIS FILE IS NOT PART OF THE ASSESSMENT
-// GUIDE:       GUIDE_URL  (section "Robot Emerald")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Emerald")
+// RUN:         ./gradlew simulateJava
 // PASSES WHEN: (not assessed)
 // ============================================================
 //

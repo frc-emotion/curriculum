@@ -2,8 +2,8 @@
 // RANK:        Web Diamond: Attendance App
 // FILE:        src/screens/StudentDetailScreen.tsx
 // STEPS HERE:  6, 8
-// GUIDE:       GUIDE_URL  (section "Web Diamond")
-// RUN:         npx expo start        CHECK: npm run check
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
+// RUN:         npx expo start
 // PASSES WHEN: navigation works both ways with params, attendance persists
 //              after a restart, and there are no TypeScript errors in the
 //              navigation types.
@@ -35,9 +35,7 @@
 //             objects underneath.
 // CONCEPTS:   route.params, typed screen props, NativeWind className, Tailwind
 //             utility classes on native components, handling missing data
-// READ:       Guide > Web Diamond > Resources #1 and #4
-// CHECKED BY: navigation.check.tsx, sourceScan.check.tsx (className here,
-//             StyleSheet in the card)
+// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  tapping any student opens their details, correctly styled.
 
 // STEP 8 (continued from AttendanceContext.tsx): toggle from here too
@@ -48,8 +46,7 @@
 //             passing anything back through navigation.
 // CONCEPTS:   Shared state across screens, context, why not to pass data back
 //             through navigation
-// READ:       Guide > Web Diamond > Resources #3
-// CHECKED BY: attendance.check.tsx
+// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  a change made here is visible on the roster when you go back.
 
 export {};

@@ -2,9 +2,9 @@
 // RANK:        Web Copper: Student Filter
 // FILE:        src/studentUtils.js
 // STEPS HERE:  1 to 7
-// GUIDE:       GUIDE_URL  (section "Web Copper")
-// RUN:         npm start        CHECK: npm run check
-// PASSES WHEN: all checks pass, there is no `var` or `==`, and the original
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Copper")
+// RUN:         npm start
+// PASSES WHEN: every function gives the right answer, there is no `var` or `==`, and the original
 //              students array is never modified.
 // ============================================================
 //
@@ -12,16 +12,26 @@
 // will write a hundred times on a real app, and each one has a matching array
 // method that does most of the work — the skill is picking the right one.
 //
-// Every function must be EXPORTED, by exactly the name in its step. The checks
+// Every function must be EXPORTED, by exactly the name in its step. Later ranks
 // import them by name.
 //
 // One rule that runs through all of this: NEVER change the array you were
-// given. Make a new one instead. The checks freeze the inputs, so if you try to
-// modify one, you will find out immediately. That rule exists because in React
+// given. Make a new one instead. Print the roster after calling your functions
+// to make sure it never changed. That rule exists because in React
 // — two ranks from now — changing data in place is the single most common
 // reason a screen refuses to update.
 //
 // The data lives in src/students.js. Go read it first.
+
+// STEP 9: Clean up (applies to this whole file)
+// WHAT:       No `var` anywhere: use `const`, and `let` only when a value really
+//             changes. No `==` or `!=`: use `===` and `!==`. No variables that
+//             nothing reads.
+// WHY:        `var` behaves surprisingly, and `==` converts types before comparing,
+//             so "" == 0 is true. Unused variables are leftovers or typos.
+// CONCEPTS:   const vs let, strict equality, clean code
+// READ:       "Web Copper" tab > Skills required
+// DONE WHEN:  a search of this file finds no `var`, no `==` and nothing unused.
 
 // STEP 1: Write getStudentNames
 // WHAT:       Export a function `getStudentNames(students)` that returns an
@@ -31,8 +41,7 @@
 //             is the most common operation in front-end code. Every dropdown,
 //             every list of chips, every "who's here today" is this.
 // CONCEPTS:   Array.prototype.map, arrow functions, export
-// READ:       Guide > Web Copper > Resources #3
-// CHECKED BY: getStudentNames.check.js
+// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  you get 12 names back, in the original order, and the original
 //             array is untouched.
 
@@ -44,8 +53,7 @@
 // WHY:        "Show me only the ones that..." is what every filter control on
 //             every page is doing underneath.
 // CONCEPTS:   Array.prototype.filter, comparison, returning a new array
-// READ:       Guide > Web Copper > Resources #3
-// CHECKED BY: getStudentsBySubteam.check.js
+// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  'Software' gives you 5 students, 'Robotics' gives you an empty
 //             array, and the original array is untouched.
 
@@ -57,8 +65,7 @@
 //             list of things.
 // CONCEPTS:   Array.prototype.find, the difference between find and filter,
 //             undefined
-// READ:       Guide > Web Copper > Resources #3
-// CHECKED BY: findStudentById.check.js
+// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  id 3 gives you Chidi Park and id 99 gives you undefined.
 
 // STEP 4: Write countByGrade
@@ -70,8 +77,7 @@
 //             made. You'll do exactly this at Platinum for attendance counts.
 // CONCEPTS:   Objects as lookups, building an object up, Array.prototype.reduce
 //             (or a loop — either is fine here)
-// READ:       Guide > Web Copper > Resources #2 and #3
-// CHECKED BY: countByGrade.check.js
+// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  the counts add up to 12 and an empty array gives you an empty
 //             object.
 
@@ -88,8 +94,7 @@
 //             that array. Make a copy first.
 // CONCEPTS:   Array.prototype.sort, comparator functions, tie-breaking,
 //             mutation, copying an array
-// READ:       Guide > Web Copper > Resources #3
-// CHECKED BY: getRegularAttendees.check.js
+// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  with a minimum of 15 you get 7 students, the three on 15 come out
 //             alphabetically, and the original array is untouched.
 
@@ -103,9 +108,7 @@
 //             can see it wants a name, a grade and a subteam without reading the
 //             body. You will see this in every React component you write.
 // CONCEPTS:   Object destructuring in parameters, template literals
-// READ:       Guide > Web Copper > Resources #1 and #2
-// CHECKED BY: formatStudent.check.js, sourceScan.check.js (the parameter must be
-//             destructured)
+// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  the string matches exactly, including the comma and the brackets.
 
 // STEP 7: Write getContactEmail
@@ -122,8 +125,6 @@
 //             an empty string.
 // CONCEPTS:   Optional chaining (?.), nullish coalescing (??), the difference
 //             between ?? and ||, undefined vs null
-// READ:       Guide > Web Copper > Resources #2
-// CHECKED BY: getContactEmail.check.js, sourceScan.check.js (both ?. and ?? must
-//             appear)
+// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  Ada gives her email, Emre (no contact) and Gia (contact but no
 //             email) both give 'no email on file', and nothing throws.

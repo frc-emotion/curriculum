@@ -4,8 +4,8 @@ package rankup.util;
 // RANK:        Robot Gold: Mock Robot Hardware
 // FILE:        util/Mechanism.java
 // STEPS HERE:  4
-// GUIDE:       GUIDE_URL  (section "Robot Gold")
-// RUN:         ./gradlew run        CHECK: ./gradlew rankCheck
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Gold")
+// RUN:         ./gradlew run
 // PASSES WHEN: all fields are private, no port numbers appear outside Constants, and you can
 //              explain in review what the lambda and method reference are doing.
 // ============================================================
@@ -25,8 +25,7 @@ public interface Mechanism {
     //             stop it, without a giant if/else asking what each thing is. An interface
     //             is how you say "these are all stoppable" and mean it.
     // CONCEPTS:   Interfaces, abstract methods, contracts, why an interface has no bodies
-    // READ:       Guide > Robot Gold > Resources #2
-    // CHECKED BY: MechanismCheck
+    // READ:       "Robot Gold" tab > Skills required
     // DONE WHEN:  Mechanism declares stop() and getName(), and Intake and Shooter both
     //             implement it.
 
