@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
-// FILE:        src/navigation/types.ts
 // STEPS HERE:  1
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
-// RUN:         npx expo start
-// PASSES WHEN: navigation works both ways with params, attendance persists
-//              after a restart, and there are no TypeScript errors in the
-//              navigation types.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 //
 // React Navigation is typed by handing it a map of "screen name -> what that
@@ -31,7 +26,6 @@
 //             `route.params.studentId` is a number rather than a guess.
 // CONCEPTS:   Param lists, typed navigation, union of screen names, why
 //             `undefined` means "no params"
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  both types exist and the navigator and screens below use them.
 
 export {};

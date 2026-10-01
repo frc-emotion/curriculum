@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Copper: Student Filter
-// FILE:        src/studentUtils.js
 // STEPS HERE:  1 to 7
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Copper")
-// RUN:         npm start
-// PASSES WHEN: every function gives the right answer, there is no `var` or `==`, and the original
-//              students array is never modified.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Copper tab)
 // ============================================================
 //
 // Seven small functions over the team roster. Each one is the kind of thing you
@@ -30,7 +26,6 @@
 // WHY:        `var` behaves surprisingly, and `==` converts types before comparing,
 //             so "" == 0 is true. Unused variables are leftovers or typos.
 // CONCEPTS:   const vs let, strict equality, clean code
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  a search of this file finds no `var`, no `==` and nothing unused.
 
 // STEP 1: Write getStudentNames
@@ -41,7 +36,6 @@
 //             is the most common operation in front-end code. Every dropdown,
 //             every list of chips, every "who's here today" is this.
 // CONCEPTS:   Array.prototype.map, arrow functions, export
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  you get 12 names back, in the original order, and the original
 //             array is untouched.
 
@@ -53,7 +47,6 @@
 // WHY:        "Show me only the ones that..." is what every filter control on
 //             every page is doing underneath.
 // CONCEPTS:   Array.prototype.filter, comparison, returning a new array
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  'Software' gives you 5 students, 'Robotics' gives you an empty
 //             array, and the original array is untouched.
 
@@ -65,7 +58,6 @@
 //             list of things.
 // CONCEPTS:   Array.prototype.find, the difference between find and filter,
 //             undefined
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  id 3 gives you Chidi Park and id 99 gives you undefined.
 
 // STEP 4: Write countByGrade
@@ -77,7 +69,6 @@
 //             made. You'll do exactly this at Platinum for attendance counts.
 // CONCEPTS:   Objects as lookups, building an object up, Array.prototype.reduce
 //             (or a loop — either is fine here)
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  the counts add up to 12 and an empty array gives you an empty
 //             object.
 
@@ -94,7 +85,6 @@
 //             that array. Make a copy first.
 // CONCEPTS:   Array.prototype.sort, comparator functions, tie-breaking,
 //             mutation, copying an array
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  with a minimum of 15 you get 7 students, the three on 15 come out
 //             alphabetically, and the original array is untouched.
 
@@ -108,7 +98,6 @@
 //             can see it wants a name, a grade and a subteam without reading the
 //             body. You will see this in every React component you write.
 // CONCEPTS:   Object destructuring in parameters, template literals
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  the string matches exactly, including the comma and the brackets.
 
 // STEP 7: Write getContactEmail
@@ -125,6 +114,5 @@
 //             an empty string.
 // CONCEPTS:   Optional chaining (?.), nullish coalescing (??), the difference
 //             between ?? and ||, undefined vs null
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  Ada gives her email, Emre (no contact) and Gia (contact but no
 //             email) both give 'no email on file', and nothing throws.

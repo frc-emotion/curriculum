@@ -5,12 +5,8 @@ import edu.wpi.first.wpilibj2.command.Commands;
 
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
-// FILE:        RobotContainer.java
 // STEPS HERE:  7, 8
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Emerald")
-// RUN:         ./gradlew simulateJava
-// PASSES WHEN: the arm reaches each preset without sustained oscillation, commands end at
-//              their setpoints, and the angle limits hold.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 //
 // Same job as always: this is where the robot gets assembled and every binding lives. By the
@@ -37,7 +33,6 @@ public class RobotContainer {
         //             let a driver press three buttons in a row and have the robot do the
         //             obvious thing.
         // CONCEPTS:   Bindings, onTrue, commands that finish, atSetpoint, requirements
-        // READ:       "Robot Emerald" tab > Skills required
         // DONE WHEN:  each button sends the arm to its angle, and the command ends when it
         //             gets there instead of hanging around.
 
@@ -51,7 +46,6 @@ public class RobotContainer {
         //             which subsystem it requires. Break that and you get the classic
         //             mid-match bug: two things fighting over one motor.
         // CONCEPTS:   Multiple subsystems, requirements, the scheduler, reusing your own code
-        // READ:       "Robot Emerald" tab > Skills required
         // DONE WHEN:  the arm holds a preset while the other motor runs, and neither one
         //             interrupts the other.
     }
@@ -69,7 +63,6 @@ public class RobotContainer {
     //             Numbers that were perfect in sim will be wrong here, and finding out how
     //             wrong is the point of the exercise.
     // CONCEPTS:   Sim-to-real gap, retuning, safe hardware testing
-    // READ:       "Robot Emerald" tab > Skills required
     // DONE WHEN:  a lead has watched the arm hit all three presets without oscillating.
 
     // STEP 10: Write down what you learned
@@ -79,7 +72,6 @@ public class RobotContainer {
     //             you want to explore are usually a better guide to what you should pick up at
     //             Ruby than anything a lead would assign you.
     // CONCEPTS:   Reflection, knowing what you don't know
-    // READ:       Guide > Robot Emerald
     // DONE WHEN:  both lists are in your PR description.
 
 }

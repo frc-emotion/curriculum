@@ -2,12 +2,8 @@ package rankup;
 
 // ============================================================
 // RANK:        Robot Iron: Motor Ramp Simulator
-// FILE:        MotorRamp.java
 // STEPS HERE:  1 to 9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Iron")
-// RUN:         ./gradlew run
-// PASSES WHEN: both ramps stop exactly at their targets, no logic is copy-pasted where a
-//              method call would work, and each method does one clearly named job.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Iron tab)
 // ============================================================
 //
 // Slamming a motor from 0 to full power is how you strip a gear, brown out the radio, and
@@ -38,7 +34,6 @@ public class MotorRamp {
     //             in a match the log is the only witness. This is a tiny version of the
     //             telemetry in Rebuilt-2026.
     // CONCEPTS:   ArrayList, generics (the <Double> part), class-level state, autoboxing
-    // READ:       "Robot Iron" tab > Skills required
     // DONE WHEN:  the list grows by exactly one entry per setMotorSpeed call, and main
     //             prints its size at the end.
 
@@ -55,7 +50,6 @@ public class MotorRamp {
         //             looking at the max. Arrays are how you hold a fixed set of things like
         //             that.
         // CONCEPTS:   Arrays, array length, looping over an array, accumulating a total
-        // READ:       "Robot Iron" tab > Skills required
         // DONE WHEN:  average and max give the right answers for any array you hand them,
         //             including an array with one element.
 
@@ -64,7 +58,6 @@ public class MotorRamp {
         // WHY:        Three motors, five steps each — a small version of what it looks like
         //             to bring a whole drivetrain up together.
         // CONCEPTS:   Calling a method with arguments
-        // READ:       "Robot Iron" tab > Skills required
         // DONE WHEN:  running the program prints three motor lines.
 
         // STEP 9: Run both ramps
@@ -75,7 +68,6 @@ public class MotorRamp {
         //             so the last step has to be shortened. Reading your own output is how
         //             you catch an off-by-one before a mechanism does.
         // CONCEPTS:   Calling methods, reading output, edge cases
-        // READ:       "Robot Iron" tab > Skills required
         // DONE WHEN:  both ramps' output is in your PR, and the last line prints how many
         //             speeds were logged in total.
 
@@ -91,7 +83,6 @@ public class MotorRamp {
     //             parameter, so the caller decides. A drivetrain wants a bigger deadband than
     //             an arm, and now one method serves both.
     // CONCEPTS:   Declaring a method, parameters, return types, boolean expressions, Math.abs
-    // READ:       "Robot Iron" tab > Skills required
     // DONE WHEN:  0.05 with deadband 0.1 is true, 0.5 is false, and exactly 0.1 is true.
 
     // STEP 2: Write clamp
@@ -102,7 +93,6 @@ public class MotorRamp {
     //             hand it 1.5 and, depending on the controller, you get an error or something
     //             worse. One small method protects every place you set a speed.
     // CONCEPTS:   Declaring a method, multiple parameters, comparisons, returning early
-    // READ:       "Robot Iron" tab > Skills required
     // DONE WHEN:  clamp(1.5, -1, 1) is 1.0, clamp(-2, -1, 1) is -1.0, clamp(0.3, -1, 1) is
     //             0.3, and the values exactly on the limits come back unchanged.
 
@@ -117,7 +107,6 @@ public class MotorRamp {
     //             habit of clamping and logging *inside* the one method that talks to
     //             hardware is what keeps the rest of the code from having to remember.
     // CONCEPTS:   void methods, calling your own methods, printing, side effects
-    // READ:       "Robot Iron" tab > Skills required
     // DONE WHEN:  setMotorSpeed(1.5) prints the clamped value, not 1.5, and speedLog grows
     //             by one.
 
@@ -132,7 +121,6 @@ public class MotorRamp {
     //             WPILib: the same method name taking different things. Reusing clamp instead
     //             of copying it means a future fix happens in one place.
     // CONCEPTS:   Method overloading, method signatures, reuse over copy-paste
-    // READ:       "Robot Iron" tab > Skills required
     // DONE WHEN:  setMotorSpeed(2.0, 3) prints the port and the clamped speed, and logs it.
 
     // STEP 5: Write rampUp
@@ -151,7 +139,6 @@ public class MotorRamp {
     //             overshoot, you command more than you meant to, every single time.
     // CONCEPTS:   Loops, accumulating a value, `break`, building an ArrayList, returning a
     //             collection
-    // READ:       "Robot Iron" tab > Skills required
     // DONE WHEN:  both example ramps come out exactly right, ending on the target.
 
     // STEP 8: Write printRampGrid
@@ -166,7 +153,6 @@ public class MotorRamp {
     // WHY:        Nested loops are how you walk a grid: every motor, every step. You will see
     //             the same shape in swerve code that touches four modules and two values each.
     // CONCEPTS:   Nested loops, the outer/inner relationship, print vs println
-    // READ:       "Robot Iron" tab > Skills required
     // DONE WHEN:  printRampGrid(3, 5) prints exactly three lines, each with five speeds
     //             ending at 1.0.
 

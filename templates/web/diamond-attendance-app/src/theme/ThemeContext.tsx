@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
-// FILE:        src/theme/ThemeContext.tsx
 // STEPS HERE:  10
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
-// RUN:         npx expo start
-// PASSES WHEN: navigation works both ways with params, attendance persists
-//              after a restart, and there are no TypeScript errors in the
-//              navigation types.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 
 // STEP 10 (continued from RootNavigator.tsx): bring your theme context across
@@ -20,7 +15,6 @@
 //             changes is only the components you render at the bottom.
 // CONCEPTS:   Context on React Native, reusing your own code, what is React vs
 //             what is the platform
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  the Settings tab can toggle the theme.
 
 export {};

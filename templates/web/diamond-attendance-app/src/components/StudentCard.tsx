@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
-// FILE:        src/components/StudentCard.tsx
 // STEPS HERE:  3
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
-// RUN:         npx expo start
-// PASSES WHEN: navigation works both ways with params, attendance persists
-//              after a restart, and there are no TypeScript errors in the
-//              navigation types.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 //
 // Your Gold AttendanceCard, rebuilt for a phone. The logic is identical; what
@@ -38,7 +33,6 @@
 //             rather than magic.
 // CONCEPTS:   View / Text / Pressable, StyleSheet.create, flexbox on React
 //             Native, testID, why there is no <div>
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  twelve cards render on the roster screen and each one is
 //             tappable.
 

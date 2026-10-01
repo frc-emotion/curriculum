@@ -2,12 +2,8 @@ package frc.robot;
 
 // ============================================================
 // RANK:        Robot Platinum: Bench Motor Control
-// FILE:        Constants.java
 // STEPS HERE:  3
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Platinum")
-// RUN:         ./gradlew simulateJava
-// PASSES WHEN: the sim demo and bench demo both work, no numbers are hard-coded outside
-//              Constants, and the motor stops when disabled.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Platinum tab)
 // ============================================================
 //
 // Same job as the Constants class you wrote at Gold, except these numbers describe real
@@ -25,7 +21,6 @@ public final class Constants {
     //             and the first number you try should be one that cannot hurt anybody. When
     //             a lead says "turn it down", this is the one line they change.
     // CONCEPTS:   public static final, CAN IDs, controller ports, configuration in one place
-    // READ:       "Robot Platinum" tab > Skills required
     // DONE WHEN:  no CAN ID, port number or speed appears anywhere else in your code.
 
 }

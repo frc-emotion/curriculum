@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Gold: Attendance Card
-// FILE:        src/components/AttendanceCard.tsx
 // STEPS HERE:  1, 2
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Gold")
-// RUN:         npm run dev
-// PASSES WHEN: the cards toggle correctly, the filter works, there are no key
-//              warnings in the console, and state is never mutated directly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Gold tab)
 // ============================================================
 //
 // One student, one row. This is the smallest component in the app and the one
@@ -41,7 +37,6 @@
 //             signatures you wrote at Iron, applied to the screen.
 // CONCEPTS:   Components as functions, props, typed props, JSX, template
 //             literals in JSX
-// READ:       "Web Gold" tab > Skills required
 // DONE WHEN:  rendering a card shows the name, `Grade 11 · Software`, and a
 //             button with the status on it.
 
@@ -56,7 +51,6 @@
 //             see the same pattern in every form you ever write.
 // CONCEPTS:   Event handlers, onClick, passing functions as props, lifting
 //             events up
-// READ:       "Web Gold" tab > Skills required
 // DONE WHEN:  clicking the button calls onToggle exactly once, with the
 //             student's id.
 

@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
-// FILE:        src/hooks/useRoster.ts
 // STEPS HERE:  1, 5, 8
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Platinum")
-// RUN:         npm run dev
-// PASSES WHEN: counts update instantly on toggle, loading and error states both
-//              show up, and no value is stored in state that could be
-//              calculated instead.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // A custom hook is just a function whose name starts with `use` and which calls
@@ -38,7 +33,6 @@
 //             sentence here, where you still know what was being fetched.
 // CONCEPTS:   Custom hooks, useEffect, useState, the mount lifecycle, loading
 //             and error states, typed returns
-// READ:       "Web Platinum" tab > Skills required
 // DONE WHEN:  the dashboard shows a loading message, then the roster; and shows
 //             an error message when the request fails.
 
@@ -59,7 +53,6 @@
 //             so understand it.
 // CONCEPTS:   useEffect cleanup functions, race conditions, AbortController,
 //             component unmounting
-// READ:       "Web Platinum" tab > Skills required
 // DONE WHEN:  the effect returns a cleanup function, and you can explain out
 //             loud which bug it prevents.
 
@@ -83,7 +76,6 @@
 //             you end up with is the shape you will meet there.
 // CONCEPTS:   TanStack Query, useQuery, queryKey, QueryClientProvider,
 //             refactoring behind a stable interface
-// READ:       "Web Platinum" tab > Skills required
 // DONE WHEN:  everything that worked before still works, and the change is
 //             its own commit.
 

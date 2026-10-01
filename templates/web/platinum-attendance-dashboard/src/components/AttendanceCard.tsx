@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
-// FILE:        src/components/AttendanceCard.tsx
 // STEPS HERE:  7
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Platinum")
-// RUN:         npm run dev
-// PASSES WHEN: counts update instantly on toggle, loading and error states both
-//              show up, and no value is stored in state that could be
-//              calculated instead.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 
 // STEP 7: Bring your own card across
@@ -19,7 +14,6 @@
 //             working on a real codebase feels like. It also means the diff
 //             your reviewer reads is only the new ideas.
 // CONCEPTS:   Reusing components, module boundaries
-// READ:       "Web Platinum" tab > Skills required
 // DONE WHEN:  cards render and toggle exactly as they did at Gold.
 
 export {};

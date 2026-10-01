@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
-// FILE:        src/App.tsx
 // STEPS HERE:  2, 3, 4, 6, 7
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Platinum")
-// RUN:         npm run dev
-// PASSES WHEN: counts update instantly on toggle, loading and error states both
-//              show up, and no value is stored in state that could be
-//              calculated instead.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // The dashboard. Same job as Gold's App — own the state, hand it down — with
@@ -27,7 +22,6 @@ export default function App() {
   //             appear, which reads as "broken, then fixed". On a school wifi
   //             that moment can be several seconds.
   // CONCEPTS:   Conditional rendering, loading states, early returns
-  // READ:       "Web Platinum" tab > Skills required
   // DONE WHEN:  a slow response shows your loading message first.
 
   // STEP 3: Show something when it fails
@@ -37,7 +31,6 @@ export default function App() {
   //             happens at competition on a saturated wifi. "Couldn't load the
   //             roster — check your connection" is a complete feature.
   // CONCEPTS:   Error states, conditional rendering, error messages as UI
-  // READ:       "Web Platinum" tab > Skills required
   // DONE WHEN:  a failing request shows your message and no empty list.
 
   // STEP 4: The summary counts
@@ -52,7 +45,6 @@ export default function App() {
   //             with no extra code at all.
   // CONCEPTS:   Derived state, calculating during render, why extra state is a
   //             bug waiting to happen
-  // READ:       "Web Platinum" tab > Skills required
   // DONE WHEN:  toggling a card changes the summary immediately.
 
   // STEP 6 (continued from ThemeContext.tsx): wire the theme up
@@ -62,7 +54,6 @@ export default function App() {
   // WHY:        See ThemeContext.tsx. The point is that the button reaches the
   //             theme without anybody passing it down.
   // CONCEPTS:   Context providers, composition, data-attributes and CSS
-  // READ:       "Web Platinum" tab > Skills required
   // DONE WHEN:  pressing the toggle switches the palette.
 
   // STEP 7 (continued): keep the attendance state here
@@ -72,7 +63,6 @@ export default function App() {
   // WHY:        Nothing about state ownership changed just because the data
   //             comes from a server. The list still displays what it is given.
   // CONCEPTS:   State ownership, immutable updates, composing hooks and state
-  // READ:       "Web Platinum" tab > Skills required
   // DONE WHEN:  cards toggle and the summary keeps up.
 
   return (

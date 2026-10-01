@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
-// FILE:        src/context/ThemeContext.tsx
 // STEPS HERE:  6
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Platinum")
-// RUN:         npm run dev
-// PASSES WHEN: counts update instantly on toggle, loading and error states both
-//              show up, and no value is stored in state that could be
-//              calculated instead.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // Some things are needed everywhere: the theme, the signed-in user, the
@@ -39,7 +34,6 @@
 //             fails later, somewhere else, with a confusing message.
 // CONCEPTS:   createContext, useContext, provider components, prop drilling,
 //             custom hooks over raw context, children
-// READ:       "Web Platinum" tab > Skills required
 // DONE WHEN:  the toggle changes the page's colours, and the component holding
 //             the button never receives a theme prop.
 

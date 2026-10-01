@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
-// FILE:        App.tsx
 // STEPS HERE:  8, 9, 10
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
-// RUN:         npx expo start
-// PASSES WHEN: navigation works both ways with params, attendance persists
-//              after a restart, and there are no TypeScript errors in the
-//              navigation types.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 //
 // The root of the app. On the web this was App.tsx too — the difference is what
@@ -34,7 +29,6 @@ import './global.css';
 //             as the theme at Platinum, except now it is data people care
 //             about.
 // CONCEPTS:   Context providers, provider order, sharing state between screens
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  toggling a student on the detail screen shows the new status when
 //             you go back.
 
@@ -45,7 +39,6 @@ import './global.css';
 //             and every screen is underneath the navigator — so the navigator
 //             goes inside.
 // CONCEPTS:   Provider composition, context and navigation
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  the theme toggle in Settings changes the look of both tabs.
 
 // STEP 7: Run it on a real phone (or an emulator)
@@ -58,7 +51,6 @@ import './global.css';
 //             list sits under the notch. There is no substitute, which is why
 //             this step is a person looking at a screen.
 // CONCEPTS:   Expo Go, development builds, emulators, testing on real hardware
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  screenshots from a real device or emulator are in your PR.
 
 // STEP 11: What surprised you?
@@ -68,7 +60,6 @@ import './global.css';
 //             differences you noticed yourself are the ones you will remember —
 //             and they are exactly what the next person needs warning about.
 // CONCEPTS:   React vs React DOM vs React Native, what is the platform
-// READ:       Guide > Web Diamond
 // DONE WHEN:  the paragraph is in your PR description.
 
 export default function App() {

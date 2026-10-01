@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Gold: Attendance Card
-// FILE:        src/main.tsx
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Gold")
-// RUN:         npm run dev
-// PASSES WHEN: the cards toggle correctly, the filter works, there are no key
-//              warnings in the console, and state is never mutated directly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Gold tab)
 // ============================================================
 //
 // The one place React connects to the actual web page. It finds the empty

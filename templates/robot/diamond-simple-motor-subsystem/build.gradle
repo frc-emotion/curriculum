@@ -1,15 +1,4 @@
-// ============================================================
-// GradleRIO build file for a WPILib rank template.
-//
-//   ./gradlew build           compile everything
-//   ./gradlew simulateJava    run the robot code in simulation, with the Sim GUI
-//   ./gradlew deploy          send the code to a real roboRIO (lead present, bench only)
-//
-// The plugin version, Java version and vendordeps match Rebuilt-2026 exactly, so what you
-// learn here transfers straight to the competition robot.
-//
-// You do not need to edit this file for any step.
-// ============================================================
+// WPILib build config, same versions as Rebuilt-2026. You don't need to edit it.
 plugins {
     id "java"
     id "edu.wpi.first.GradleRIO" version "2026.2.1"
@@ -70,13 +59,6 @@ dependencies {
     nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
     simulationRelease wpi.sim.enableRelease()
 
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-test {
-    useJUnitPlatform()
-    systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
 }
 
 // Simulation: GUI plus a fake driver station.
@@ -92,7 +74,6 @@ jar {
 
 deployArtifact.jarTask = jar
 wpi.java.configureExecutableTasks(jar)
-wpi.java.configureTestTasks(test)
 
 tasks.withType(JavaCompile) {
     options.compilerArgs.add '-XDstringConcat=inline'

@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
-// FILE:        src/storage/AttendanceContext.tsx
 // STEPS HERE:  8, 9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
-// RUN:         npx expo start
-// PASSES WHEN: navigation works both ways with params, attendance persists
-//              after a restart, and there are no TypeScript errors in the
-//              navigation types.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 //
 // The attendance data, in one place that both screens can reach. Same shape as
@@ -37,7 +32,6 @@
 //             see step 9.
 // CONCEPTS:   Context, providers, shared state across screens, immutable
 //             updates, custom hooks
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  toggling on either screen updates both.
 
 // STEP 9 (continued from attendanceStorage.ts): load once, save on change
@@ -54,7 +48,6 @@
 //             once you have been bitten and invisible before.
 // CONCEPTS:   useEffect for loading, effects that depend on state, ordering,
 //             async state, guarding an effect
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  marking people in, force-quitting the app and reopening it shows
 //             the same attendance.
 

@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Copper: Student Filter
-// FILE:        src/students.js
 // STEPS HERE:  none — this is the data you work on
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Copper")
-// RUN:         npm start
-// PASSES WHEN: every function gives the right answer, there is no `var` or `==`, and the original
-//              students array is never modified.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Copper tab)
 // ============================================================
 //
 // The team roster. This file is finished — don't change it.

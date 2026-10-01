@@ -2,12 +2,8 @@ package rankup;
 
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
-// FILE:        Main.java
 // STEPS HERE:  3, 7, 8, 9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Gold")
-// RUN:         ./gradlew run
-// PASSES WHEN: all fields are private, no port numbers appear outside Constants, and you can
-//              explain in review what the lambda and method reference are doing.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Gold tab)
 // ============================================================
 //
 // This is the fake robot's driver station: where the objects get created, wired to buttons,
@@ -35,7 +31,6 @@ public class Main {
         //             obvious until the day someone makes the speed field static and the
         //             whole robot moves at once.
         // CONCEPTS:   Classes vs objects, `new`, constructors, object state
-        // READ:       "Robot Gold" tab > Skills required
         // DONE WHEN:  the printout shows one motor's speed changed and the other's didn't.
 
         // STEP 7 (continued): bind two buttons
@@ -46,7 +41,6 @@ public class Main {
         // WHY:        This is how every control on the real robot is wired. In Rebuilt-2026 a
         //             button press is handed a chunk of code to run later, exactly like this.
         // CONCEPTS:   Lambdas, method references, Runnable, passing behaviour as a value
-        // READ:       "Robot Gold" tab > Skills required
         // DONE WHEN:  pressing the buttons visibly runs the intake and stops the shooter.
 
         // STEP 8 (continued): drive the intake from a supplier
@@ -56,7 +50,6 @@ public class Main {
         //             subsystem asks. That is how a real joystick gets read fresh every loop
         //             instead of once at startup — you'll do exactly this at Diamond.
         // CONCEPTS:   DoubleSupplier, lambdas that return a value, deferred evaluation
-        // READ:       "Robot Gold" tab > Skills required
         // DONE WHEN:  the intake's motor ends up at the value your lambda returned.
 
         // STEP 9: Five robot ticks
@@ -67,7 +60,6 @@ public class Main {
         //             subsystems in one list and ticking them all is exactly what WPILib's
         //             CommandScheduler does for you at Platinum.
         // CONCEPTS:   ArrayList of a supertype, polymorphism, looping, the periodic pattern
-        // READ:       "Robot Gold" tab > Skills required
         // DONE WHEN:  running the program prints 5 rounds of subsystem output, and the
         //             printed speeds change after a button press.
 
@@ -77,7 +69,6 @@ public class Main {
         // WHY:        If you can explain it in one sentence without saying "blueprint", you
         //             actually understand it. (You may say blueprint. But try not to.)
         // CONCEPTS:   Classes vs objects
-        // READ:       "Robot Gold" tab > Skills required
         // DONE WHEN:  the sentence is in your PR description.
 
     }

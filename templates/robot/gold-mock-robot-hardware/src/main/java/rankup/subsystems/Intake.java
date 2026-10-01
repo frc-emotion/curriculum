@@ -2,12 +2,8 @@ package rankup.subsystems;
 
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
-// FILE:        subsystems/Intake.java
 // STEPS HERE:  6, 8
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Gold")
-// RUN:         ./gradlew run
-// PASSES WHEN: all fields are private, no port numbers appear outside Constants, and you can
-//              explain in review what the lambda and method reference are doing.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Gold tab)
 // ============================================================
 //
 // The thing that picks game pieces up. On the real robot it is one motor and a lot of
@@ -38,7 +34,6 @@ public class Intake {
     //             reports on itself every loop. The `extends` gives it a name for free; the
     //             `implements` promises anyone holding a Mechanism that it can be stopped.
     // CONCEPTS:   extends, implements, super(...), @Override, private fields, composition
-    // READ:       "Robot Gold" tab > Skills required
     // DONE WHEN:  an Intake is both a MockSubsystem and a Mechanism, run() leaves its motor
     //             at the intake speed, and stop() leaves it at 0.
 
@@ -53,7 +48,6 @@ public class Intake {
     //             startup.
     // CONCEPTS:   java.util.function.DoubleSupplier, getAsDouble(), lambdas that return
     //             values, deferred evaluation
-    // READ:       "Robot Gold" tab > Skills required
     // DONE WHEN:  runAtSpeed(() -> 0.42) leaves the motor at 0.42.
 
 }

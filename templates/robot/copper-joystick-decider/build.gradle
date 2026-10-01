@@ -1,20 +1,8 @@
-// ============================================================
-// Build file for a plain Java rank template.
-//
-//   ./gradlew run         runs your program   (src/main/java)
-//   ./gradlew build       compiles your program
-//
-// You do not need to edit this file for any step. It is here so the
-// commands above work. Read it if you're curious; ask a lead if it
-// breaks.
-// ============================================================
+// Build config for this project. You don't need to edit it.
 plugins {
     id 'java'
     id 'application'
 }
-
-group = 'rankup'
-version = '1.0'
 
 java {
     // WPILib 2026 and the team's robot code use Java 17, so we do too.

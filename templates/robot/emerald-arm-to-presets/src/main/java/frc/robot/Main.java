@@ -4,12 +4,8 @@ import edu.wpi.first.wpilibj.RobotBase;
 
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
-// FILE:        Main.java
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Emerald")
-// RUN:         ./gradlew simulateJava
-// PASSES WHEN: the arm reaches each preset without sustained oscillation, commands end at their
-//              setpoints, and the angle limits hold.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 //
 // Every Java program starts at main. On a robot, main's only job is to hand control to

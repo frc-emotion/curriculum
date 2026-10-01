@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
-// FILE:        src/index.ts
 // STEPS HERE:  7, 8, 9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Iron")
-// RUN:         npm start
-// PASSES WHEN: the project compiles in strict mode, the API data is validated
-//              before use, and a failed request is handled cleanly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 
 import { students } from './data/students.js';
@@ -28,7 +24,6 @@ import { students } from './data/students.js';
 //             genuinely fine; it is just not YOUR shape, which is exactly the
 //             situation zod exists for.
 // CONCEPTS:   Top-level await, async main functions, composing your own modules
-// READ:       "Web Iron" tab > Skills required
 // DONE WHEN:  `npm start` prints labelled results and does not crash.
 
 // STEP 8: Handle the failure like a person, not a stack trace
@@ -41,7 +36,6 @@ import { students } from './data/students.js';
 //             text at a fourteen-year-old. You will build the visible version of
 //             this at Platinum; this is the same idea with no UI in the way.
 // CONCEPTS:   try/catch, error messages for humans, graceful degradation
-// READ:       "Web Iron" tab > Skills required
 // DONE WHEN:  `npm start` with no network prints one friendly line and exits
 //             without a stack trace.
 
@@ -54,6 +48,5 @@ console.log(`Loaded ${students.length} students from the local roster.`);
 //             escape hatch because it makes you check before you use it. Silencing
 //             an error does not fix it.
 // CONCEPTS:   Strict mode, unknown vs any, reading compiler errors
-// READ:       "Web Iron" tab > Skills required
 // DONE WHEN:  `npx tsc --noEmit` prints no errors, and a search of src/ finds no
 //             `any` and no `@ts-ignore`.

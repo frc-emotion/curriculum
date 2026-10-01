@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
-// FILE:        src/screens/RosterScreen.tsx
 // STEPS HERE:  4, 5
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
-// RUN:         npx expo start
-// PASSES WHEN: navigation works both ways with params, attendance persists
-//              after a restart, and there are no TypeScript errors in the
-//              navigation types.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 //
 // Imports you will need as you go (add them yourself):
@@ -28,7 +23,6 @@
 //             free later.
 // CONCEPTS:   FlatList, renderItem, keyExtractor, virtualised lists, why not
 //             .map on a phone
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  all twelve students render and the list scrolls smoothly.
 
 // STEP 5: Tap a card to open the detail screen
@@ -42,7 +36,6 @@
 //             nothing and leaves you staring at it.
 // CONCEPTS:   navigation.navigate, route params, NativeStackScreenProps, typed
 //             navigation
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  tapping Ada opens a detail screen showing Ada, and the back
 //             gesture returns you to the roster.
 

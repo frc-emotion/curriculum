@@ -5,12 +5,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 // ============================================================
 // RANK:        Robot Platinum: Bench Motor Control
-// FILE:        Robot.java
 // STEPS HERE:  1, 2, 5, 6
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Robot Platinum")
-// RUN:         ./gradlew simulateJava
-// PASSES WHEN: the sim demo and bench demo both work, no numbers are hard-coded outside
-//              Constants, and the motor stops when disabled.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Platinum tab)
 // ============================================================
 //
 // This is the robot's schedule. WPILib calls these methods for you — you never call them
@@ -33,7 +29,6 @@ public class Robot extends TimedRobot {
     //             fifty times a second instead of once. Writing this down now is how you stop
     //             guessing later.
     // CONCEPTS:   The robot lifecycle, init vs periodic, the 20ms loop, driver station modes
-    // READ:       "Robot Platinum" tab > Skills required
     // DONE WHEN:  every method below has an accurate comment, and you can answer "which of
     //             these runs 50 times a second?" without looking.
 
@@ -45,7 +40,6 @@ public class Robot extends TimedRobot {
     //             comments you just wrote say it does. Reading it is one thing; watching the
     //             lines appear as you flip modes is another.
     // CONCEPTS:   The robot lifecycle, simulation, the Sim GUI driver station
-    // READ:       "Robot Platinum" tab > Skills required
     // DONE WHEN:  switching modes in the Sim GUI prints a line each time.
 
     private final RobotContainer m_robotContainer;
@@ -69,7 +63,6 @@ public class Robot extends TimedRobot {
         //             a motor still commanded, whatever it was doing is what it will try to
         //             do the instant it is enabled again — usually into somebody's hand.
         // CONCEPTS:   The disabled state, safe defaults, why init is the right place
-        // READ:       "Robot Platinum" tab > Skills required
         // DONE WHEN:  disabling the robot in sim, and on the bench, stops the motor every
         //             time.
     }
@@ -104,7 +97,6 @@ public class Robot extends TimedRobot {
         //             forever. Motor controllers do not guess.
         // CONCEPTS:   Reading a controller, DutyCycleOut, commanding a TalonFX, the periodic
         //             loop, safe defaults
-        // READ:       "Robot Platinum" tab > Skills required
         // DONE WHEN:  in simulation, holding A and B moves the motor's applied output the
         //             way you expect, and letting go returns it to zero.
 
@@ -114,7 +106,6 @@ public class Robot extends TimedRobot {
         //             the motor is doing what you asked, and it is the first thing anyone
         //             asks for when something goes wrong at competition.
         // CONCEPTS:   SmartDashboard, NetworkTables, telemetry, publishing every loop
-        // READ:       "Robot Platinum" tab > Skills required
         // DONE WHEN:  the value appears in the Sim GUI's NetworkTables view and changes as
         //             you hold the buttons.
     }
@@ -132,7 +123,6 @@ public class Robot extends TimedRobot {
     //             first is not a formality — it is how you find the bug that would otherwise
     //             find you at full speed.
     // CONCEPTS:   Deploying, bench testing, the disable button, testing safely
-    // READ:       "Robot Platinum" tab > Skills required
     // DONE WHEN:  a lead has watched both demos and signed the rank off.
 
 }

@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
-// FILE:        src/groupBy.ts
 // STEPS HERE:  3
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Iron")
-// RUN:         npm start
-// PASSES WHEN: the project compiles in strict mode, the API data is validated
-//              before use, and a failed request is handled cleanly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 
 // STEP 3: Write a generic groupBy
@@ -27,7 +23,6 @@
 //             values are Students.
 // CONCEPTS:   Generics, type parameters, higher-order functions, Record<K, V>,
 //             readonly arrays
-// READ:       "Web Iron" tab > Skills required
 // DONE WHEN:  grouping students by subteam gives four keys, grouping by grade
 //             (as a string) gives four, and an empty array gives {}.
 

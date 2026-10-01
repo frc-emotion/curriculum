@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
-// FILE:        src/main.tsx
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Platinum")
-// RUN:         npm run dev
-// PASSES WHEN: counts update instantly on toggle, loading and error states both show up,
-//              and no value is stored in state that could be calculated instead.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // The one place React connects to the actual web page. It finds the empty

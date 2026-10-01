@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Copper: Student Filter
-// FILE:        src/index.js
 // STEPS HERE:  8
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Copper")
-// RUN:         npm start
-// PASSES WHEN: every function gives the right answer, there is no `var` or `==`, and the original
-//              students array is never modified.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Copper tab)
 // ============================================================
 //
 // This is what `npm start` runs. It is your window into your own code — the
@@ -25,7 +21,6 @@ import { students } from './students.js';
 //             you're stuck. Getting comfortable with "print it and look" now
 //             will save you hours at every later rank.
 // CONCEPTS:   ES module imports, console.log, reading your own output
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  `npm start` prints a labelled result for all seven functions
 //             without crashing.
 
@@ -41,5 +36,4 @@ console.log(`Loaded ${students.length} students.`);
 //             Be ready to explain why you used `.find` in one place and
 //             `.filter` in another.
 // CONCEPTS:   Edge cases, testing your own code, immutability
-// READ:       "Web Copper" tab > Skills required
 // DONE WHEN:  every edge case prints a sensible answer and the roster is unchanged.

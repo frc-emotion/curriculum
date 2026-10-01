@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
-// FILE:        src/storage/attendanceStorage.ts
 // STEPS HERE:  9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (section "Web Diamond")
-// RUN:         npx expo start
-// PASSES WHEN: navigation works both ways with params, attendance persists
-//              after a restart, and there are no TypeScript errors in the
-//              navigation types.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 //
 // Everything that talks to the phone's storage lives here — the same rule as
@@ -35,7 +30,6 @@
 //             from outside your program is a rumour until you have checked it.
 // CONCEPTS:   AsyncStorage, JSON.stringify / JSON.parse, async functions,
 //             defensive parsing, keys and versioning
-// READ:       "Web Diamond" tab > Skills required
 // DONE WHEN:  saving then loading gives you back what you saved, and loading
 //             with nothing stored gives you {}.
 
