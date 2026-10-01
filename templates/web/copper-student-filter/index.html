@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Web Copper: Student Filter</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    pre { font-size: 15px; white-space: pre-wrap; }
+    .error { color: #c00; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Web Copper output</h1>
+  <p>Edit the files in <code>src/</code>, save, then refresh this page.</p>
+  <pre id="output"></pre>
+
+  <!-- Shows console.log output and errors on this page. You don't need to change this. -->
+  <script>
+    (function () {
+      const output = document.getElementById('output');
+      const show = (text, isError) => {
+        const line = document.createElement('div');
+        line.textContent = text;
+        if (isError) line.className = 'error';
+        output.appendChild(line);
+      };
+      const format = (value) => typeof value === 'string' ? value : JSON.stringify(value, null, 2);
+      const originalLog = console.log;
+      console.log = (...values) => {
+        originalLog(...values);
+        show(values.map(format).join(' '), false);
+      };
+      window.showError = (error) => {
+        const where = (error.stack || '').match(/(\w+\.js):(\d+)/);
+        show(`Error${where ? ` in ${where[1]} line ${where[2]}` : ''}: ${error.message}`, true);
+      };
+      window.addEventListener('error', () => {
+        show('One of your files has a mistake the browser can\'t run, usually a typo like a missing bracket or quote. Check the file you just edited.', true);
+      });
+    })();
+  </script>
+
+  <!-- Your files, in this order. -->
+  <script src="src/students.js"></script>
+  <script src="src/studentUtils.js"></script>
+  <script src="src/index.js"></script>
+  <script>
+    try {
+      printResults();
+    } catch (error) {
+      showError(error);
+    }
+  </script>
+</body>
+</html>

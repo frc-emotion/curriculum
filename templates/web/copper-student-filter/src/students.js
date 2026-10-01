@@ -13,8 +13,11 @@
 //   - one person has a `contact` with no `email` in it
 //
 // Those last two are not mistakes. They are step 7.
+//
+// The roster is frozen at the bottom of this file, so if one of your functions
+// tries to change it, the page shows an error. That's on purpose.
 
-export const students = [
+const students = [
   { id: 1, name: 'Ada Nwosu', grade: 11, subteam: 'Software', meetingsAttended: 18,
     contact: { email: 'ada@example.com', phone: '555-0101' } },
   { id: 2, name: 'Bo Tran', grade: 9, subteam: 'Mechanical', meetingsAttended: 12,
@@ -39,3 +42,6 @@ export const students = [
   { id: 12, name: 'Lena Voss', grade: 12, subteam: 'Software', meetingsAttended: 15,
     contact: { email: 'lena@example.com' } },
 ];
+
+students.forEach((student) => Object.freeze(student));
+Object.freeze(students);

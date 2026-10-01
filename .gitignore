@@ -3,6 +3,7 @@
 build/
 bin/
 *.class
+out/
 
 # WPILib simulation output
 ctre_sim/

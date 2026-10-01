@@ -8,8 +8,8 @@
 // will write a hundred times on a real app, and each one has a matching array
 // method that does most of the work — the skill is picking the right one.
 //
-// Every function must be EXPORTED, by exactly the name in its step. Later ranks
-// import them by name.
+// Use exactly the function name in each step. index.html loads this file after
+// students.js, so your functions can use `students`, and index.js can call yours.
 //
 // One rule that runs through all of this: NEVER change the array you were
 // given. Make a new one instead. Print the roster after calling your functions
@@ -17,7 +17,7 @@
 // — two ranks from now — changing data in place is the single most common
 // reason a screen refuses to update.
 //
-// The data lives in src/students.js. Go read it first.
+// The data lives in students.js. Go read it first.
 
 // STEP 9: Clean up (applies to this whole file)
 // WHAT:       No `var` anywhere: use `const`, and `let` only when a value really
@@ -29,18 +29,18 @@
 // DONE WHEN:  a search of this file finds no `var`, no `==` and nothing unused.
 
 // STEP 1: Write getStudentNames
-// WHAT:       Export a function `getStudentNames(students)` that returns an
+// WHAT:       Write a function `getStudentNames(students)` that returns an
 //             array of just the names, in the same order.
 //             getStudentNames(students) -> ['Ada Nwosu', 'Bo Tran', ...]
 // WHY:        Turning a list of things into a list of one piece of those things
 //             is the most common operation in front-end code. Every dropdown,
 //             every list of chips, every "who's here today" is this.
-// CONCEPTS:   Array.prototype.map, arrow functions, export
+// CONCEPTS:   Array.prototype.map, arrow functions
 // DONE WHEN:  you get 12 names back, in the original order, and the original
 //             array is untouched.
 
 // STEP 2: Write getStudentsBySubteam
-// WHAT:       Export `getStudentsBySubteam(students, subteam)` that returns only
+// WHAT:       Write `getStudentsBySubteam(students, subteam)` that returns only
 //             the students on that subteam. Return the student objects, not just
 //             their names. If nobody matches, return an empty array — not null,
 //             not undefined.
@@ -51,7 +51,7 @@
 //             array, and the original array is untouched.
 
 // STEP 3: Write findStudentById
-// WHAT:       Export `findStudentById(students, id)` that returns the one
+// WHAT:       Write `findStudentById(students, id)` that returns the one
 //             student with that id, or `undefined` if there isn't one.
 // WHY:        This is what happens every time someone taps a row and a detail
 //             screen opens. Note the difference from step 2: one thing, not a
@@ -61,7 +61,7 @@
 // DONE WHEN:  id 3 gives you Chidi Park and id 99 gives you undefined.
 
 // STEP 4: Write countByGrade
-// WHAT:       Export `countByGrade(students)` that returns an object counting
+// WHAT:       Write `countByGrade(students)` that returns an object counting
 //             how many students are in each grade:
 //               { 9: 3, 10: 3, 11: 3, 12: 3 }
 //             Only include grades that actually appear.
@@ -73,7 +73,7 @@
 //             object.
 
 // STEP 5: Write getRegularAttendees
-// WHAT:       Export `getRegularAttendees(students, minimum)` that returns the
+// WHAT:       Write `getRegularAttendees(students, minimum)` that returns the
 //             students who attended at least `minimum` meetings, sorted by
 //             meetingsAttended from highest to lowest. When two students have
 //             the same count, put them in alphabetical order by name.
@@ -89,7 +89,7 @@
 //             alphabetically, and the original array is untouched.
 
 // STEP 6: Write formatStudent
-// WHAT:       Export `formatStudent(student)` that returns a string in exactly
+// WHAT:       Write `formatStudent(student)` that returns a string in exactly
 //             this shape:
 //               Ada Nwosu (Grade 11, Software)
 //             Pull the pieces out with a DESTRUCTURED parameter, and build the
@@ -101,7 +101,7 @@
 // DONE WHEN:  the string matches exactly, including the comma and the brackets.
 
 // STEP 7: Write getContactEmail
-// WHAT:       Export `getContactEmail(student)` that returns the student's email
+// WHAT:       Write `getContactEmail(student)` that returns the student's email
 //             address, or the string 'no email on file' when there isn't one.
 //             It must not crash on a student with no `contact` at all.
 //             Use optional chaining (?.) and the nullish coalescing operator
