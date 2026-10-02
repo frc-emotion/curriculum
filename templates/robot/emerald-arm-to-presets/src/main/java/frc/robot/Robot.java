@@ -5,12 +5,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
-// FILE:        Robot.java
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       GUIDE_URL  (section "Robot Emerald")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
-// PASSES WHEN: the arm reaches each preset without sustained oscillation, commands end at their
-//              setpoints, and the angle limits hold.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 //
 // You documented all of this at Platinum, so it comes filled in this time. The short version

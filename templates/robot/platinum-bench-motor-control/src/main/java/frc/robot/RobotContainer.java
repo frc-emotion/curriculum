@@ -5,12 +5,8 @@ import edu.wpi.first.wpilibj2.command.Commands;
 
 // ============================================================
 // RANK:        Robot Platinum: Bench Motor Control
-// FILE:        RobotContainer.java
 // STEPS HERE:  4, 5, 7
-// GUIDE:       GUIDE_URL  (section "Robot Platinum")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew build
-// PASSES WHEN: the sim demo and bench demo both work, no numbers are hard-coded outside
-//              Constants, and the motor stops when disabled.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Platinum tab)
 // ============================================================
 //
 // RobotContainer is where the robot gets assembled: hardware is created here, and controls
@@ -38,8 +34,6 @@ public class RobotContainer {
     //             Brake mode means the motor resists movement when it is not being
     //             commanded, instead of coasting — which matters a lot for an arm.
     // CONCEPTS:   TalonFX, TalonFXConfiguration, current limits, neutral mode, CAN IDs
-    // READ:       Guide > Robot Platinum > Resources #4
-    // CHECKED BY: your reviewer, plus build warnings for the config pieces
     // DONE WHEN:  the code builds and the motor appears in the Sim GUI's device list.
 
     public RobotContainer() {
@@ -55,8 +49,6 @@ public class RobotContainer {
         //             all of our robot code. When a driver asks "what does Y do?", there is
         //             exactly one file to open.
         // CONCEPTS:   CommandXboxController, controller ports, keeping bindings in one place
-        // READ:       Guide > Robot Platinum > Resources #3
-        // CHECKED BY: your reviewer
         // DONE WHEN:  the controller exists here and teleopPeriodic can read its buttons.
 
         // STEP 7: Publish telemetry
@@ -65,8 +57,6 @@ public class RobotContainer {
         // WHY:        Telemetry is how a robot tells you what it is doing. Without it you are
         //             debugging by listening to the motor.
         // CONCEPTS:   SmartDashboard, NetworkTables, telemetry
-        // READ:       Guide > Robot Platinum > Resources #1
-        // CHECKED BY: your reviewer, plus a build warning
         // DONE WHEN:  the value shows up in the Sim GUI and changes while you hold a button.
     }
 

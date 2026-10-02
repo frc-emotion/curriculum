@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Gold: Attendance Card
-// FILE:        src/components/AttendanceList.tsx
 // STEPS HERE:  3
-// GUIDE:       GUIDE_URL  (section "Web Gold")
-// RUN:         npm run dev        CHECK: npm run check
-// PASSES WHEN: the cards toggle correctly, the filter works, there are no key
-//              warnings in the console, and state is never mutated directly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Gold tab)
 // ============================================================
 //
 // Many students, many cards. Same idea as `.map` at Copper, except what comes
@@ -16,7 +12,7 @@
 //   import AttendanceCard from './AttendanceCard.tsx';
 //
 // Export it as the default export or as a named export called
-// `AttendanceList` — the checks accept either.
+// `AttendanceList`. Either works.
 
 // STEP 3: Build the list
 // WHAT:       Write a component taking these typed props:
@@ -39,8 +35,6 @@
 //             list.
 // CONCEPTS:   Rendering lists, .map in JSX, the key prop, why index keys break,
 //             passing props through
-// READ:       Guide > Web Gold > Resources #3
-// CHECKED BY: attendanceList.check.tsx, sourceScan.check.tsx (no index keys)
 // DONE WHEN:  all 12 students render, and the browser console has no key
 //             warnings in it.
 

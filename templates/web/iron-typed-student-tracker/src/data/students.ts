@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
-// FILE:        src/data/students.ts
 // STEPS HERE:  1 (annotate this array once your Student type exists)
-// GUIDE:       GUIDE_URL  (section "Web Iron")
-// RUN:         npm start        CHECK: npm run check
-// PASSES WHEN: the project compiles in strict mode, the API data is validated
-//              before use, and a failed request is handled cleanly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 //
 // The same roster you had at Copper, plus two more people. The data itself is

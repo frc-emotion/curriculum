@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
-// FILE:        src/navigation/RootNavigator.tsx
 // STEPS HERE:  2, 10
-// GUIDE:       GUIDE_URL  (section "Web Diamond")
-// RUN:         npx expo start        CHECK: npm run check
-// PASSES WHEN: navigation works both ways with params, attendance persists
-//              after a restart, and there are no TypeScript errors in the
-//              navigation types.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 //
 // Imports you will need as you go (add them yourself):
@@ -29,8 +24,6 @@
 //             have used, and it is why you get a back button for free rather
 //             than wiring one up.
 // CONCEPTS:   Native stack navigator, screens, headers, typed navigators
-// READ:       Guide > Web Diamond > Resources #2
-// CHECKED BY: navigation.check.tsx
 // DONE WHEN:  the app opens on the roster and can push a detail screen.
 
 // STEP 10: Add bottom tabs
@@ -44,8 +37,6 @@
 //             history, so switching tabs and coming back leaves you where you
 //             were. nautilus-frontend is built this way.
 // CONCEPTS:   Bottom tabs, nesting navigators, each tab having its own stack
-// READ:       Guide > Web Diamond > Resources #2
-// CHECKED BY: navigation.check.tsx, your reviewer
 // DONE WHEN:  both tabs work, and going Roster -> detail -> Settings -> Roster
 //             leaves you on the detail screen.
 

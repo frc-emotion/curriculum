@@ -5,12 +5,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 // ============================================================
 // RANK:        Robot Diamond: Simple Motor Subsystem
-// FILE:        Robot.java
 // STEPS HERE:  10
-// GUIDE:       GUIDE_URL  (section "Robot Diamond")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
-// PASSES WHEN: nothing outside the subsystem touches the TalonFX directly, the limit switch
-//              reliably blocks forward motion, and all bindings live in RobotContainer.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Diamond tab)
 // ============================================================
 //
 // You documented all of this at Platinum, so it comes filled in this time. The short version
@@ -78,8 +74,6 @@ public class Robot extends TimedRobot {
         //             anything. Every hour spent in sim is an hour not spent debugging on a
         //             robot with eight people waiting.
         // CONCEPTS:   Simulation, simulationPeriodic, DIO simulation, keeping hardware private
-        // READ:       Guide > Robot Diamond > Resources #4
-        // CHECKED BY: your reviewer (they will watch you do it)
         // DONE WHEN:  the position on SmartDashboard climbs while the motor runs, and
         //             toggling the DIO in the Sim GUI stops forward motion.
     }

@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Gold: Attendance Card
-// FILE:        src/App.tsx
 // STEPS HERE:  4, 5, 6, 7, 8
-// GUIDE:       GUIDE_URL  (section "Web Gold")
-// RUN:         npm run dev        CHECK: npm run check
-// PASSES WHEN: the cards toggle correctly, the filter works, there are no key
-//              warnings in the console, and state is never mutated directly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Gold tab)
 // ============================================================
 //
 // The top of the tree. App owns the attendance data; everything below it just
@@ -39,8 +35,6 @@ export default function App() {
   //             is instant, and no card has to search a list.
   // CONCEPTS:   useState, state vs a plain variable, re-rendering, Record<K, V>,
   //             initial state
-  // READ:       Guide > Web Gold > Resources #2 and #4
-  // CHECKED BY: app.check.tsx
   // DONE WHEN:  all 12 students render as 'absent' when the page first loads.
 
   // STEP 5: Toggle a student's status, without mutating
@@ -57,8 +51,6 @@ export default function App() {
   //             this is the rank where ignoring it visibly breaks the screen.
   // CONCEPTS:   Immutable updates, spreading objects, updater functions,
   //             reference equality, why React re-renders
-  // READ:       Guide > Web Gold > Resources #4
-  // CHECKED BY: app.check.tsx
   // DONE WHEN:  clicking one card cycles it through all three statuses, and no
   //             other card changes.
 
@@ -79,8 +71,6 @@ export default function App() {
   //             React PRs.
   // CONCEPTS:   Multiple pieces of state, derived values, filtering during
   //             render, aria-pressed, conditional class names
-  // READ:       Guide > Web Gold > Resources #4
-  // CHECKED BY: app.check.tsx
   // DONE WHEN:  pressing "Present" shows only present students, and "All"
   //             brings everyone back.
 
@@ -93,8 +83,6 @@ export default function App() {
   //             you build from here on has three states — data, empty, error —
   //             and empty is the one people forget.
   // CONCEPTS:   Conditional rendering, ternaries in JSX, empty states
-  // READ:       Guide > Web Gold > Resources #3
-  // CHECKED BY: app.check.tsx
   // DONE WHEN:  filtering to "Excused" on a fresh page shows your message, not
   //             a blank gap.
 
@@ -108,8 +96,6 @@ export default function App() {
   //             not happening, and knowing the order tells you which one to
   //             look at.
   // CONCEPTS:   The React render cycle, state updates, re-rendering
-  // READ:       Guide > Web Gold > Resources #4
-  // CHECKED BY: your reviewer
   // DONE WHEN:  the explanation is in your PR description, in your own words.
 
   return (

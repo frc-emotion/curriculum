@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
-// FILE:        src/studentUtils.ts
 // STEPS HERE:  2
-// GUIDE:       GUIDE_URL  (section "Web Iron")
-// RUN:         npm start        CHECK: npm run check
-// PASSES WHEN: the project compiles in strict mode, the API data is validated
-//              before use, and a failed request is handled cleanly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 //
 // Your Copper functions, with types on them. The behaviour is identical — you
@@ -38,8 +34,6 @@
 //             the compiler telling you about a crash you had not hit yet.
 // CONCEPTS:   Typed parameters, return types, union types, Record<K, V>,
 //             importing types, strict null checks
-// READ:       Guide > Web Iron > Resources #2 and #3
-// CHECKED BY: studentUtils.check.ts, sourceScan.check.ts (no `any`)
 // DONE WHEN:  all seven behave exactly as they did at Copper, and
 //             `npm run typecheck` is clean.
 

@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
-// FILE:        src/data/roster.ts
 // STEPS HERE:  none — types and the endpoint
-// GUIDE:       GUIDE_URL  (section "Web Platinum")
-// RUN:         npm run dev        CHECK: npm run check
-// PASSES WHEN: counts update instantly on toggle, loading and error states both
-//              show up, and no value is stored in state that could be
-//              calculated instead.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // The roster no longer lives in this file. It lives at ROSTER_URL, served from

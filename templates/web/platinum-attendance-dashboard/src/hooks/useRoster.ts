@@ -1,12 +1,7 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
-// FILE:        src/hooks/useRoster.ts
 // STEPS HERE:  1, 5, 8
-// GUIDE:       GUIDE_URL  (section "Web Platinum")
-// RUN:         npm run dev        CHECK: npm run check
-// PASSES WHEN: counts update instantly on toggle, loading and error states both
-//              show up, and no value is stored in state that could be
-//              calculated instead.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // A custom hook is just a function whose name starts with `use` and which calls
@@ -38,8 +33,6 @@
 //             sentence here, where you still know what was being fetched.
 // CONCEPTS:   Custom hooks, useEffect, useState, the mount lifecycle, loading
 //             and error states, typed returns
-// READ:       Guide > Web Platinum > Resources #1 and #2
-// CHECKED BY: dashboard.check.tsx (loading, loaded and failed all render)
 // DONE WHEN:  the dashboard shows a loading message, then the roster; and shows
 //             an error message when the request fails.
 
@@ -60,9 +53,6 @@
 //             so understand it.
 // CONCEPTS:   useEffect cleanup functions, race conditions, AbortController,
 //             component unmounting
-// READ:       Guide > Web Platinum > Resources #2
-// CHECKED BY: sourceScan.check.tsx (the effect must return a cleanup function),
-//             your reviewer (in the commit history)
 // DONE WHEN:  the effect returns a cleanup function, and you can explain out
 //             loud which bug it prevents.
 
@@ -75,7 +65,7 @@
 //             natural home for it is main.tsx or App.tsx.
 //             One gotcha: by default TanStack Query retries a failed request
 //             three times before giving up, so your error state takes a few
-//             seconds to appear and the checks time out waiting for it. Turn
+//             seconds to appear. Turn
 //             retries off on the QueryClient while you are learning.
 //             COMMIT THIS SEPARATELY, and say in your PR what got simpler.
 // WHY:        This is the payoff for step 1. Because every component only ever
@@ -86,10 +76,7 @@
 //             you end up with is the shape you will meet there.
 // CONCEPTS:   TanStack Query, useQuery, queryKey, QueryClientProvider,
 //             refactoring behind a stable interface
-// READ:       Guide > Web Platinum > Resources #4
-// CHECKED BY: dashboard.check.tsx (the same checks must still pass), your
-//             reviewer (the diff should touch almost nothing else)
-// DONE WHEN:  every check that passed before still passes, and the change is
+// DONE WHEN:  everything that worked before still works, and the change is
 //             its own commit.
 
 export {};

@@ -4,12 +4,8 @@ import edu.wpi.first.wpilibj.RobotBase;
 
 // ============================================================
 // RANK:        Robot Platinum: Bench Motor Control
-// FILE:        Main.java
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       GUIDE_URL  (section "Robot Platinum")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew build
-// PASSES WHEN: the sim demo and bench demo both work, no numbers are hard-coded outside
-//              Constants, and the motor stops when disabled.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Platinum tab)
 // ============================================================
 //
 // Every Java program starts at main. On a robot, main's only job is to hand control to

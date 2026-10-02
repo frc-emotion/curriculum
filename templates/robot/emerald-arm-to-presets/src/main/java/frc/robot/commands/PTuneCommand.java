@@ -4,12 +4,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
-// FILE:        commands/PTuneCommand.java
 // STEPS HERE:  1, 2, 3
-// GUIDE:       GUIDE_URL  (section "Robot Emerald")
-// RUN:         ./gradlew simulateJava    CHECK: ./gradlew rankCheck
-// PASSES WHEN: the arm reaches each preset without sustained oscillation, commands end at
-//              their setpoints, and the angle limits hold.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 //
 // At Diamond you built commands as factory methods on the subsystem. This one is a real
@@ -39,8 +35,6 @@ public class PTuneCommand extends Command {
     //             worth more than any amount of reading.
     // CONCEPTS:   PIDController, proportional control, setpoint vs measurement, error,
     //             command lifecycle, addRequirements
-    // READ:       Guide > Robot Emerald > Resources #1 and #3
-    // CHECKED BY: SourceScanCheck (a PIDController must appear), your reviewer
     // DONE WHEN:  running this command in simulation visibly moves the arm toward the target.
 
     // STEP 2: Make kP tunable while the robot is running
@@ -52,8 +46,6 @@ public class PTuneCommand extends Command {
     //             queue behind you, that difference decides whether the mechanism gets tuned
     //             at all.
     // CONCEPTS:   SmartDashboard.getNumber, live tuning, NetworkTables, default values
-    // READ:       Guide > Robot Emerald > Resources #3
-    // CHECKED BY: SourceScanCheck (SmartDashboard.getNumber must appear)
     // DONE WHEN:  typing a new kP into the Sim GUI changes the arm's behaviour immediately,
     //             without a rebuild.
 
@@ -68,8 +60,6 @@ public class PTuneCommand extends Command {
     //             describe what happened. Writing it down is what turns "I fiddled until it
     //             worked" into a skill you can use on a mechanism you have never seen.
     // CONCEPTS:   Overshoot, oscillation, steady-state behaviour, systematic tuning
-    // READ:       Guide > Robot Emerald > Resources #1 and #2
-    // CHECKED BY: your reviewer
     // DONE WHEN:  three kP values and three observations are in your PR.
 
 }

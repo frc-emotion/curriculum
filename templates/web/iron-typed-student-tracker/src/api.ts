@@ -1,11 +1,7 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
-// FILE:        src/api.ts
 // STEPS HERE:  4, 5, 6
-// GUIDE:       GUIDE_URL  (section "Web Iron")
-// RUN:         npm start        CHECK: npm run check
-// PASSES WHEN: the project compiles in strict mode, the API data is validated
-//              before use, and a failed request is handled cleanly.
+// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 //
 // Everything that talks to the network lives in this file. That is a rule worth
@@ -31,8 +27,6 @@
 //             hard-coding it — is what makes the next two steps testable without
 //             a real server.
 // CONCEPTS:   async/await, Promises, axios, typed return values
-// READ:       Guide > Web Iron > Resources #4
-// CHECKED BY: api.check.ts
 // DONE WHEN:  fetchStudents resolves to an array of students from a live URL.
 
 // STEP 5: Validate the response before you trust it
@@ -50,8 +44,6 @@
 //             responses.
 // CONCEPTS:   Runtime validation, zod schemas, parse vs safeParse, why a type
 //             assertion is not a check, trust boundaries
-// READ:       Guide > Web Iron > Resources #5
-// CHECKED BY: api.check.ts (a response with a bad subteam must be rejected)
 // DONE WHEN:  a response where one student has subteam 'Softwear' throws,
 //             instead of quietly returning bad data.
 
@@ -66,9 +58,6 @@
 //             rest of the app can show someone.
 // CONCEPTS:   try/catch with async, error handling, rethrowing, error messages
 //             as a user interface
-// READ:       Guide > Web Iron > Resources #4
-// CHECKED BY: api.check.ts (a 500 and a network error must both throw a clean
-//             Error mentioning the URL)
 // DONE WHEN:  a dead URL produces one readable sentence, not a stack trace.
 
 // This line makes the file a module while it is still empty, so the rest of the
