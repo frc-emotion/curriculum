@@ -20,7 +20,7 @@
      CHECKED BY: CI (this heading must not be empty)
      DONE WHEN:  there is a line of text under this heading. -->
 
-# Name
+# Name Devgyan Prakash
 
 <!-- STEP 4 (continued): the track you're interested in
      WHAT:       Write `robot` or `web` on the line under this heading.
@@ -31,7 +31,7 @@
      DONE WHEN:  there is a line of text under this heading. Not sure? Pick one; you can
                  change your mind later. -->
 
-## Track I'm interested in
+## Track I'm interested in Robot
 
 <!-- STEP 4 (continued): one fun fact
      WHAT:       Write one sentence about yourself under this heading.
@@ -41,4 +41,4 @@
      CHECKED BY: CI (this heading must not be empty)
      DONE WHEN:  there is a line of text under this heading. -->
 
-## Fun fact
+## Fun fact I like red
