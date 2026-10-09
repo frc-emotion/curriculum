@@ -19,7 +19,8 @@ package rankup;
 // minute one and see which methods are still unfinished.
 
 public class JoystickDecider {
-
+ static final double DEADBAND = 0.1;
+ static final double MAX_SPEED = 0.8;
     // STEP 2: Declare DEADBAND
     // WHAT:       Declare a class-level constant named DEADBAND, of type double, equal to 0.1.
     //             Write it here, inside the class but outside any method, as:
@@ -40,9 +41,25 @@ public class JoystickDecider {
     //             one constant is how you retune the whole robot in one place.
     // CONCEPTS:   Constants, `final`, scaling a value by multiplication
     // DONE WHEN:  MAX_SPEED exists here and scaleSpeed uses it.
+    
+     public static void main(String[] args) { 
+        double motorSpeed = 2;
+        int motorPort = 4; 
+        boolean isEnabled = true; 
+        String robotName = "Joe";
+        System.out.println("MotorSpeed:"+ motorSpeed); 
+        System.out.println("MotorPort:" + motorPort);
+        System.out.println("Enabled:" + isEnabled);
+        System.out.println("RobotName:" + robotName);
 
-    public static void main(String[] args) {
-
+        System.out.println("Scaled Speed :" + scaleSpeed(5)); 
+        decideDirection(0.5,false);
+        decideDirection(-0.8,true);
+        decideDirection(0.05,false);
+        decideDirection(0.1,false);
+        decideDirection(-0.1,true);
+        decideDirection(1.0,false);
+        
         // STEP 1: Declare and print four variables
         // WHAT:       Inside main, declare four local variables and print each one with a
         //             label so a human can tell what they are:
@@ -114,8 +131,17 @@ public class JoystickDecider {
     // CONCEPTS:   Ternary (conditional) operator, expressions vs statements
     // DONE WHEN:  a ternary is doing the stop-or-move decision and every test value still gives the right answer.
 
-    static String decideDirection(double joystickValue, boolean isEnabled) {
-        throw new UnsupportedOperationException("STEP 3 not done yet");
+    static String decideDirection(double joystickValue, boolean isEnabled) {  
+        
+        if (isEnabled = false )
+            return "DISABLED";
+        // if (joystickValue > DEADBAND) 
+        //     return "FORWARD" ;
+        // else if (joystickValue < -DEADBAND)
+        //     return "BACKWARD";
+        // else 
+        //     return "STOP" 
+    return  (Math.abs(joystickValue) == 0.1) ? "STOP" : (joystickValue > DEADBAND) ? "FOWARD" : "BACKWARD";
     }
 
     // STEP 5 (continued): fill in scaleSpeed
@@ -126,7 +152,7 @@ public class JoystickDecider {
     // DONE WHEN:  scaleSpeed(1.0) gives 0.8 and scaleSpeed(-0.5) gives -0.4.
 
     static double scaleSpeed(double joystickValue) {
-        throw new UnsupportedOperationException("STEP 5 not done yet");
+        return joystickValue * MAX_SPEED ;
     }
 
     // STEP 7: Fill in driveModeName with a switch
@@ -140,6 +166,14 @@ public class JoystickDecider {
     // DONE WHEN:  0, 1, and something silly like 7 all give the right answer.
 
     static String driveModeName(int driveMode) {
-        throw new UnsupportedOperationException("STEP 7 not done yet");
+        switch (driveMode) 
+        {
+            case 0:
+                return "TANK"; 
+            case 1: 
+                return "ARCADE";
+            default:
+                return "UNKNOWN";
+        }
     }
 }
