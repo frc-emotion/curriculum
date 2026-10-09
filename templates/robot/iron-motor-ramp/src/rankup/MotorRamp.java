@@ -37,6 +37,9 @@ public class MotorRamp {
     // DONE WHEN:  the list grows by exactly one entry per setMotorSpeed call, and main
     //             prints its size at the end.
 
+    static ArrayList<Double> speedLog = new ArrayList<>();
+    
+
     public static void main(String[] args) {
 
         // STEP 7: Swerve module speeds, average and max

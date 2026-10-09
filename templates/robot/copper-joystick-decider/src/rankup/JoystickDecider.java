@@ -31,6 +31,7 @@ public class JoystickDecider {
     //             (`static` is explained properly at Gold. For now: it means the constant
     //              belongs to the class itself, so every method here can use it.)
     // DONE WHEN:  DEADBAND exists here and the methods below use it instead of typing 0.1.
+    static final double DEADBAND = 0.1;
 
     // STEP 5: Declare MAX_SPEED
     // WHAT:       Declare a class-level constant named MAX_SPEED, of type double, equal to 0.8,
@@ -40,6 +41,7 @@ public class JoystickDecider {
     //             one constant is how you retune the whole robot in one place.
     // CONCEPTS:   Constants, `final`, scaling a value by multiplication
     // DONE WHEN:  MAX_SPEED exists here and scaleSpeed uses it.
+    static final double MAX_SPEED = 0.8;
 
     public static void main(String[] args) {
 
@@ -52,16 +54,27 @@ public class JoystickDecider {
         //               robotName   (String)
         //             Pick sensible values yourself. A label means output like
         //             `Motor speed: 0.5`, not a bare `0.5`.
+
+        double motorSpeed = 0.5;
+        int motorPort = 1;
+        boolean isEnabled = true;
+        String robotName = "Daniel";
+
+        System.out.println("Motor Speed: " + motorSpeed);
+        System.out.println("Motor Port: " + motorPort);
+        System.out.println("Is it enabled?: " + isEnabled);
+        System.out.println("Robot Name: " + robotName);
+
         // WHY:        These four types cover nearly everything a robot program tracks: how
         //             fast (double), which port (int), is it on (boolean), and what is it
         //             called (String). Printing with labels is the debugging tool you will
         //             reach for more than any other, all season.
         // CONCEPTS:   Variable declaration, primitive types, String, System.out.println
         // DONE WHEN:  `./gradlew run` prints four labelled lines.
-
         // STEP 5 (continued): print a scaled value
         // WHAT:       After the methods work, call scaleSpeed with a joystick value and print
         //             the result with a label.
+        System.out.println("Scaled Speed: " + scaleSpeed(0.5));
         // WHY:        Seeing the scaled number next to the raw one is how you check that a
         //             speed cap is actually doing something.
         // CONCEPTS:   Calling a method, printing a returned value
@@ -73,6 +86,13 @@ public class JoystickDecider {
         //               0.5, -0.8, 0.05, 0.1, -0.1, 1.0
         //             Then paste the output into your pull request description.
         //             (Yes, six separate lines. Loops are Iron; write them out.)
+        System.out.println("Input 0.5: " + decideDirection(0.5, true));
+        System.out.println("Input -0.8: " + decideDirection(-0.8, true));
+        System.out.println("Input 0.05: " + decideDirection(0.05, true));
+        System.out.println("Input 0.1: " + decideDirection(0.1, true));
+        System.out.println("Input -0.1: " + decideDirection(-0.1, true));
+        System.out.println("Input 1.0: " + decideDirection(1.0, true));
+
         // WHY:        0.1 and -0.1 are exactly on the deadband edge, and edge cases are where
         //             robot code breaks. Reading your own output is how you catch that before
         //             a match does.
@@ -88,21 +108,22 @@ public class JoystickDecider {
     //               "STOP"     otherwise.
     //             Use Math.abs to decide whether the stick is inside the deadband.
     //             Exactly 0.1 and exactly -0.1 must both be "STOP" — the deadband edge
-    //             counts as stopped.
-    // WHY:        This is the first decision every teleop program makes. Getting the edge
-    //             wrong is what makes a robot twitch when nobody is touching the controls.
-    // CONCEPTS:   if / else if / else, comparison operators, Math.abs, returning a value
-    // DONE WHEN:  every value from step 8 gives the answer you'd expect, and 0.1 and -0.1
-    //             both give "STOP".
+    //             counts as stopped.   
 
     // STEP 4: Handle the disabled case
     // WHAT:       When isEnabled is false, decideDirection returns "DISABLED" no matter what
     //             the joystick says.
+
     // WHY:        A disabled robot must not move, ever. On a real field the referees can
     //             disable you mid-match, and "the driver was still pushing the stick" is not
     //             an excuse the robot gets to make.
     // CONCEPTS:   boolean logic, early return, order of checks
     // DONE WHEN:  any joystick value with isEnabled false returns "DISABLED".
+    // WHY:        This is the first decision every teleop program makes. Getting the edge
+    //             wrong is what makes a robot twitch when nobody is touching the controls.
+    // CONCEPTS:   if / else if / else, comparison operators, Math.abs, returning a value
+    // DONE WHEN:  every value from step 8 gives the answer you'd expect, and 0.1 and -0.1
+    //             both give "STOP".
 
     // STEP 6: Rewrite the STOP check with a ternary
     // WHAT:       Rewrite the part of decideDirection that decides between stopped and moving
@@ -115,7 +136,15 @@ public class JoystickDecider {
     // DONE WHEN:  a ternary is doing the stop-or-move decision and every test value still gives the right answer.
 
     static String decideDirection(double joystickValue, boolean isEnabled) {
-        throw new UnsupportedOperationException("STEP 3 not done yet");
+        // throw new UnsupportedOperationException("STEP 3 not done yet");
+
+        if (!isEnabled) {
+            return "DISABLED";
+        }
+        
+        String stopOrGo = (Math.abs(joystickValue) <= DEADBAND) ? "STOP" : (Math.abs(joystickValue) > DEADBAND) ? "FORWARD": "BACKWARD";
+
+        return stopOrGo;
     }
 
     // STEP 5 (continued): fill in scaleSpeed
@@ -126,7 +155,9 @@ public class JoystickDecider {
     // DONE WHEN:  scaleSpeed(1.0) gives 0.8 and scaleSpeed(-0.5) gives -0.4.
 
     static double scaleSpeed(double joystickValue) {
-        throw new UnsupportedOperationException("STEP 5 not done yet");
+        // throw new UnsupportedOperationException("STEP 5 not done yet");
+        joystickValue *= MAX_SPEED;
+        return joystickValue;
     }
 
     // STEP 7: Fill in driveModeName with a switch
@@ -140,6 +171,18 @@ public class JoystickDecider {
     // DONE WHEN:  0, 1, and something silly like 7 all give the right answer.
 
     static String driveModeName(int driveMode) {
-        throw new UnsupportedOperationException("STEP 7 not done yet");
+        // throw new UnsupportedOperationException("STEP 7 not done yet");
+        
+        switch (driveMode) {
+            case 0:
+                return "TANK";
+            
+            case 1:
+                return "ARCADE";
+            
+            default:
+                return "UNKNOWN";
+        }
+        
     }
 }
