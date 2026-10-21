@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Gold: Attendance Card
 // STEPS HERE:  none — this is the data and the types you build on
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Gold tab)
 // ============================================================
 //
 // Finished — don't change it. The types here are the same shape you wrote

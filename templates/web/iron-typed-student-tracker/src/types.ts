@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
 // STEPS HERE:  1
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 //
 // One file that describes the shape of everything else. When somebody joins the

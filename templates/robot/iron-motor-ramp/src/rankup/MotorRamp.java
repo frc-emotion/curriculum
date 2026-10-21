@@ -3,7 +3,6 @@ package rankup;
 // ============================================================
 // RANK:        Robot Iron: Motor Ramp Simulator
 // STEPS HERE:  1 to 9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Iron tab)
 // ============================================================
 //
 // Slamming a motor from 0 to full power is how you strip a gear, brown out the radio, and

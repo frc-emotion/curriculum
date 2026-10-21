@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 //
 // You documented all of this at Platinum, so it comes filled in this time. The short version
