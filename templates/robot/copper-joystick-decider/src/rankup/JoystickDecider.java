@@ -56,7 +56,7 @@ public class JoystickDecider {
         //             called (String). Printing with labels is the debugging tool you will
         //             reach for more than any other, all season.
         // CONCEPTS:   Variable declaration, primitive types, String, System.out.println
-        // DONE WHEN:  `./gradlew run` prints four labelled lines.
+        // DONE WHEN:  Hitting the run button prints four labelled lines.
 
         // STEP 5 (continued): print a scaled value
         // WHAT:       After the methods work, call scaleSpeed with a joystick value and print
@@ -64,7 +64,7 @@ public class JoystickDecider {
         // WHY:        Seeing the scaled number next to the raw one is how you check that a
         //             speed cap is actually doing something.
         // CONCEPTS:   Calling a method, printing a returned value
-        // DONE WHEN:  `./gradlew run` prints a scaled speed.
+        // DONE WHEN:  Hitting the run button prints a scaled speed.
 
         // STEP 8: Call decideDirection with every test value
         // WHAT:       Call decideDirection once for each of these joystick values, one call
