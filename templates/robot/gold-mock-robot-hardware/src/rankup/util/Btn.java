@@ -9,12 +9,18 @@ package rankup.util;
 // that code when pressed. That "code as a value" idea is the whole reason WPILib's
 // command-based framework works the way it does.
 
-public class Button {
- private Runnable action;
-    public Button(Runnable action) {
+public class Btn {
+    private final Runnable action;
+
+    public Btn(Runnable action) {
         this.action = action;
-    }  
-    whileTrue() {
+    }
+
+    public void press() {
+        action.run();
+    }
+
+    public void go() {
         action.run();
     }
     // STEP 7: Build the Button class

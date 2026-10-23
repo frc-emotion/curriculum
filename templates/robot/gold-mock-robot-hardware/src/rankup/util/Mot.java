@@ -9,27 +9,45 @@ package rankup.util;
 // changes: something owns a motor, nobody else touches it, and every speed gets clamped on
 // the way in.
 
-public class Motor {
-    private String name;
-    private int port;
+public class Mot {
+    private final String name;
+    private final int port;
     private double speed;
 
-    public Motor(String name, int port) {
+    public Mot(int port) {
+        this("Mot-" + port, port);
+    }
+
+    public Mot(String name, int port) {
         this.name = name;
         this.port = port;
         this.speed = 0.0;
     }
+
     public void setSpeed(double speed) {
         this.speed = clamp(speed, -1.0, 1.0);
     }
+
     public double getSpeed() {
         return this.speed;
     }
+
     public String getName() {
         return this.name;
     }
+
     public int getPort() {
         return this.port;
+    }
+
+    private double clamp(double value, double min, double max) {
+        if (value < min) {
+            return min;
+        }
+        if (value > max) {
+            return max;
+        }
+        return value;
     }
     // STEP 1: Build the Motor class
     // WHAT:       Give this class:
