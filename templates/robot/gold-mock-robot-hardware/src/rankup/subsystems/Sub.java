@@ -9,7 +9,24 @@ package rankup.subsystems;
 // SubsystemBase plays exactly this role — it gives every subsystem a name and a periodic()
 // that runs every loop, so each individual subsystem doesn't have to reinvent either.
 
-public class MockSubsystem {
+public class Sub {
+    private final String name;
+
+    public Sub(String name) {
+        this.name = name;
+    }
+
+    protected void println(String message) {
+        System.out.println(message);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void periodic() {
+        println(getName() + " heartbeat");
+    }
 
     // STEP 5: Build the shared parent
     // WHAT:       Give this class:
