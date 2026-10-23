@@ -19,6 +19,12 @@ package rankup;
 // minute one and see which methods are still unfinished.
 
 public class JoystickDecider {
+    static final double DEADBAND = 0.1;
+    static final int MotorPort = 0;    // motor port
+    static final boolean isEnabled = false; // is the robot enabled
+    static final String robotName = "Copper"; // the robot's name
+    
+
 
     // STEP 2: Declare DEADBAND
     // WHAT:       Declare a class-level constant named DEADBAND, of type double, equal to 0.1.
@@ -42,6 +48,16 @@ public class JoystickDecider {
     // DONE WHEN:  MAX_SPEED exists here and scaleSpeed uses it.
 
     public static void main(String[] args) {
+        
+      System.out.println (  decideDirection(0.5, true));
+       System.out.println(decideDirection(-0.8, true));
+        System.out.println(decideDirection(0.05, true));
+        System.out.println(decideDirection(0.1, true));
+        System.out.println(decideDirection(-0.1, true));
+        System.out.println(decideDirection(1.0, true));
+    }
+        
+
 
         // STEP 1: Declare and print four variables
         // WHAT:       Inside main, declare four local variables and print each one with a
@@ -79,7 +95,7 @@ public class JoystickDecider {
         // CONCEPTS:   Calling methods, arguments, reading your own output
         // DONE WHEN:  six lines of output are in your PR description.
 
-    }
+    
 
     // STEP 3: Fill in decideDirection
     // WHAT:       Fill in the body of decideDirection so it returns:
@@ -114,19 +130,31 @@ public class JoystickDecider {
     // CONCEPTS:   Ternary (conditional) operator, expressions vs statements
     // DONE WHEN:  a ternary is doing the stop-or-move decision and every test value still gives the right answer.
 
-    static String decideDirection(double joystickValue, boolean isEnabled) {
-        throw new UnsupportedOperationException("STEP 3 not done yet");
+   static String decideDirection(double joystickValue, boolean isEnabled) {         
+    if (!isEnabled) {
+        return "DISABLED";
     }
 
-    // STEP 5 (continued): fill in scaleSpeed
-    // WHAT:       Fill in scaleSpeed so it returns the joystick value multiplied by MAX_SPEED.
+    if (joystickValue >= DEADBAND) {                 
+        return "FORWARD";             
+    } else if (joystickValue <= -DEADBAND) {                            
+        return "BACKWARD";
+    } else {                 
+        return "STOP";             
+    }                        
+} // Fallback return statement to prevent compilation errors
+
+
     // WHY:        This is how every speed cap on the robot is applied: one multiply, one
     //             constant, one place to change it when the drivers say it's too fast.
     // CONCEPTS:   Arithmetic operators, using a constant, returning a value
     // DONE WHEN:  scaleSpeed(1.0) gives 0.8 and scaleSpeed(-0.5) gives -0.4.
 
     static double scaleSpeed(double joystickValue) {
-        throw new UnsupportedOperationException("STEP 5 not done yet");
+     double MAX_SPEED = 0.8; // the maximum speed
+    double scalespeed =  MAX_SPEED*joystickValue; // scaled speed
+
+        return scalespeed;
     }
 
     // STEP 7: Fill in driveModeName with a switch
@@ -140,6 +168,13 @@ public class JoystickDecider {
     // DONE WHEN:  0, 1, and something silly like 7 all give the right answer.
 
     static String driveModeName(int driveMode) {
-        throw new UnsupportedOperationException("STEP 7 not done yet");
+        switch (driveMode) {
+            case 0:
+                return "TANK";
+            case 1:
+                return "ARCADE";
+            default:
+                return "UNKNOWN";
+        }
     }
 }
