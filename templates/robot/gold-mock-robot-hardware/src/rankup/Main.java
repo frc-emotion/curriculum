@@ -3,7 +3,6 @@ package rankup;
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
 // STEPS HERE:  3, 7, 8, 9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Gold tab)
 // ============================================================
 //
 // This is the fake robot's driver station: where the objects get created, wired to buttons,

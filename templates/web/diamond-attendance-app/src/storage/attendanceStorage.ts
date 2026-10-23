@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Diamond: Attendance App
 // STEPS HERE:  9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Diamond tab)
 // ============================================================
 //
 // Everything that talks to the phone's storage lives here — the same rule as

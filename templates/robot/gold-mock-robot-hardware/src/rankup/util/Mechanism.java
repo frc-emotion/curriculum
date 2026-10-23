@@ -3,7 +3,6 @@ package rankup.util;
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
 // STEPS HERE:  4
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Gold tab)
 // ============================================================
 //
 // An interface is a promise: "whatever I am, I can do these things." Code that only needs

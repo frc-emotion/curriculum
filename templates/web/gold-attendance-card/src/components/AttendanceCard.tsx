@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Gold: Attendance Card
 // STEPS HERE:  1, 2
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Gold tab)
 // ============================================================
 //
 // One student, one row. This is the smallest component in the app and the one

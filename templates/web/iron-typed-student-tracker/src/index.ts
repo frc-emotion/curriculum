@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
 // STEPS HERE:  7, 8, 9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 
 import { students } from './data/students.js';

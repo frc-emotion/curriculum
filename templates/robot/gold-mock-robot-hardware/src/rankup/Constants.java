@@ -3,7 +3,6 @@ package rankup;
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
 // STEPS HERE:  2
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Gold tab)
 // ============================================================
 //
 // Every number that describes the robot lives here: CAN IDs, ports, speeds, gear ratios.

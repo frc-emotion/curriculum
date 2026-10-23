@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
 // STEPS HERE:  7
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 
 // STEP 7: Bring your own card across

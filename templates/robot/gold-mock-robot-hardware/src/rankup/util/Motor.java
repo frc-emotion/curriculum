@@ -3,7 +3,6 @@ package rankup.util;
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
 // STEPS HERE:  1
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Gold tab)
 // ============================================================
 //
 // A pretend motor controller. At Platinum this becomes a real TalonFX, and the shape barely

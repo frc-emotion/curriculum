@@ -3,7 +3,6 @@ package frc.robot;
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
 // STEPS HERE:  4, 6, 7
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 
 public final class Constants {
