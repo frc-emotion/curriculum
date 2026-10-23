@@ -21,7 +21,13 @@ package rankup;
 public class Main {
 
     public static void main(String[] args) {
-
+        new object() {
+            Intake intake = new Intake();
+            Shooter shooter = new Shooter();
+            ArrayList<MockSubsystem> subsystems = new ArrayList<MockSubsystem>();
+            Button intakeButton = new Button(() -> intake.run());
+            Button shooterButton = new Button(shooter::stop);
+        };
         // STEP 3: Two motors, proving objects are separate things
         // WHAT:       Create two Motor objects with different names and ports, set a speed on
         //             one of them only, then print both speeds with labels.
@@ -32,7 +38,8 @@ public class Main {
         //             whole robot moves at once.
         // CONCEPTS:   Classes vs objects, `new`, constructors, object state
         // DONE WHEN:  the printout shows one motor's speed changed and the other's didn't.
-
+        button intakeButton = new Button(() -> intake.run());
+        button shooterButton = new Button(shooter::stop);
         // STEP 7 (continued): bind two buttons
         // WHAT:       Create two Button objects and press them:
         //               - one built with a lambda:            () -> intake.run()
@@ -42,7 +49,7 @@ public class Main {
         //             button press is handed a chunk of code to run later, exactly like this.
         // CONCEPTS:   Lambdas, method references, Runnable, passing behaviour as a value
         // DONE WHEN:  pressing the buttons visibly runs the intake and stops the shooter.
-
+        intakeButton.runAtSpeed(() -> 0.42);   
         // STEP 8 (continued): drive the intake from a supplier
         // WHAT:       Call intake.runAtSpeed(...) and pass a lambda that returns a pretend
         //             joystick value.
@@ -51,7 +58,14 @@ public class Main {
         //             instead of once at startup — you'll do exactly this at Diamond.
         // CONCEPTS:   DoubleSupplier, lambdas that return a value, deferred evaluation
         // DONE WHEN:  the intake's motor ends up at the value your lambda returned.
-
+        arrayList<MockSubsystem> subsystems = new ArrayList<MockSubsystem>();
+        subsystems.add(intake);
+        subsystems.add(shooter);
+        for (int i = 0; i < 5; i++) {
+            for (MockSubsystem subsystem : subsystems) {
+                subsystem.periodic();
+            }
+        }
         // STEP 9: Five robot ticks
         // WHAT:       Put all your subsystems into an ArrayList<MockSubsystem>, then loop 5
         //             times. Each time round, call periodic() on every subsystem in the list.
@@ -62,9 +76,9 @@ public class Main {
         // CONCEPTS:   ArrayList of a supertype, polymorphism, looping, the periodic pattern
         // DONE WHEN:  running the program prints 5 rounds of subsystem output, and the
         //             printed speeds change after a button press.
-
+        System.out.println("Class vs object: A class is like a cookie cutter, and an object is the cookie you make with it.");
         // STEP 10: Class vs object, in your own words
-        // WHAT:       In your pull request description, write one sentence giving a
+        // WHAT:       In your code, print one sentence giving a
         //             real-world analogy for the difference between a class and an object.
         // WHY:        If you can explain it in one sentence without saying "blueprint", you
         //             actually understand it. (You may say blueprint. But try not to.)

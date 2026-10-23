@@ -12,7 +12,10 @@ package rankup;
 // 11pm in a hotel lobby.
 
 public final class Constants {
-
+    public static final int    INTAKE_MOTOR_PORT   = 1;
+    public static final int    SHOOTER_MOTOR_PORT  = 2;
+    public static final double INTAKE_SPEED        = 0.8;
+    public static final double SHOOTER_SPEED       = 0.9;
     // STEP 2: Add the ports and the intake speed
     // WHAT:       Add three constants to this class:
     //               public static final int    INTAKE_MOTOR_PORT   = 1

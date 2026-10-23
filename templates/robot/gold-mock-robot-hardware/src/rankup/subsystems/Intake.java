@@ -1,5 +1,9 @@
 package rankup.subsystems;
 
+import java.util.function.DoubleSupplier;
+import rankup.Constants;
+import rankup.util.Mechanism;
+import rankup.util.Motor;
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
 // STEPS HERE:  6, 8
@@ -16,7 +20,11 @@ package rankup.subsystems;
 //   import rankup.util.Motor;
 
 public class Intake {
-
+    public Intake() {
+        println("Intake subsystem created");
+    }
+    private Motor motor = new Motor(Constants.INTAKE_MOTOR_PORT);
+    
     // STEP 6: Make Intake a real subsystem
     // WHAT:       Change the class declaration so Intake extends MockSubsystem and implements
     //             Mechanism. Then give it:
@@ -36,7 +44,16 @@ public class Intake {
     // CONCEPTS:   extends, implements, super(...), @Override, private fields, composition
     // DONE WHEN:  an Intake is both a MockSubsystem and a Mechanism, run() leaves its motor
     //             at the intake speed, and stop() leaves it at 0.
-
+    public void run() {
+        motor.setSpeed(Constants.INTAKE_SPEED);
+    }
+    public void stop() {
+        motor.setSpeed(0.0);
+    }
+    @Override public void periodic() {
+        println(getName() + " speed: " + motor.getSpeed());
+    }
+    
     // STEP 8: Add runAtSpeed
     // WHAT:       Add this method:
     //               public void runAtSpeed(DoubleSupplier speed)

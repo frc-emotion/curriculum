@@ -11,6 +11,8 @@ package rankup.util;
 // shooter, or something nobody has built yet.
 
 public interface Mechanism {
+void stop();
+String getName();
 
     // STEP 4: Declare what every mechanism can do
     // WHAT:       Declare two methods in this interface — no bodies, just the signatures

@@ -15,7 +15,20 @@ package rankup.subsystems;
 //   import rankup.util.Motor;
 
 public class Shooter {
-
+    private Motor motor = new Motor(Constants.SHOOTER_MOTOR_PORT);
+    public Shooter() {
+        println("Shooter subsystem created");
+    }
+    public void run() {
+        motor.setSpeed(Constants.SHOOTER_SPEED);
+    }
+    public void stop() {
+        motor.setSpeed(0.0);
+    }
+    @Override public void periodic() {
+        println(getName() + " speed: " + motor.getSpeed());
+    }
+    
     // STEP 6 (continued from Intake.java): make Shooter a real subsystem
     // WHAT:       Same shape as Intake. Change the declaration so Shooter extends
     //             MockSubsystem and implements Mechanism, then give it:

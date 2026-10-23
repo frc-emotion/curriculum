@@ -11,7 +11,27 @@ package rankup.util;
 // the way in.
 
 public class Motor {
+    private String name;
+    private int port;
+    private double speed;
 
+    public Motor(String name, int port) {
+        this.name = name;
+        this.port = port;
+        this.speed = 0.0;
+    }
+    public void setSpeed(double speed) {
+        this.speed = clamp(speed, -1.0, 1.0);
+    }
+    public double getSpeed() {
+        return this.speed;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public int getPort() {
+        return this.port;
+    }
     // STEP 1: Build the Motor class
     // WHAT:       Give this class:
     //               - three PRIVATE fields: a String `name`, an int `port`, a double `speed`

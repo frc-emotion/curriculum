@@ -11,7 +11,13 @@ package rankup.util;
 // command-based framework works the way it does.
 
 public class Button {
-
+ private Runnable action;
+    public Button(Runnable action) {
+        this.action = action;
+    }  
+    whileTrue() {
+        action.run();
+    }
     // STEP 7: Build the Button class
     // WHAT:       Give this class:
     //               - a private field holding a Runnable
