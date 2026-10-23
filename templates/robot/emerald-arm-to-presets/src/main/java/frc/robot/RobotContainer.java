@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj2.command.Commands;
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
 // STEPS HERE:  7, 8
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 //
 // Same job as always: this is where the robot gets assembled and every binding lives. By the

@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Copper: Student Filter
 // STEPS HERE:  1 to 7
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Copper tab)
 // ============================================================
 //
 // Seven small functions over the team roster. Each one is the kind of thing you
