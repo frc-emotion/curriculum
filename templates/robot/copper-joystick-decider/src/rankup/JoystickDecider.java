@@ -14,7 +14,7 @@ public class JoystickDecider {
             int motorPort = 1;
             boolean isEnabled = true;
             String robotName = "Copper";
-            double joystickValue = -0.5;
+            double joystickValue = 1.0;
 
             System.out.println("Motor speed: " + motorSpeed);
             System.out.println("Motor port: " + motorPort);
