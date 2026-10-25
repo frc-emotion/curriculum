@@ -3,7 +3,6 @@ package rankup;
 // ============================================================
 // RANK:        Robot Copper: Joystick Direction Decider
 // STEPS HERE:  1 to 8
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Copper tab)
 // ============================================================
 //
 // You are writing the thinking part of a drive program. A driver pushes a joystick; your
@@ -24,7 +23,6 @@ public class JoystickDecider {
     // WHAT:       Declare a class-level constant named DEADBAND, of type double, equal to 0.1.
     //             Write it here, inside the class but outside any method, as:
     //             a `static final double` named DEADBAND.
-    static final double DEADBAND = 0.1;
     // WHY:        A joystick that is "centered" never reads exactly 0.0 — worn springs and
     //             cheap sensors mean it sits at 0.02 or -0.05. Without a deadband, a robot
     //             sitting untouched creeps across the field. That is a real match-losing bug.
@@ -41,8 +39,7 @@ public class JoystickDecider {
     //             one constant is how you retune the whole robot in one place.
     // CONCEPTS:   Constants, `final`, scaling a value by multiplication
     // DONE WHEN:  MAX_SPEED exists here and scaleSpeed uses it.
-    static final double MAX_SPEED = 0.8;
-    
+
     public static void main(String[] args) {
 
         // STEP 1: Declare and print four variables
@@ -54,22 +51,12 @@ public class JoystickDecider {
         //               robotName   (String)
         //             Pick sensible values yourself. A label means output like
         //             `Motor speed: 0.5`, not a bare `0.5`.
-        double motorSpeed = 0.5;
-        int motorPort = 1;
-        boolean isEnabled = true;
-        String robotName = "RoboCop";
-        
-        System.out.println("Motor speed: " + motorSpeed);
-        
-        System.out.println("Motor port: " + motorPort);
-        System.out.println("Is enabled: " + isEnabled);
-        System.out.println("Robot name: " + robotName);
         // WHY:        These four types cover nearly everything a robot program tracks: how
         //             fast (double), which port (int), is it on (boolean), and what is it
         //             called (String). Printing with labels is the debugging tool you will
         //             reach for more than any other, all season.
         // CONCEPTS:   Variable declaration, primitive types, String, System.out.println
-        // DONE WHEN:  `./gradlew run` prints four labelled lines.
+        // DONE WHEN:  Hitting the run button prints four labelled lines.
 
         // STEP 5 (continued): print a scaled value
         // WHAT:       After the methods work, call scaleSpeed with a joystick value and print
@@ -77,8 +64,7 @@ public class JoystickDecider {
         // WHY:        Seeing the scaled number next to the raw one is how you check that a
         //             speed cap is actually doing something.
         // CONCEPTS:   Calling a method, printing a returned value
-        // DONE WHEN:  `./gradlew run` prints a scaled speed.
-        System.out.println("scaledvalue" + scaleSpeed(0.5));
+        // DONE WHEN:  Hitting the run button prints a scaled speed.
 
         // STEP 8: Call decideDirection with every test value
         // WHAT:       Call decideDirection once for each of these joystick values, one call
@@ -91,12 +77,6 @@ public class JoystickDecider {
         //             a match does.
         // CONCEPTS:   Calling methods, arguments, reading your own output
         // DONE WHEN:  six lines of output are in your PR description.
-        decideDirection (0.5, true);
-        decideDirection (-0.8,false);
-        decideDirection (0.05,false);
-        decideDirection (0.1,true);
-        decideDirection (-0.1, false);
-        decideDirection (1.0,true);
 
     }
 
@@ -134,24 +114,9 @@ public class JoystickDecider {
     // DONE WHEN:  a ternary is doing the stop-or-move decision and every test value still gives the right answer.
 
     static String decideDirection(double joystickValue, boolean isEnabled) {
-        if (isEnabled == false){
-            return "DISABLED";
-        }
-        if (joystickValue > DEADBAND){
-            return "FORWARD"; 
-        }
-        if (joystickValue < -DEADBAND){
-            return "BACKWARD"; 
-        }
-        if (Math.abs(joystickValue) <= 0.1){
-            return "STOP";
-        }
-        return "UNKNOWN";   
+        throw new UnsupportedOperationException("STEP 3 not done yet");
     }
-        
 
-         
-            
     // STEP 5 (continued): fill in scaleSpeed
     // WHAT:       Fill in scaleSpeed so it returns the joystick value multiplied by MAX_SPEED.
     // WHY:        This is how every speed cap on the robot is applied: one multiply, one
@@ -160,7 +125,7 @@ public class JoystickDecider {
     // DONE WHEN:  scaleSpeed(1.0) gives 0.8 and scaleSpeed(-0.5) gives -0.4.
 
     static double scaleSpeed(double joystickValue) {
-        return (joystickValue*MAX_SPEED);
+        throw new UnsupportedOperationException("STEP 5 not done yet");
     }
 
     // STEP 7: Fill in driveModeName with a switch
@@ -174,12 +139,6 @@ public class JoystickDecider {
     // DONE WHEN:  0, 1, and something silly like 7 all give the right answer.
 
     static String driveModeName(int driveMode) {
-        switch (driveModeName){
-            case 0:
-        return "TANK";
-            case 1:
-        return "ARCADE";
-        }
-        return "UNKNOWN";
+        throw new UnsupportedOperationException("STEP 7 not done yet");
     }
 }

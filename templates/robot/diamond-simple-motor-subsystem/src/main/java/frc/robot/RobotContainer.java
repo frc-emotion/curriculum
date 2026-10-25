@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj2.command.Commands;
 // ============================================================
 // RANK:        Robot Diamond: Simple Motor Subsystem
 // STEPS HERE:  7, 8, 9
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Diamond tab)
 // ============================================================
 //
 // Every binding on the robot lives in this file. When a driver asks "what does B do?", this

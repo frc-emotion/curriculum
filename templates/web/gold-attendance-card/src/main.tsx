@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Gold: Attendance Card
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Gold tab)
 // ============================================================
 //
 // The one place React connects to the actual web page. It finds the empty

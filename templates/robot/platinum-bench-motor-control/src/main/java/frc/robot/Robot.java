@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 // ============================================================
 // RANK:        Robot Platinum: Bench Motor Control
 // STEPS HERE:  1, 2, 5, 6
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Platinum tab)
 // ============================================================
 //
 // This is the robot's schedule. WPILib calls these methods for you — you never call them

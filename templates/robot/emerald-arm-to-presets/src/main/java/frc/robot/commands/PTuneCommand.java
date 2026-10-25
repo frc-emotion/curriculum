@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
 // STEPS HERE:  1, 2, 3
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 //
 // At Diamond you built commands as factory methods on the subsystem. This one is a real

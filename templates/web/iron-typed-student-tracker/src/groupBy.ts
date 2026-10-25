@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
 // STEPS HERE:  3
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 
 // STEP 3: Write a generic groupBy

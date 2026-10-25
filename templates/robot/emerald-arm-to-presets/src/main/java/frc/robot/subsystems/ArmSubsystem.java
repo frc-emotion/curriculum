@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 // ============================================================
 // RANK:        Robot Emerald: Arm to Presets
 // STEPS HERE:  1, 4, 5, 6
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Emerald tab)
 // ============================================================
 //
 // An arm is the first mechanism where "just set the motor to 0.3" stops working. Point it

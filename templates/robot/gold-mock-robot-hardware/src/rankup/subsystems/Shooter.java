@@ -3,7 +3,6 @@ package rankup.subsystems;
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
 // STEPS HERE:  6
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Gold tab)
 // ============================================================
 //
 // The thing that throws game pieces. Same shape as the Intake, which is the point: once you
