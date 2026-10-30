@@ -3,7 +3,6 @@ package frc.robot;
 // ============================================================
 // RANK:        Robot Platinum: Bench Motor Control
 // STEPS HERE:  3
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Platinum tab)
 // ============================================================
 //
 // Same job as the Constants class you wrote at Gold, except these numbers describe real

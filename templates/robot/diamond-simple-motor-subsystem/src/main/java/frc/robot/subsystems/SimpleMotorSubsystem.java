@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 // ============================================================
 // RANK:        Robot Diamond: Simple Motor Subsystem
 // STEPS HERE:  1, 2, 3, 4, 5, 6
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Diamond tab)
 // ============================================================
 //
 // A subsystem owns a piece of hardware and is the only thing allowed to touch it. Everything

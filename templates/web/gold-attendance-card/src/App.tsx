@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Gold: Attendance Card
 // STEPS HERE:  4, 5, 6, 7, 8
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Gold tab)
 // ============================================================
 //
 // The top of the tree. App owns the attendance data; everything below it just

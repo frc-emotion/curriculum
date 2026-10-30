@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Iron: Typed Student Tracker
 // STEPS HERE:  4, 5, 6
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Iron tab)
 // ============================================================
 //
 // Everything that talks to the network lives in this file. That is a rule worth

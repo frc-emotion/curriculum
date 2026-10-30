@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
 // STEPS HERE:  1, 5, 8
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // A custom hook is just a function whose name starts with `use` and which calls

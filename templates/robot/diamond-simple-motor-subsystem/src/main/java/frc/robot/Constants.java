@@ -3,7 +3,6 @@ package frc.robot;
 // ============================================================
 // RANK:        Robot Diamond: Simple Motor Subsystem
 // STEPS HERE:  1, 3
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Diamond tab)
 // ============================================================
 
 public final class Constants {
