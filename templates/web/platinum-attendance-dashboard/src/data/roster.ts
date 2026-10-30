@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
 // STEPS HERE:  none — types and the endpoint
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // The roster no longer lives in this file. It lives at ROSTER_URL, served from

@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.RobotBase;
 // ============================================================
 // RANK:        Robot Platinum: Bench Motor Control
 // STEPS HERE:  none — this file is plumbing
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Platinum tab)
 // ============================================================
 //
 // Every Java program starts at main. On a robot, main's only job is to hand control to

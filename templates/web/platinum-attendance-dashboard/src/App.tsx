@@ -1,7 +1,6 @@
 // ============================================================
 // RANK:        Web Platinum: Attendance Dashboard
 // STEPS HERE:  2, 3, 4, 6, 7
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Web track > Platinum tab)
 // ============================================================
 //
 // The dashboard. Same job as Gold's App — own the state, hand it down — with

@@ -3,7 +3,6 @@ package rankup.subsystems;
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
 // STEPS HERE:  5
-// GUIDE:       https://claude.ai/code/artifact/5fdfb435-43a4-4db4-90f5-c843171497ee  (Robot track > Gold tab)
 // ============================================================
 //
 // The shared parent of every subsystem on this fake robot. At Platinum, WPILib's
