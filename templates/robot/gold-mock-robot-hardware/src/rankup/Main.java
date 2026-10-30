@@ -1,10 +1,10 @@
 package rankup;
 
 import java.util.ArrayList;
-import rankup.subsystems.Grab;
-import rankup.subsystems.Sub;
-import rankup.subsystems.Shot;
-import rankup.util.Btn;
+import rankup.subsystems.Intake;
+import rankup.subsystems.MockSubsystem;
+import rankup.subsystems.Shooter;
+import rankup.util.Button;
 
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
@@ -23,14 +23,14 @@ import rankup.util.Btn;
 //   import rankup.util.Btn;
 //   import rankup.util.Motor;
 
-public class App {
+public class Main {
     public static void main(String[] args) {
-        Grab grab = new Grab();
-        Shot shot = new Shot();
-        ArrayList<Sub> parts = new ArrayList<>();
+        Intake grab = new Intake();
+        Shooter shot = new Shooter();
+        ArrayList<MockSubsystem> parts = new ArrayList<>();
 
-        Btn grabBtn = new Btn(() -> grab.run());
-        Btn shotBtn = new Btn(shot::stop);
+        Button grabBtn = new Button(() -> grab.run());
+        Button shotBtn = new Button(shot::stop);
 
         grabBtn.press();
         shotBtn.press();
@@ -41,7 +41,7 @@ public class App {
         parts.add(shot);
 
         for (int i = 0; i < 5; i++) {
-            for (Sub part : parts) {
+            for (MockSubsystem part : parts) {
                 part.periodic();
             }
         }

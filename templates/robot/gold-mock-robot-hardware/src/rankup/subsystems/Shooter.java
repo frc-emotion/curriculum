@@ -1,6 +1,6 @@
 package rankup.subsystems;
 
-import rankup.Cfg;
+import rankup.Constants;
 import rankup.util.Thing;
 import rankup.util.Mot;
 
@@ -17,17 +17,17 @@ import rankup.util.Mot;
 //   import rankup.util.Mechanism;
 //   import rankup.util.Motor;
 
-public class Shot extends Sub implements Thing {
+public class Shooter extends MockSubsystem implements Thing {
     private final Mot motor;
 
-    public Shot() {
+    public Shooter() {
         super("Shot");
-        motor = new Mot(Cfg.SHOT_MOTOR_PORT);
+        motor = new Mot(Constants.SHOT_MOTOR_PORT);
         println("Shot subsystem created");
     }
 
     public void run() {
-        motor.setSpeed(Cfg.SHOT_SPEED);
+        motor.setSpeed(Constants.SHOT_SPEED);
     }
 
     public void stop() {

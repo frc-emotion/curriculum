@@ -9,10 +9,10 @@ package rankup.util;
 // that code when pressed. That "code as a value" idea is the whole reason WPILib's
 // command-based framework works the way it does.
 
-public class Btn {
+public class Button {
     private final Runnable action;
 
-    public Btn(Runnable action) {
+    public Button(Runnable action) {
         this.action = action;
     }
 

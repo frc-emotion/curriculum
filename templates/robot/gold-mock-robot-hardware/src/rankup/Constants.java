@@ -10,7 +10,7 @@ package rankup;
 // rewired at competition, you change one line here instead of hunting through the code at
 // 11pm in a hotel lobby.
 
-public final class Cfg {
+public final class Constants {
     public static final int    GRAB_MOTOR_PORT   = 1;
     public static final int    SHOT_MOTOR_PORT   = 2;
     public static final double GRAB_SPEED        = 0.8;

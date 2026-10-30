@@ -9,10 +9,10 @@ package rankup.subsystems;
 // SubsystemBase plays exactly this role — it gives every subsystem a name and a periodic()
 // that runs every loop, so each individual subsystem doesn't have to reinvent either.
 
-public class Sub {
+public class MockSubsystem {
     private final String name;
 
-    public Sub(String name) {
+    public MockSubsystem(String name) {
         this.name = name;
     }
 

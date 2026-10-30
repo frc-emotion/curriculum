@@ -1,7 +1,7 @@
 package rankup.subsystems;
 
 import java.util.function.DoubleSupplier;
-import rankup.Cfg;
+import rankup.Constants;
 import rankup.util.Thing;
 import rankup.util.Mot;
 
@@ -19,17 +19,17 @@ import rankup.util.Mot;
 //   import rankup.util.Mechanism;
 //   import rankup.util.Motor;
 
-public class Grab extends Sub implements Thing {
+public class Intake extends MockSubsystem implements Thing {
     private final Mot motor;
 
-    public Grab() {
+    public Intake() {
         super("Grab");
-        motor = new Mot(Cfg.GRAB_MOTOR_PORT);
+        motor = new Mot(Constants.GRAB_MOTOR_PORT);
         println("Grab subsystem created");
     }
 
     public void run() {
-        motor.setSpeed(Cfg.GRAB_SPEED);
+        motor.setSpeed(Constants.GRAB_SPEED);
     }
 
     public void stop() {
