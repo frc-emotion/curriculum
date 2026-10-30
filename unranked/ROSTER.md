@@ -12,3 +12,4 @@ Everyone on the software subteam adds one row to this table during the Unranked 
 | Rubin | Robot | 67ator |
 | Kylie Pineda | Software | kyliepiineda |
 |Arjun Singh| Robot|arjun.anugrah.singh|
+| Abhi | Robot | GBRo6767 |
