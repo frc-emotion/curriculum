@@ -11,16 +11,8 @@ package rankup.util;
 
 public interface Mechanism {
 
-    // STEP 4: Declare what every mechanism can do
-    // WHAT:       Declare two methods in this interface — no bodies, just the signatures
-    //             ending in a semicolon:
-    //               void stop();
-    //               String getName();
-    // WHY:        In a real emergency stop you want to loop over everything on the robot and
-    //             stop it, without a giant if/else asking what each thing is. An interface
-    //             is how you say "these are all stoppable" and mean it.
-    // CONCEPTS:   Interfaces, abstract methods, contracts, why an interface has no bodies
-    // DONE WHEN:  Mechanism declares stop() and getName(), and Intake and Shooter both
-    //             implement it.
+    void stop();
+    String getName();
+
 
 }

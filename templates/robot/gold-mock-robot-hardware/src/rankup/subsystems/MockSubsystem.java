@@ -10,6 +10,23 @@ package rankup.subsystems;
 // that runs every loop, so each individual subsystem doesn't have to reinvent either.
 
 public class MockSubsystem {
+    private final String name;
+
+    public MockSubsystem(String name) {
+        this.name = name;
+    }
+
+    protected void println(String message) {
+        System.out.println(message);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void periodic() {
+        println(getName() + " heartbeat");
+    }
 
     // STEP 5: Build the shared parent
     // WHAT:       Give this class:

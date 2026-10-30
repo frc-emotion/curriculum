@@ -1,5 +1,9 @@
 package rankup.subsystems;
 
+import rankup.Constants;
+import rankup.util.Thing;
+import rankup.util.Mot;
+
 // ============================================================
 // RANK:        Robot Gold: Mock Robot Hardware
 // STEPS HERE:  6
@@ -13,24 +17,25 @@ package rankup.subsystems;
 //   import rankup.util.Mechanism;
 //   import rankup.util.Motor;
 
-public class Shooter {
+public class Shooter extends MockSubsystem implements Thing {
+    private final Mot motor;
 
-    // STEP 6 (continued from Intake.java): make Shooter a real subsystem
-    // WHAT:       Same shape as Intake. Change the declaration so Shooter extends
-    //             MockSubsystem and implements Mechanism, then give it:
-    //               - a PRIVATE Motor field, built from the shooter port constant in
-    //                 Constants — no number literals in this file
-    //               - a constructor `public Shooter()` that passes its own name up
-    //               - `public void run()` that sets its motor to a running speed, using a
-    //                 constant you add to Constants
-    //               - `public void stop()` that sets its motor to 0
-    //               - `@Override public void periodic()` that prints this subsystem's motor
-    //                 speed
-    // WHY:        Writing the second one is where inheritance earns its keep: you get the
-    //             name, the getter and the shared behaviour without retyping any of it. Only
-    //             the parts that are genuinely different — the port, the speed — are here.
-    // CONCEPTS:   extends, implements, super(...), @Override, code reuse
-    // DONE WHEN:  a Shooter is both a MockSubsystem and a Mechanism, run() leaves its motor
-    //             at a non-zero speed, and stop() brings it back to 0.
+    public Shooter() {
+        super("Shot");
+        motor = new Mot(Constants.SHOT_MOTOR_PORT);
+        println("Shot subsystem created");
+    }
 
+    public void run() {
+        motor.setSpeed(Constants.SHOT_SPEED);
+    }
+
+    public void stop() {
+        motor.setSpeed(0.0);
+    }
+
+    @Override
+    public void periodic() {
+        println(getName() + " speed: " + motor.getSpeed());
+    }
 }
