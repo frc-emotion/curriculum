@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 // ============================================================
@@ -8,120 +9,71 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 // STEPS HERE:  1, 2, 5, 6
 // ============================================================
 //
-// This is the robot's schedule. WPILib calls these methods for you — you never call them
-// yourself. The field controls which ones run: Disabled, Autonomous and Teleop each have an
-// Init that fires once when that mode starts, and a Periodic that fires about every 20
-// milliseconds while it lasts.
-//
-// The Javadoc that usually sits above each method has been removed on purpose. Writing those
-// comments is step 1, and you cannot write them accurately without working out what actually
-// calls what.
+// This is the robot lifecycle. WPILib calls these methods for you, and each one has a very
+// specific job based on the robot mode and the timing of the loop.
 
 public class Robot extends TimedRobot {
+    private RobotContainer robotContainer;
 
-    // STEP 1: Document the lifecycle
-    // WHAT:       Write a short comment above EVERY method in this file saying when it runs
-    //             and how often. One or two lines each. Be specific: "once, when the robot
-    //             is disabled" is useful; "runs sometimes" is not.
-    // WHY:        Nearly every confusing robot bug comes from code living in the wrong
-    //             method. Something that belongs in teleopInit, put in teleopPeriodic, runs
-    //             fifty times a second instead of once. Writing this down now is how you stop
-    //             guessing later.
-    // CONCEPTS:   The robot lifecycle, init vs periodic, the 20ms loop, driver station modes
-    // DONE WHEN:  every method below has an accurate comment, and you can answer "which of
-    //             these runs 50 times a second?" without looking.
-
-    // STEP 2: Print something in each Init
-    // WHAT:       Print a message in disabledInit, autonomousInit and teleopInit. Then run
-    //             the simulation, use the Sim GUI to switch between Disabled, Autonomous and
-    //             Teleop, and paste the console output into your PR.
-    // WHY:        This is how you prove to yourself that the lifecycle works the way the
-    //             comments you just wrote say it does. Reading it is one thing; watching the
-    //             lines appear as you flip modes is another.
-    // CONCEPTS:   The robot lifecycle, simulation, the Sim GUI driver station
-    // DONE WHEN:  switching modes in the Sim GUI prints a line each time.
-
-    private final RobotContainer m_robotContainer;
-
-    public Robot() {
-        m_robotContainer = new RobotContainer();
+    // Runs once 
+    @Override
+    public void robotInit() {
+        robotContainer = new RobotContainer();
     }
 
+    // Runs about every 20 ms; robot is powered.
     @Override
     public void robotPeriodic() {
-        // This one line is what makes command-based work. It is already written for you
-        // because the scheduler is Diamond's topic, not Platinum's.
         CommandScheduler.getInstance().run();
     }
 
+    // robot enters the Disabled state.
     @Override
     public void disabledInit() {
-        // STEP 6: Stop the motor when the robot is disabled
-        // WHAT:       Make sure the motor is stopped here.
-        // WHY:        Disabled means disabled. If the robot is switched off mid-command with
-        //             a motor still commanded, whatever it was doing is what it will try to
-        //             do the instant it is enabled again — usually into somebody's hand.
-        // CONCEPTS:   The disabled state, safe defaults, why init is the right place
-        // DONE WHEN:  disabling the robot in sim, and on the bench, stops the motor every
-        //             time.
+        System.out.println("Robot disabled.");
+        robotContainer.stopMotor();
     }
 
+    //  every 20 ms; robot is disabled.
     @Override
     public void disabledPeriodic() {
     }
 
+    // robot enters Autonomous mode.
     @Override
     public void autonomousInit() {
+        System.out.println("Robot autonomous.");
     }
 
+    // every 20 ms Autonomous is active.
     @Override
     public void autonomousPeriodic() {
     }
 
+    // Teleop mode.
     @Override
     public void teleopInit() {
+        System.out.println("Robot teleop.");
+        robotContainer.stopMotor();
     }
 
+    // every 20 ms; Teleop is active.
     @Override
     public void teleopPeriodic() {
-        // STEP 5: Drive the motor from the controller
-        // WHAT:       While the A button is held, run the motor forward at MOTOR_SPEED.
-        //             While B is held, run it backward at the same speed. When neither is
-        //             held, stop. Use a DutyCycleOut control request to command the TalonFX.
-        //             You create the controller yourself — a CommandXboxController on the
-        //             port from Constants is the one to use.
-        // WHY:        This is the smallest complete teleop loop: read input, decide, command
-        //             hardware, every 20ms. Note what happens if you forget the "stop when
-        //             neither is held" part — the motor keeps the last thing you told it,
-        //             forever. Motor controllers do not guess.
-        // CONCEPTS:   Reading a controller, DutyCycleOut, commanding a TalonFX, the periodic
-        //             loop, safe defaults
-        // DONE WHEN:  in simulation, holding A and B moves the motor's applied output the
-        //             way you expect, and letting go returns it to zero.
+        double output = 0.0;
 
-        // STEP 7 (continued from RobotContainer.java): publish the motor's output
-        // WHAT:       Every loop, publish the motor's applied output to SmartDashboard.
-        // WHY:        You cannot see inside a robot. Telemetry is how you find out whether
-        //             the motor is doing what you asked, and it is the first thing anyone
-        //             asks for when something goes wrong at competition.
-        // CONCEPTS:   SmartDashboard, NetworkTables, telemetry, publishing every loop
-        // DONE WHEN:  the value appears in the Sim GUI's NetworkTables view and changes as
-        //             you hold the buttons.
+        if (robotContainer.isForwardPressed()) {
+            output = Constants.MOTOR_SPEED;
+        } else if (robotContainer.isReversePressed()) {
+            output = -Constants.MOTOR_SPEED;
+        }
+
+        robotContainer.setMotorOutput(output);
+        SmartDashboard.putNumber("Motor Applied Output", robotContainer.getMotorOutput());
     }
 
+    // every 20 ms; robot is in Simulation mode.
     @Override
     public void simulationPeriodic() {
     }
-
-    // STEP 8: Demo it, in sim and then on the bench
-    // WHAT:       Run the whole thing in simulation first, start to finish. Then, WITH A LEAD
-    //             PRESENT and the motor secured to the bench, deploy and demo it: A drives
-    //             forward, B drives backward, letting go stops, and disabling stops it too.
-    // WHY:        Everything up to here was preparation. This is the rank: your code moving a
-    //             real motor, on purpose, in front of someone who can stop it. Simulation
-    //             first is not a formality — it is how you find the bug that would otherwise
-    //             find you at full speed.
-    // CONCEPTS:   Deploying, bench testing, the disable button, testing safely
-    // DONE WHEN:  a lead has watched both demos and signed the rank off.
-
 }

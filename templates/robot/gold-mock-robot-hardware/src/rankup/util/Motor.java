@@ -5,16 +5,54 @@ package rankup.util;
 // STEPS HERE:  1
 // ============================================================
 //
-// A pretend motor controller. At Platinum this becomes a real TalonFX, and the shape barely
-// changes: something owns a motor, nobody else touches it, and every speed gets clamped on
+// A pretend Motoror controller. At Platinum this becomes a real TalonFX, and the shape barely
+// changes: something owns a Motoror, nobody else touches it, and every speed gets clamped on
 // the way in.
 
 public class Motor {
+    private final String name;
+    private final int port;
+    private double speed;
 
-    // STEP 1: Build the Motor class
+    public Motor(int port) {
+        this("Motor-" + port, port);
+    }
+
+    public Motor(String name, int port) {
+        this.name = name;
+        this.port = port;
+        this.speed = 0.0;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = clamp(speed, -1.0, 1.0);
+    }
+
+    public double getSpeed() {
+        return this.speed;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getPort() {
+        return this.port;
+    }
+    
+    private double clamp(double value, double min, double max) {
+        if (value < min) {
+            return min;
+        }
+        if (value > max) {
+            return max;
+        }
+        return value;
+    }
+    // STEP 1: Build the Motoror class
     // WHAT:       Give this class:
     //               - three PRIVATE fields: a String `name`, an int `port`, a double `speed`
-    //               - a constructor `public Motor(String name, int port)` that stores both
+    //               - a constructor `public Motoror(String name, int port)` that stores both
     //                 and starts the speed at 0
     //               - `public void setSpeed(double speed)` that clamps to -1.0 .. 1.0 before
     //                 storing it
@@ -27,7 +65,7 @@ public class Motor {
     //             public, any line of code anywhere could write 5.0 into it and nothing
     //             would stop it.
     // CONCEPTS:   Classes, private fields, constructors, `this`, getters, encapsulation
-    // DONE WHEN:  a new Motor starts at speed 0, setSpeed(1.5) leaves it at 1.0, and two
-    //             Motor objects never affect each other.
+    // DONE WHEN:  a new Motoror starts at speed 0, setSpeed(1.5) leaves it at 1.0, and two
+    //             Motoror objects never affect each other.
 
 }

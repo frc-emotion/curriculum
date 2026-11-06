@@ -1,7 +1,11 @@
 package frc.robot;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.subsystems.SimpleMotorSubsystem;
 
 // ============================================================
 // RANK:        Robot Diamond: Simple Motor Subsystem
@@ -18,11 +22,16 @@ import edu.wpi.first.wpilibj2.command.Commands;
 
 public class RobotContainer {
 
-    // You will need a subsystem field and a controller field here. Both are yours to add —
-    // that is part of steps 7 and 8.
+    private final SimpleMotorSubsystem simpleMotorSubsystem = new SimpleMotorSubsystem();
+    private final CommandXboxController driverController =
+            new CommandXboxController(Constants.DRIVER_CONTROLLER_PORT);
 
     public RobotContainer() {
         configureBindings();
+    }
+
+    public SimpleMotorSubsystem getSimpleMotorSubsystem() {
+        return simpleMotorSubsystem;
     }
 
     private void configureBindings() {
@@ -36,6 +45,8 @@ public class RobotContainer {
         // CONCEPTS:   CommandXboxController, Trigger, whileTrue, command lifecycle
         // DONE WHEN:  holding A drives the motor one way, holding B the other, and letting go
         //             of either stops it.
+        driverController.a().whileTrue(simpleMotorSubsystem.runForward());
+        driverController.b().whileTrue(simpleMotorSubsystem.runReverse());
 
         // STEP 8: Set a default command driven by the joystick
         // WHAT:       Give the subsystem a default command that drives the motor from the
@@ -50,6 +61,10 @@ public class RobotContainer {
         //             requirements
         // DONE WHEN:  moving the left stick moves the motor, and letting it centre stops it
         //             dead.
+        simpleMotorSubsystem.setDefaultCommand(
+                simpleMotorSubsystem.run(() -> simpleMotorSubsystem.setSpeed(
+                        MathUtil.applyDeadband(
+                                driverController.getLeftY(), Constants.DEADBAND))));
 
         // STEP 9: Zero the encoder when the limit switch is pressed
         // WHAT:       Make a Trigger from your subsystem's limit switch, and when it becomes
@@ -61,6 +76,8 @@ public class RobotContainer {
         // CONCEPTS:   Trigger, onTrue, encoder zeroing, using a sensor as a reference point
         // DONE WHEN:  pressing the limit switch — in sim or on the bench — sends the reported
         //             position back to 0.
+        new Trigger(simpleMotorSubsystem::isAtLimit)
+                .onTrue(simpleMotorSubsystem.runOnce(simpleMotorSubsystem::zeroEncoder));
     }
 
     public Command getAutonomousCommand() {

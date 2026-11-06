@@ -75,5 +75,6 @@ public class Robot extends TimedRobot {
         // CONCEPTS:   Simulation, simulationPeriodic, DIO simulation, keeping hardware private
         // DONE WHEN:  the position on SmartDashboard climbs while the motor runs, and
         //             toggling the DIO in the Sim GUI stops forward motion.
+        m_robotContainer.getSimpleMotorSubsystem().updateSimulation();
     }
 }

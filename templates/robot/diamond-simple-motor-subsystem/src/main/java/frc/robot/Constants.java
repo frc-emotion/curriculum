@@ -7,6 +7,14 @@ package frc.robot;
 
 public final class Constants {
 
+    public static final int MOTOR_CAN_ID = 1;
+    public static final int DRIVER_CONTROLLER_PORT = 0;
+    public static final double MOTOR_SPEED = 0.3;
+
+    public static final int LIMIT_SWITCH_DIO_CHANNEL = 0;
+
+    public static final double DEADBAND = 0.05;
+
     // STEP 1 (continued from SimpleMotorSubsystem.java): bring your Platinum numbers across
     // WHAT:       Copy the constants your Platinum code used — the motor's CAN ID, the
     //             controller port, the motor speed — from
@@ -27,5 +35,6 @@ public final class Constants {
 
     // You will also want a deadband constant for step 8. Add it here rather than typing the
     // number into the lambda.
+
 
 }

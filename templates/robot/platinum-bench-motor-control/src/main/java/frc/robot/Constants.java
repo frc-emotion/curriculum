@@ -9,6 +9,10 @@ package frc.robot;
 // hardware now. Rebuilt-2026 keeps a whole folder of these.
 
 public final class Constants {
+    public static final int MOTOR_CAN_ID = 1;
+    public static final int DRIVER_CONTROLLER_PORT = 0;
+    public static final double MOTOR_SPEED = 0.3;
+    
 
     // STEP 3: Add the hardware numbers
     // WHAT:       Add three constants:
