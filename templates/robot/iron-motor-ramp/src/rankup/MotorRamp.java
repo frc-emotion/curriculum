@@ -1,5 +1,7 @@
 package rankup;
 
+import java.util.ArrayList;
+
 // ============================================================
 // RANK:        Robot Iron: Motor Ramp Simulator
 // STEPS HERE:  1 to 9
@@ -11,7 +13,7 @@ package rankup;
 // you are building — a simulator for the ramp, so you can watch the numbers without
 // breaking anything.
 //
-// At Copper the method signatures were written for you. Not here. Writing the method — the
+// At Copper the method signatures wegitre written for you. Not here. Writing the method — the
 // name, what it takes, what it gives back — is the skill this rank is about. Each STEP
 // comment tells you the exact signature to write. Type it exactly: same name,
 // same parameter types, same order, same return type.
@@ -38,7 +40,7 @@ public class MotorRamp {
     //             prints its size at the end.
 
     static ArrayList<Double> speedLog = new ArrayList<>();
-    
+
 
     public static void main(String[] args) {
 
@@ -55,6 +57,97 @@ public class MotorRamp {
         // CONCEPTS:   Arrays, array length, looping over an array, accumulating a total
         // DONE WHEN:  average and max give the right answers for any array you hand them,
         //             including an array with one element.
+
+        double [] swerveSpeeds = {0.5, 0.7, 0.6, 0.8};
+
+        System.out.println("Average speed: " + average(swerveSpeeds));
+        System.out.println("Max speed: " + max(swerveSpeeds));
+
+        printRampGrid(3, 5);
+        rampUp(1.0, 0.25);
+        rampUp(0.9, 0.2);
+        System.out.println("Total speeds logged: " + speedLog.size());
+    }
+
+    static boolean isWithinDeadband(double value, double deadband) {
+    return Math.abs(value) <= deadband;
+    }
+
+    static double clamp(double value, double min, double max) {
+        if (value < min) {
+            return min;
+        }
+        else if (value > max) {
+            return max;  
+        }
+        else {
+            return value;
+        }
+    }
+
+    static void setMotorSpeed(double speed) {
+
+        double clampedSpeed = clamp(speed, -1.0, 1.0);
+        System.out.println("Motor set to " + clampedSpeed);
+        speedLog.add(clampedSpeed);
+    }
+
+    static void setMotorSpeed(double speed, int port) {
+        double clampedSpeed = clamp(speed, -1.0, 1.0);
+        System.out.println("Motor " + port + " set to " + clampedSpeed);
+        speedLog.add(clampedSpeed);
+    }
+
+    static ArrayList<Double> rampUp(double target, double step) {
+        ArrayList<Double> speeds = new ArrayList<>();
+        double currentSpeed = 0.0;
+
+        while (true) {
+            currentSpeed += step;
+            if (currentSpeed >= target) {
+                currentSpeed = target;
+                speeds.add(currentSpeed);
+                setMotorSpeed(currentSpeed);
+                break;
+            } 
+            else {
+                speeds.add(currentSpeed);
+            }
+            setMotorSpeed(currentSpeed);
+        }
+        return speeds;
+    }
+
+    static void printRampGrid(int motors, int steps) {
+        for (int motor = 1; motor <= motors; motor++) {
+            System.out.print("Motor " + motor + ": ");
+            for (int step = 1; step <= steps; step++) {
+                double speed = (double) step / steps;
+                System.out.print(speed + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    static double average(double[] speeds) {
+        double sum = 0.0;
+        for (double speed : speeds) {
+            sum += speed;
+        }
+        return sum / speeds.length;
+    }
+
+    static double max(double[] speeds)
+    {
+        double max = speeds[0];
+        for (double speed : speeds) {
+            if (speed > max) {
+                max = speed;
+            }
+        }
+        return max;
+    }
+}
 
         // STEP 8 (continued): call printRampGrid
         // WHAT:       Call printRampGrid(3, 5) from main.
@@ -74,7 +167,6 @@ public class MotorRamp {
         // DONE WHEN:  both ramps' output is in your PR, and the last line prints how many
         //             speeds were logged in total.
 
-    }
 
     // STEP 1: Write isWithinDeadband
     // WHAT:       Write this method:
@@ -88,6 +180,7 @@ public class MotorRamp {
     // CONCEPTS:   Declaring a method, parameters, return types, boolean expressions, Math.abs
     // DONE WHEN:  0.05 with deadband 0.1 is true, 0.5 is false, and exactly 0.1 is true.
 
+
     // STEP 2: Write clamp
     // WHAT:       Write this method:
     //               static double clamp(double value, double min, double max)
@@ -98,6 +191,8 @@ public class MotorRamp {
     // CONCEPTS:   Declaring a method, multiple parameters, comparisons, returning early
     // DONE WHEN:  clamp(1.5, -1, 1) is 1.0, clamp(-2, -1, 1) is -1.0, clamp(0.3, -1, 1) is
     //             0.3, and the values exactly on the limits come back unchanged.
+
+    
 
     // STEP 3: Write setMotorSpeed
     // WHAT:       Write this method:
@@ -113,6 +208,7 @@ public class MotorRamp {
     // DONE WHEN:  setMotorSpeed(1.5) prints the clamped value, not 1.5, and speedLog grows
     //             by one.
 
+
     // STEP 4: Overload setMotorSpeed
     // WHAT:       Write a second method with the same name and different parameters:
     //               static void setMotorSpeed(double speed, int port)
@@ -125,6 +221,7 @@ public class MotorRamp {
     //             of copying it means a future fix happens in one place.
     // CONCEPTS:   Method overloading, method signatures, reuse over copy-paste
     // DONE WHEN:  setMotorSpeed(2.0, 3) prints the port and the clamped speed, and logs it.
+
 
     // STEP 5: Write rampUp
     // WHAT:       Write this method:
@@ -144,6 +241,9 @@ public class MotorRamp {
     //             collection
     // DONE WHEN:  both example ramps come out exactly right, ending on the target.
 
+
+    
+
     // STEP 8: Write printRampGrid
     // WHAT:       Write this method:
     //               static void printRampGrid(int motors, int steps)
@@ -159,4 +259,3 @@ public class MotorRamp {
     // DONE WHEN:  printRampGrid(3, 5) prints exactly three lines, each with five speeds
     //             ending at 1.0.
 
-}
