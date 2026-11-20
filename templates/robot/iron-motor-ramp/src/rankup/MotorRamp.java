@@ -1,5 +1,7 @@
 package rankup;
 
+import java.util.ArrayList;
+
 // ============================================================
 // RANK:        Robot Iron: Motor Ramp Simulator
 // STEPS HERE:  1 to 9
@@ -36,6 +38,7 @@ public class MotorRamp {
     // CONCEPTS:   ArrayList, generics (the <Double> part), class-level state, autoboxing
     // DONE WHEN:  the list grows by exactly one entry per setMotorSpeed call, and main
     //             prints its size at the end.
+    static ArrayList<Double> speedLog = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -52,7 +55,7 @@ public class MotorRamp {
         // CONCEPTS:   Arrays, array length, looping over an array, accumulating a total
         // DONE WHEN:  average and max give the right answers for any array you hand them,
         //             including an array with one element.
-
+        printRampGrid(3,5);
         // STEP 8 (continued): call printRampGrid
         // WHAT:       Call printRampGrid(3, 5) from main.
         // WHY:        Three motors, five steps each — a small version of what it looks like
@@ -70,7 +73,11 @@ public class MotorRamp {
         // CONCEPTS:   Calling methods, reading output, edge cases
         // DONE WHEN:  both ramps' output is in your PR, and the last line prints how many
         //             speeds were logged in total.
+        // System.out.println(1.0, 0.25);
+        // System.out.println(0.9, 0.2);
+        // System.out.println(speedlog.size);
 
+        printRampGrid(4, 0.2);
     }
 
     // STEP 1: Write isWithinDeadband
@@ -84,7 +91,12 @@ public class MotorRamp {
     //             an arm, and now one method serves both.
     // CONCEPTS:   Declaring a method, parameters, return types, boolean expressions, Math.abs
     // DONE WHEN:  0.05 with deadband 0.1 is true, 0.5 is false, and exactly 0.1 is true.
-
+static boolean isWithinDeadband(double value, double deadband){
+    if (Math.abs(value) <= deadband){
+        return true;}
+            else{
+                return false;}
+}
     // STEP 2: Write clamp
     // WHAT:       Write this method:
     //               static double clamp(double value, double min, double max)
@@ -95,7 +107,15 @@ public class MotorRamp {
     // CONCEPTS:   Declaring a method, multiple parameters, comparisons, returning early
     // DONE WHEN:  clamp(1.5, -1, 1) is 1.0, clamp(-2, -1, 1) is -1.0, clamp(0.3, -1, 1) is
     //             0.3, and the values exactly on the limits come back unchanged.
-
+   
+    static double clamp(double value, double min, double max){
+        if (value < min)
+            return min;
+        else if (value > max)
+            return max;
+        else
+            return value;
+}
     // STEP 3: Write setMotorSpeed
     // WHAT:       Write this method:
     //               static void setMotorSpeed(double speed)
@@ -109,7 +129,11 @@ public class MotorRamp {
     // CONCEPTS:   void methods, calling your own methods, printing, side effects
     // DONE WHEN:  setMotorSpeed(1.5) prints the clamped value, not 1.5, and speedLog grows
     //             by one.
-
+static void setMotorSpeed(double speed) {
+    double clamped = clamp(speed, -1.0, max, 1.0);
+    System.out.println("Motor set to" + clamped);
+    speedLog.add(clamped);
+}
     // STEP 4: Overload setMotorSpeed
     // WHAT:       Write a second method with the same name and different parameters:
     //               static void setMotorSpeed(double speed, int port)
@@ -122,7 +146,11 @@ public class MotorRamp {
     //             of copying it means a future fix happens in one place.
     // CONCEPTS:   Method overloading, method signatures, reuse over copy-paste
     // DONE WHEN:  setMotorSpeed(2.0, 3) prints the port and the clamped speed, and logs it.
-
+    static void setMotorSpeed (double speed, int port){
+        double clamped = clamp(speed, -1.0, max, 1.0);
+        System.out.println("Motor set to" + port + "set to");
+        speedLog.add(clamped);
+    }
     // STEP 5: Write rampUp
     // WHAT:       Write this method:
     //               static ArrayList<Double> rampUp(double target, double step)
@@ -140,7 +168,21 @@ public class MotorRamp {
     // CONCEPTS:   Loops, accumulating a value, `break`, building an ArrayList, returning a
     //             collection
     // DONE WHEN:  both example ramps come out exactly right, ending on the target.
-
+    static ArrayList<Double> rampUp(double target, double step)
+    {
+        ArrayList<Double> speeds = new ArrayList<>();
+        for (double current = stop; ;current += step)
+            if (current >= target) {
+                current = target; 
+                
+                setMotorSpeed (current);
+                speeds.add(current);
+                break;
+            }
+            setMotorSpeed(current);{
+            speeds.add(current);
+        }
+    }
     // STEP 8: Write printRampGrid
     // WHAT:       Write this method:
     //               static void printRampGrid(int motors, int steps)
@@ -156,4 +198,17 @@ public class MotorRamp {
     // DONE WHEN:  printRampGrid(3, 5) prints exactly three lines, each with five speeds
     //             ending at 1.0.
 
+    static void printRampGrid(int motors, double steps){
+        //GO THRU EACH NUMBER
+        for (int i = 1; i <= motors; ++i) {
+            System.out.print("Motor " + i + ": ");
+
+            //GO THRU EACH STEP
+            for(double j = 0; j <= 1.0; j += steps) {
+                System.out.print(j + " ");
+            }
+
+            System.out.println();
+        }   
+    }
 }
