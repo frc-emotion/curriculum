@@ -56,7 +56,7 @@ public class MotorRamp {
         //             that.
         // CONCEPTS:   Arrays, array length, looping over an array, accumulating a total
         // DONE WHEN:  average and max give the right answers for any array you hand them,
-        //             including an array with one element.
+        //             including an array with one element
 
         double [] swerveSpeeds = {0.5, 0.7, 0.6, 0.8};
 
